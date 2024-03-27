@@ -149,7 +149,6 @@ class WeightedL1Loss(nn.Module):
             self.code_weights = np.array(code_weights, dtype=np.float32)
             self.code_weights = torch.from_numpy(self.code_weights).cuda()
 
-    @torch.cuda.amp.custom_fwd(cast_inputs=torch.float16)
     def forward(self, input: torch.Tensor, target: torch.Tensor, weights: torch.Tensor = None):
         """
         Args:
@@ -561,89 +560,3 @@ class IouRegLossSparse(nn.Module):
 
         loss =  loss / (mask.sum() + 1e-4)
         return loss
-
-class L1Loss(nn.Module):
-    def __init__(self):
-        super(L1Loss, self).__init__()
-       
-    def forward(self, pred, target):
-        if target.numel() == 0:
-            return pred.sum() * 0
-        assert pred.size() == target.size()
-        loss = torch.abs(pred - target)
-        return loss
-
-
-class GaussianFocalLoss(nn.Module):
-    """GaussianFocalLoss is a variant of focal loss.
-
-    More details can be found in the `paper
-    <https://arxiv.org/abs/1808.01244>`_
-    Code is modified from `kp_utils.py
-    <https://github.com/princeton-vl/CornerNet/blob/master/models/py_utils/kp_utils.py#L152>`_  # noqa: E501
-    Please notice that the target in GaussianFocalLoss is a gaussian heatmap,
-    not 0/1 binary target.
-
-    Args:
-        alpha (float): Power of prediction.
-        gamma (float): Power of target for negative samples.
-        reduction (str): Options are "none", "mean" and "sum".
-        loss_weight (float): Loss weight of current loss.
-    """
-
-    def __init__(self,
-                 alpha=2.0,
-                 gamma=4.0):
-        super(GaussianFocalLoss, self).__init__()
-        self.alpha = alpha
-        self.gamma = gamma
-
-    def forward(self, pred, target):
-        eps = 1e-12
-        pos_weights = target.eq(1)
-        neg_weights = (1 - target).pow(self.gamma)
-        pos_loss = -(pred + eps).log() * (1 - pred).pow(self.alpha) * pos_weights
-        neg_loss = -(1 - pred + eps).log() * pred.pow(self.alpha) * neg_weights
-
-        return pos_loss + neg_loss
-
-
-def calculate_iou_loss_centerhead(iou_preds, batch_box_preds, mask, ind, gt_boxes):
-    """
-    Args:
-        iou_preds: (batch x 1 x h x w)
-        batch_box_preds: (batch x (7 or 9) x h x w)
-        mask: (batch x max_objects)
-        ind: (batch x max_objects)
-        gt_boxes: (batch x N, 7 or 9)
-    Returns:
-    """
-    if mask.sum() == 0:
-        return iou_preds.new_zeros((1))
-
-    mask = mask.bool()
-    selected_iou_preds = _transpose_and_gather_feat(iou_preds, ind)[mask]
-
-    selected_box_preds = _transpose_and_gather_feat(batch_box_preds, ind)[mask]
-    iou_target = iou3d_nms_utils.paired_boxes_iou3d_gpu(selected_box_preds[:, 0:7], gt_boxes[mask][:, 0:7])
-    # iou_target = iou3d_nms_utils.boxes_iou3d_gpu(selected_box_preds[:, 0:7].clone(), gt_boxes[mask][:, 0:7].clone()).diag()
-    iou_target = iou_target * 2 - 1  # [0, 1] ==> [-1, 1]
-
-    # print(selected_iou_preds.view(-1), iou_target)
-    loss = F.l1_loss(selected_iou_preds.view(-1), iou_target, reduction='sum')
-    loss = loss / torch.clamp(mask.sum(), min=1e-4)
-    return loss
-
-
-def calculate_iou_reg_loss_centerhead(batch_box_preds, mask, ind, gt_boxes):
-    if mask.sum() == 0:
-        return batch_box_preds.new_zeros((1))
-
-    mask = mask.bool()
-
-    selected_box_preds = _transpose_and_gather_feat(batch_box_preds, ind)
-
-    iou = box_utils.bbox3d_overlaps_diou(selected_box_preds[mask][:, 0:7], gt_boxes[mask][:, 0:7])
-
-    loss = (1.0 - iou).sum() / torch.clamp(mask.sum(), min=1e-4)
-    return loss

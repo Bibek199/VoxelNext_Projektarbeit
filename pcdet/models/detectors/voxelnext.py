@@ -1,4 +1,6 @@
 from .detector3d_template import Detector3DTemplate
+import time
+import torch
 
 class VoxelNeXt(Detector3DTemplate):
     def __init__(self, model_cfg, num_class, dataset):

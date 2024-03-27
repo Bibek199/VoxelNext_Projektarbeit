@@ -200,11 +200,7 @@ class WaymoDataset(DatasetTemplate):
         points_all, NLZ_flag = point_features[:, 0:5], point_features[:, 5]
         if not self.dataset_cfg.get('DISABLE_NLZ_FLAG_ON_POINTS', False):
             points_all = points_all[NLZ_flag == -1]
-        if self.dataset_cfg.get('POINTS_TANH_DIM', None) is None:
-            points_all[:, 3] = np.tanh(points_all[:, 3])
-        else:
-            for dim_idx in self.dataset_cfg.POINTS_TANH_DIM:
-                points_all[:, dim_idx] = np.tanh(points_all[:, dim_idx])
+        points_all[:, 3] = np.tanh(points_all[:, 3])
         return points_all
 
     @staticmethod
