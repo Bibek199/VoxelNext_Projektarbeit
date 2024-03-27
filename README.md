@@ -277,7 +277,79 @@ python -m pcdet.datasets.nuscenes.nuscenes_dataset --func create_nuscenes_infos 
     --cfg_file tools/cfgs/dataset_configs/nuscenes_dataset.yaml \
     --version v1.0-trainval
 ```
+Note: Since we not work with Agroverse dataset we can comment out OpenPCDet/pcdet/datasets/init. py in line 15 and line 27 to avoid the Error: No module named ‘av2’ 
+
 ## STEP 7: Training, Evaluation, Testing and Visualization
+
+We worked with single GPU Training and Testing, the commands for execution for the same is given below.
+
+### Training and Evaluation with a single GPU:
+
+1. Change current directory to
+```shell script  
+cd OpenPCdet/tools 
+```
+2. Run the train.py file  
+```shell script
+python train.py --cfg_file ${CONFIG_FILE}
+```
+One could optionally add extra command line parameters `--batch_size ${BATCH_SIZE}` and `--epochs ${EPOCHS}` to specify the preferred parameters. 
+
+However, we changed the training parameters directly in the VoxelNext Model config. file.
+
+We share the path to the configuration file where, training parameters and dataset parameters can be modified as per requirement:
+
+VoxelNext Model config. file path (v1.0-mini):
+
+VoxelNext Model config. file path (v1.0-mini_3classes):
+
+VoxelNext Model config. file path (v1.0-trainval):
+
+NuScenes Dataset config. file path:
+
+Kitti Dataset config. file path:
+
+The sample code for our training results for nuScenes (v1.0-mini) dataset is given as:
+
+
+
+The sample code for our results for KITTI dataset is given as:
+
+
+
+
+### Testing
+
+1. Change current directory to
+```shell script  
+cd OpenPCdet/tools 
+```
+2. Run the test.py file (to evaluate a single pretrained model)
+```shell script
+python test.py --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE} --ckpt ${CKPT}
+```
+The sample code for our testing results for KITTI dataset is given as:
+
+### Visualization
+
+1. Open3D Visvalization tool Installation
+
+```shell script  
+ pip install open3d
+```
+2. Change current directory to
+```shell script  
+cd OpenPCdet/tools 
+```
+3. Run the Demo.py file
+   ```shell script
+   python demo.py --cfg_file ${CONFIG_FILE}
+    --ckpt ${CKPT}
+    --data_path ${POINT_CLOUD_DATA}
+   ```
+
+The sample code for our testing results for KITTI dataset is given as:
+
 
 
 
