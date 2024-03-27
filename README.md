@@ -69,10 +69,11 @@ nvidia-smi
 ```
 Note: It gives the overview of the GPU (Driver Version, Usage, GPU Name, Memory Usage etc.). If these details are not displayed or asks for an updated driver, follow the link from Nvidia official site below to select the correct GPU Series for your PC. Download and install the recent driver for the available GPU. It would be better to have the suggested updated driver installed as per the site.  https://www.nvidia.com/download/index.aspx 
 
-3. System update
+3. System update and reboot
 
 ```shell script
 sudo apt update && sudo apt upgrade -y
+sudo reboot
 ```
 
 5. Update the GPU driver
@@ -151,9 +152,13 @@ torch.cuda.current_device()
 torch.cuda.get_device_name(0)
 ```
 Expected output : 
+
 "True".
+
 "0".
+
 "NVIDIA GeForce RTX 3050".
+
 
 After successful execution until this step, we can go further now to install the OpenPCDet Library.
 
@@ -277,7 +282,7 @@ python -m pcdet.datasets.nuscenes.nuscenes_dataset --func create_nuscenes_infos 
     --cfg_file tools/cfgs/dataset_configs/nuscenes_dataset.yaml \
     --version v1.0-trainval
 ```
-Note: Since we not work with Agroverse dataset we can comment out OpenPCDet/pcdet/datasets/init. py in line 15 and line 27 to avoid the Error: No module named ‘av2’ 
+Note: Since we not work with Agroverse dataset we can comment out line 15 and line 27 in OpenPCDet/pcdet/datasets/init. py to avoid the Error: No module named ‘av2’ 
 
 ## STEP 7: Training, Evaluation, Testing and Visualization
 
@@ -295,15 +300,17 @@ python train.py --cfg_file ${CONFIG_FILE}
 ```
 One could optionally add extra command line parameters `--batch_size ${BATCH_SIZE}` and `--epochs ${EPOCHS}` to specify the preferred parameters. 
 
-However, we changed the training parameters directly in the VoxelNext Model config. file.
+However, we changed the training parameters directly in the VoxelNext Model configuration file.
 
-We share the path to the configuration file where, training parameters and dataset parameters can be modified as per requirement:
+We share the path to the different configuration files where, training parameters and dataset parameters can be modified as per requirement:
 
-VoxelNext Model config. file path (v1.0-mini):
+* VoxelNext Model config. file path (v1.0-mini): 
 
 VoxelNext Model config. file path (v1.0-mini_3classes):
 
 VoxelNext Model config. file path (v1.0-trainval):
+
+VoxelNext Model config. file path (KITTI):
 
 NuScenes Dataset config. file path:
 
