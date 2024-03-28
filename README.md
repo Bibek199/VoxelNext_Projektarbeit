@@ -14,11 +14,12 @@ Description of our PC hardware and software features:
 1. Operating System: Linux Ubuntu 22.04.4 LTS 
 2. GPU: Nvidia Geforce RTX3050 4GB 
 3. GPU Driver version: 550.67 	
-4. CUDA Version:
-5. CUDA Toolkit version:  
+4. CUDA Version: 
+5. CUDA Toolkit version: 11.8  
 5. Python version: 3.11.8
-6. Pytorch version:   
+6. Pytorch version: 2.2.1+cu118  
 7. Anaconda version : 24.1.2
+8. Open3D: 0.18
 
 ## STEP 1: Anaconda Installation
 1. Download the Linux Version of Anaconda. (https://www.anaconda.com/download) The file should be downloaded as a bash file. (.sh extension)
@@ -158,7 +159,6 @@ Expected output :
 "0".
 
 "NVIDIA GeForce RTX 3050".
-
 
 After successful execution until this step, we can go further now to install the OpenPCDet Library.
 
@@ -306,9 +306,8 @@ However, we changed the training parameters directly in the VoxelNext Model conf
 
 We share the path to the different configuration files where, training parameters and dataset parameters can be modified as per requirement:
 
-
 * VoxelNext Model config. file path (v1.0-mini_3classes):
-* 
+  
 ```shell script 
   --cfg_file /home/bibek/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2.yaml
 ```
@@ -321,14 +320,14 @@ We share the path to the different configuration files where, training parameter
 * NuScenes Dataset config. file path:
 
 ```shell script 
-  /home/bibek/OpenPCDet/tools/cfgs/dataset_configs/nuscenes_dataset.yaml
+  --cfg_file /home/bibek/OpenPCDet/tools/cfgs/dataset_configs/nuscenes_dataset.yaml
 ```
-Note: In this file "VERSION:" to be assigned to v1.0-mini, v1.0-trainval or v1.0-test accordingly as per the dataset in use. 
+Note: In the above file "VERSION:" to be assigned to v1.0-mini, v1.0-trainval or v1.0-test accordingly as per the dataset in use. 
 
 * Kitti Dataset config. file path:
   
 ```shell script 
-  /home/bibek/OpenPCDet/tools/cfgs/dataset_configs/kitti_dataset.yaml
+  --cfg_file /home/bibek/OpenPCDet/tools/cfgs/dataset_configs/kitti_dataset.yaml
 ```
 
 * The sample code for our training results for nuScenes dataset is given as:
@@ -342,6 +341,9 @@ Note: The same --cfg_file to be used to train for v1.0-mini, v1.0-trainval or v1
 ```shell script 
   python train.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml
 ```
+
+Note: As VoxelNext models is already incorporated in OpenPCDet repository, some of the config. files needs to be manually placed into the OpenPCDet>tools>cfgs folder after cloning. The modified config. files are available in this repository. (for e.g config. file for training nuScenes Model for 3 classes and Kitti model.)
+
 
 ### Testing
 
