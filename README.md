@@ -1,20 +1,29 @@
 # VoxelNext_Projektarbeit HKA_WS_23-24
-3D object detection for autonomous driving with VoxelNext model with nuScenes and KITTI Dataset. 
+3D-Object Detection for Autonomous Driving: Implementation of VoxelNext model with nuScenes and KITTI Dataset. 
 
 In this project we try to reproduce the results of the paper "VoxelNeXt: Fully Sparse VoxelNet for 3D Object Detection and Tracking" (CVPR 2023)
 
 **VoxelNeXt: Fully Sparse VoxelNet for 3D Object Detection and Tracking [[Paper](https://arxiv.org/abs/2303.11301)]** <br />
-VoxelNeXt is a clean, simple, and fully-sparse 3D object detector. It predict objects directly upon sparse voxel features without sparse-to-dense conversion, anchors, or center proxies.
+VoxelNeXt is a clean, simple, and fully-sparse 3D object detector. It predict objects directly upon sparse voxel features without sparse-to-dense conversion, anchors, or center proxies. The objective of this project is to reproduce the results of the mentioned paper and test the model with KITTI dataset.
+
+Hereby, We share a step by step guide from setting up the environment to visualization of the results. We also share some insights on solving some problems we faced during the execution of the program.
+
+Project Members: Bibek Gupta, Luis Sanchez Fernandez, Lucia Montero Couso
+University: Hochshule Karlsruhe of Applied Science (HKA)
+Course of Study: EU4M Mechatronics
+Semester: Winter Semester 023-024
 
 # Getting Started
-The project is built upon OpenPCDet open-source library for LIDAR-based 3D object Detection. It is created by the OpenPCDet development team, built on PyTorch and supports variety of state of art 3D object Detection models. In the first phase we shall provide a step by step guide to install OpenPCDet using Anaconda. (We tried installing OpenPCDet in Windows however, we faced difficulties during installation. So, we recommend to work with LINUX OS.)
+The project is built upon OpenPCDet open-source library for LIDAR-based 3D object Detection. It is created by the OpenPCDet development team, built on PyTorch and supports variety of state of art 3D object Detection models. 
 
-Description of our PC hardware and software features:
+In the first phase we shall provide a step by step guide to install OpenPCDet using Anaconda. (We tried installing OpenPCDet in Windows however, we faced difficulties during installation. So, we recommend to work with LINUX OS.)
+
+Description of our PC Hardware and Software:
 
 1. Operating System: Linux Ubuntu 22.04.4 LTS 
 2. GPU: Nvidia Geforce RTX3050 4GB 
 3. GPU Driver version: 550.67 	
-4. CUDA Version: 
+4. CUDA Version: 12.4
 5. CUDA Toolkit version: 11.8  
 5. Python version: 3.11.8
 6. Pytorch version: 2.2.1+cu118  
@@ -55,7 +64,7 @@ conda activate openpcdet
 10. After successful execution of the command above, environment shall be changed from  (base) to (openpcdet)
 
 <p align="center">
-  <img src="/home/bibek/Pictures/Screenshots/conda.png" width="95%" height="320">
+  <img src="docs/conda.png" width="50%" height="80">
 </p>
 
 ## STEP 2: GPU Setup
@@ -96,7 +105,7 @@ sudo reboot
 After successful MOK, the driver shall be successfully installed. If the driver is correctly installed or updated, the nvidia-smi command shall show the desired updated driver version.  
 
 <p align="center">
-  <img src="/home/bibek/Pictures/Screenshots/nvidia.png" width="95%" height="320">
+  <img src="docs/nvidia.png" width="50%" height="150">
 </p>
 
 Note: In some cases of old GPU drivers, it may be required to complete uninstall and the old drivers and proceed with a clean installation.  Only, if there are difficulties while updating the current drivers.
@@ -181,6 +190,8 @@ pip install spconv-cu118
 ```shell script
 git clone https://github.com/open-mmlab/OpenPCDet.git
 ```
+Note: We recommend to clone the original OpenPCDet repository rather than this one, to avoid .cpp extension errors during installion. During training the model configuration files from this repository could be merged with OpenPCDet. (Further explained in STEP:7) 
+
 * Navigate inside the OpenPCDet directory 
 
 ```shell script
@@ -214,9 +225,9 @@ export CXX=/usr/bin/g++-9
 ```
 * Rerun python setup.py develop 
 
-* Successful Installation of OPenPCdet shall result in end as : 
+* Successful Installation of OpenPCDet shall result in end as : 
 
-Using /home/Luis/anaconda3/envs/openpcdet/lib/python3.7/site-packages.
+Using /home/bibek/anaconda3/envs/openpcdet/lib/python3.7/site-packages.
 Finished processing dependencies for pcdet==0.6.0+255db8f
 
 At this stage we have sucessfully completed to install OpenPCDet and the required site packages. 
@@ -347,8 +358,8 @@ Note: The same --cfg_file to be used to train for v1.0-mini, v1.0-trainval or v1
 ```
 
 Note: As VoxelNext models is already incorporated in OpenPCDet repository, some of the config. files needs to be manually placed into the OpenPCDet>tools>cfgs folder after cloning. The modified config. files are available in this repository. (for e.g config. file for training nuScenes Model for 3 classes and Kitti model.)
-
-
+We recommend to merge the "pcdet" and "tools" folder of this repository with the cloned and built OPenPCdet repository. 
+ 
 ### Testing
 
 1. Change current directory to
