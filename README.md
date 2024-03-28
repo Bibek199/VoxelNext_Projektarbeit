@@ -7,15 +7,19 @@ In this project we try to reproduce the results of the paper "VoxelNeXt: Fully S
 VoxelNeXt is a clean, simple, and fully-sparse 3D object detector. It predict objects directly upon sparse voxel features without sparse-to-dense conversion, anchors, or center proxies. The objective of this project is to reproduce the results of the mentioned paper and test the model with KITTI dataset.
 
 <p align="center">
-  <img src="docs/voxelnext.png" width="50%" height="150">
+  <img src="docs/voxelnext.png" width="80%" height="250">
 </p>
 
 Hereby, We share a step by step guide from setting up the environment to visualization of the results. We also share some insights on solving some problems we faced during the execution of the program.
 
 Project Members: Bibek Gupta, Luis Sanchez Fernandez, Lucia Montero Couso
+
 University: Hochshule Karlsruhe of Applied Science (HKA)
+
 Course of Study: EU4M Mechatronics (MMSM311)
+
 Semester: Winter Semester 023-024
+
 
 # Getting Started
 The project is built upon OpenPCDet open-source library for LIDAR-based 3D object Detection. It is created by the OpenPCDet development team, built on PyTorch and supports variety of state of art 3D object Detection models. 
@@ -26,7 +30,7 @@ Description of our PC Hardware and Software:
 
 1. Operating System: Linux Ubuntu 22.04.4 LTS 
 2. GPU: Nvidia Geforce RTX3050 4GB 
-3. GPU Driver version: 550.67 	
+3. GPU Driver version: 550.54 	
 4. CUDA Version: 12.4
 5. CUDA Toolkit version: 11.8  
 5. Python version: 3.11.8
@@ -67,8 +71,8 @@ conda activate openpcdet
 
 10. After successful execution of the command above, environment shall be changed from  (base) to (openpcdet)
 
-<p align="center">
-  <img src="docs/conda.png" width="50%" height="80">
+<p align="left">
+  <img src="docs/conda.png" width="40%" height="60">
 </p>
 
 ## STEP 2: GPU Setup
@@ -108,8 +112,8 @@ sudo reboot
 ```
 After successful MOK, the driver shall be successfully installed. If the driver is correctly installed or updated, the nvidia-smi command shall show the desired updated driver version.  
 
-<p align="center">
-  <img src="docs/nvidia-smi.png" width="50%" height="150">
+<p align="left">
+  <img src="docs/nvidia-smi.png" width="50%" height="180">
 </p>
 
 Note: In some cases of old GPU drivers, it may be required to complete uninstall and the old drivers and proceed with a clean installation.  Only, if there are difficulties while updating the current drivers.
@@ -143,8 +147,8 @@ sudo apt-get -y install cudnn-cuda-11
 
 After successful installation of CUDA Toolkit and CUDnn, we have provided the snip of terminal window for our OS below.
 
-<p align="center">
-  <img src="docs/nvcc.png" width="50%" height="150">
+<p align="left">
+  <img src="docs/nvcc.png" width="30%" height="60">
 </p>
 
 Not to be confused: The discrepancy between the CUDA versions reported by nvcc --version and nvidia-smi is due to the fact that they report different aspects of the system's CUDA setup. nvcc --version reports the version of the CUDA toolkit installed. This is the version that is used to compile CUDA code. 
@@ -183,9 +187,9 @@ After successful execution until this step, we can go further now to install the
 
 ## STEP 5: OpenPCDet Installation
 
-1. Firstly, we need to install the Spatially Sparse Convolution Library (SpConv). The repository link 
+1. Firstly, we need to install the Spatially Sparse Convolution Library (SpConv). The repository link : [Spconv](https://github.com/traveller59/spconv) .
 
-https://github.com/traveller59/spconv . Since, we download the Spconv for CUDA 11.8. 
+Here, we download the Spconv for CUDA 11.8. 
 
 ```shell script
 pip install spconv-cu118
@@ -408,7 +412,7 @@ The sample code for our testing results for KITTI dataset is given as:
 python demo.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml --ckpt /home/bibek/checkpoint_epoch_40.pth --data_path /home/bibek/OpenPCDet/data/kitti/testing/velodyne/006946.bin
 ```
 ## Acknowledgements
-* This work is built upon the [OpenPCDet](https://github.com/open-mmlab/OpenPCDet) and [spconv](https://github.com/traveller59/spconv).
+* This work is built upon the [OpenPCDet](https://github.com/open-mmlab/OpenPCDet) and [Spconv](https://github.com/traveller59/spconv).
 * We thank the authors for providing their official VoxelNeXt model architecture and configuration files. [VoxelNeXt](https://github.com/dvlab-research/VoxelNeXt.git).
   
 
