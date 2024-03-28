@@ -54,7 +54,9 @@ conda activate openpcdet
 
 10. After successful execution of the command above, environment shall be changed from  (base) to (openpcdet)
 
-#Image
+<p align="center">
+  <img src="/home/bibek/Pictures/Screenshots/conda.png" width="95%" height="320">
+</p>
 
 ## STEP 2: GPU Setup
 
@@ -93,7 +95,9 @@ sudo reboot
 ```
 After successful MOK, the driver shall be successfully installed. If the driver is correctly installed or updated, the nvidia-smi command shall show the desired updated driver version.  
 
-#Image    
+<p align="center">
+  <img src="/home/bibek/Pictures/Screenshots/nvidia.png" width="95%" height="320">
+</p>
 
 Note: In some cases of old GPU drivers, it may be required to complete uninstall and the old drivers and proceed with a clean installation.  Only, if there are difficulties while updating the current drivers.
 
