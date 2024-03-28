@@ -248,10 +248,12 @@ OpenPCDet
 ├── tools
 ```
 
-2.  Generate the data infos by running the following command: 
+2.  Generate the data infos by running the following command:
+   
 ```python 
-python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
+python -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos --cfg_file /home/bibek/OpenPCDet/tools/cfgs/dataset_configs/kitti_dataset.yaml
 ```
+Note: File path to given where the OpenPCDet is located. (In our case: /home/bibek)
 
 ### NuScenes Dataset
 
@@ -276,12 +278,12 @@ OpenPCDet
 pip install nuscenes-devkit==1.0.5
 ```
 
-3. Generate the data infos by running the following command (it may take several hours): 
+3. Generate the data infos by running the following command (it may take several hours):
+   
 ```python 
-python -m pcdet.datasets.nuscenes.nuscenes_dataset --func create_nuscenes_infos \
-    --cfg_file tools/cfgs/dataset_configs/nuscenes_dataset.yaml \
-    --version v1.0-trainval
+python -m pcdet.datasets.nuscenes.nuscenes_dataset --func create_nuscenes_infos --cfg_file /home/bibek/OpenPCDet/tools/cfgs/dataset_configs/nuscenes_dataset.yaml --version v1.0-mini
 ```
+
 Note: Since we not work with Agroverse dataset we can comment out line 15 and line 27 in OpenPCDet/pcdet/datasets/init. py to avoid the Error: No module named ‘av2’ 
 
 ## STEP 7: Training, Evaluation, Testing and Visualization
@@ -304,26 +306,42 @@ However, we changed the training parameters directly in the VoxelNext Model conf
 
 We share the path to the different configuration files where, training parameters and dataset parameters can be modified as per requirement:
 
-* VoxelNext Model config. file path (v1.0-mini): 
 
-VoxelNext Model config. file path (v1.0-mini_3classes):
+* VoxelNext Model config. file path (v1.0-mini_3classes):
+* 
+```shell script 
+  --cfg_file /home/bibek/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2.yaml
+```
+* VoxelNext Model config. file path (KITTI):
+  
+```shell script 
+  --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml
+```
 
-VoxelNext Model config. file path (v1.0-trainval):
+* NuScenes Dataset config. file path:
 
-VoxelNext Model config. file path (KITTI):
+```shell script 
+  /home/bibek/OpenPCDet/tools/cfgs/dataset_configs/nuscenes_dataset.yaml
+```
+Note: In this file "VERSION:" to be assigned to v1.0-mini, v1.0-trainval or v1.0-test accordingly as per the dataset in use. 
 
-NuScenes Dataset config. file path:
+* Kitti Dataset config. file path:
+  
+```shell script 
+  /home/bibek/OpenPCDet/tools/cfgs/dataset_configs/kitti_dataset.yaml
+```
 
-Kitti Dataset config. file path:
+* The sample code for our training results for nuScenes dataset is given as:
 
-The sample code for our training results for nuScenes (v1.0-mini) dataset is given as:
+```shell script 
+  python train.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext.yaml
+```
+Note: The same --cfg_file to be used to train for v1.0-mini, v1.0-trainval or v1.0-test nuScenes dataset.
 
-
-
-The sample code for our results for KITTI dataset is given as:
-
-
-
+* The sample code for our results for KITTI dataset is given as:
+```shell script 
+  python train.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml
+```
 
 ### Testing
 
@@ -335,7 +353,14 @@ cd OpenPCdet/tools
 ```shell script
 python test.py --cfg_file ${CONFIG_FILE} --batch_size ${BATCH_SIZE} --ckpt ${CKPT}
 ```
+The sample code for our testing results for nuScenes dataset is given as:
+```shell script
+python test.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext.yaml --batch_size 10 --ckpt /home/bibek/OpenPCDet/output/home/bibek/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model.pth
+```
 The sample code for our testing results for KITTI dataset is given as:
+```shell script
+python test.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml --ckpt /home/bibek/OpenPCDet/output/home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext/default/ckpt/checkpoint_epoch_40.pth
+```
 
 ### Visualization
 
@@ -354,9 +379,11 @@ cd OpenPCdet/tools
     --ckpt ${CKPT}
     --data_path ${POINT_CLOUD_DATA}
    ```
-
+   
 The sample code for our testing results for KITTI dataset is given as:
-
+```shell script 
+python demo.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml --ckpt /home/bibek/checkpoint_epoch_40.pth --data_path /home/bibek/OpenPCDet/data/kitti/testing/velodyne/006946.bin
+```
 
 
 
