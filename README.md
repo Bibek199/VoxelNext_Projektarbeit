@@ -6,11 +6,15 @@ In this project we try to reproduce the results of the paper "VoxelNeXt: Fully S
 **VoxelNeXt: Fully Sparse VoxelNet for 3D Object Detection and Tracking [[Paper](https://arxiv.org/abs/2303.11301)]** <br />
 VoxelNeXt is a clean, simple, and fully-sparse 3D object detector. It predict objects directly upon sparse voxel features without sparse-to-dense conversion, anchors, or center proxies. The objective of this project is to reproduce the results of the mentioned paper and test the model with KITTI dataset.
 
+<p align="center">
+  <img src="docs/voxelnext.png" width="50%" height="150">
+</p>
+
 Hereby, We share a step by step guide from setting up the environment to visualization of the results. We also share some insights on solving some problems we faced during the execution of the program.
 
 Project Members: Bibek Gupta, Luis Sanchez Fernandez, Lucia Montero Couso
 University: Hochshule Karlsruhe of Applied Science (HKA)
-Course of Study: EU4M Mechatronics
+Course of Study: EU4M Mechatronics (MMSM311)
 Semester: Winter Semester 023-024
 
 # Getting Started
@@ -105,7 +109,7 @@ sudo reboot
 After successful MOK, the driver shall be successfully installed. If the driver is correctly installed or updated, the nvidia-smi command shall show the desired updated driver version.  
 
 <p align="center">
-  <img src="docs/nvidia.png" width="50%" height="150">
+  <img src="docs/nvidia-smi.png" width="50%" height="150">
 </p>
 
 Note: In some cases of old GPU drivers, it may be required to complete uninstall and the old drivers and proceed with a clean installation.  Only, if there are difficulties while updating the current drivers.
@@ -139,7 +143,9 @@ sudo apt-get -y install cudnn-cuda-11
 
 After successful installation of CUDA Toolkit and CUDnn, we have provided the snip of terminal window for our OS below.
 
-#Image
+<p align="center">
+  <img src="docs/nvcc.png" width="50%" height="150">
+</p>
 
 Not to be confused: The discrepancy between the CUDA versions reported by nvcc --version and nvidia-smi is due to the fact that they report different aspects of the system's CUDA setup. nvcc --version reports the version of the CUDA toolkit installed. This is the version that is used to compile CUDA code. 
 
@@ -401,6 +407,14 @@ The sample code for our testing results for KITTI dataset is given as:
 ```shell script 
 python demo.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml --ckpt /home/bibek/checkpoint_epoch_40.pth --data_path /home/bibek/OpenPCDet/data/kitti/testing/velodyne/006946.bin
 ```
+## Acknowledgements
+* This work is built upon the [OpenPCDet](https://github.com/open-mmlab/OpenPCDet) and [spconv](https://github.com/traveller59/spconv).
+* We thank the authors for providing their official VoxelNeXt model architecture and configuration files. [VoxelNeXt](https://github.com/dvlab-research/VoxelNeXt.git).
+  
+
+
+  
+
 
 
 
