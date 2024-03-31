@@ -384,9 +384,16 @@ The sample code for our testing results for nuScenes dataset is given as:
 ```shell script
 python test.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext.yaml --batch_size 10 --ckpt /home/bibek/OpenPCDet/output/home/bibek/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model.pth
 ```
-The sample code for our testing results for KITTI dataset is given as:
+The sample code for our testing results for KITTI dataset (validation set) is given as:
 ```shell script
 python test.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml --ckpt /home/bibek/OpenPCDet/output/home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext/default/ckpt/checkpoint_epoch_40.pth
+```
+To evaluate the results of the KITTI testing set, the below parameters needs to be replaced as below in the path OpenPCdet/tools/cfgs/dataset_configs/kitti_dataset.yaml file :
+DATA_SPLIT: 'test': test
+INFO_PATH: test': [kitti_infos_test.pkl]
+
+```shell script
+python test.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml --ckpt /home/bibek/OpenPCDet/output/home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext/default/ckpt/checkpoint_epoch_40.pth --save_to_file
 ```
 
 ### Visualization
@@ -411,6 +418,10 @@ The sample code for our testing results for KITTI dataset is given as:
 ```shell script 
 python demo.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml --ckpt /home/bibek/checkpoint_epoch_40.pth --data_path /home/bibek/OpenPCDet/data/kitti/testing/velodyne/006946.bin
 ```
+
+###Experimental Results
+
+| nuScenes Detection      |  Set |  mAP |  NDS |   Download  |
 ## Acknowledgements
 * This work is built upon the [OpenPCDet](https://github.com/open-mmlab/OpenPCDet) and [Spconv](https://github.com/traveller59/spconv).
 * We thank the authors for providing their official VoxelNeXt model architecture and configuration files. [VoxelNeXt](https://github.com/dvlab-research/VoxelNeXt.git).
