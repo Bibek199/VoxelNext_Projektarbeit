@@ -1,0 +1,489 @@
+2024-03-15 14:57:47,005   INFO  **********************Start logging**********************
+2024-03-15 14:57:47,005   INFO  CUDA_VISIBLE_DEVICES=ALL
+2024-03-15 14:57:47,005   INFO  Training with a single process
+2024-03-15 14:57:47,005   INFO  cfg_file         /home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2.yaml
+2024-03-15 14:57:47,006   INFO  batch_size       2
+2024-03-15 14:57:47,006   INFO  epochs           10
+2024-03-15 14:57:47,006   INFO  workers          4
+2024-03-15 14:57:47,006   INFO  extra_tag        default
+2024-03-15 14:57:47,006   INFO  ckpt             None
+2024-03-15 14:57:47,006   INFO  pretrained_model None
+2024-03-15 14:57:47,006   INFO  launcher         none
+2024-03-15 14:57:47,006   INFO  tcp_port         18888
+2024-03-15 14:57:47,006   INFO  sync_bn          False
+2024-03-15 14:57:47,006   INFO  fix_random_seed  False
+2024-03-15 14:57:47,006   INFO  ckpt_save_interval 1
+2024-03-15 14:57:47,006   INFO  local_rank       0
+2024-03-15 14:57:47,006   INFO  max_ckpt_save_num 30
+2024-03-15 14:57:47,006   INFO  merge_all_iters_to_one_epoch False
+2024-03-15 14:57:47,006   INFO  set_cfgs         None
+2024-03-15 14:57:47,006   INFO  max_waiting_mins 0
+2024-03-15 14:57:47,006   INFO  start_epoch      0
+2024-03-15 14:57:47,006   INFO  num_epochs_to_eval 0
+2024-03-15 14:57:47,006   INFO  save_to_file     False
+2024-03-15 14:57:47,006   INFO  use_tqdm_to_record False
+2024-03-15 14:57:47,006   INFO  logger_iter_interval 50
+2024-03-15 14:57:47,006   INFO  ckpt_save_time_interval 300
+2024-03-15 14:57:47,006   INFO  wo_gpu_stat      False
+2024-03-15 14:57:47,006   INFO  use_amp          False
+2024-03-15 14:57:47,006   INFO  cfg.ROOT_DIR: /home/luis/OpenPCDet
+2024-03-15 14:57:47,006   INFO  cfg.LOCAL_RANK: 0
+2024-03-15 14:57:47,006   INFO  cfg.CLASS_NAMES: ['car', 'bicycle', 'pedestrian']
+2024-03-15 14:57:47,006   INFO  ----------- DATA_CONFIG -----------
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.DATASET: NuScenesDataset
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.DATA_PATH: ../data/nuscenes
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.VERSION: v1.0-mini
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.MAX_SWEEPS: 10
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.PRED_VELOCITY: True
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.SET_NAN_VELOCITY_TO_ZEROS: True
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.FILTER_MIN_POINTS_IN_GT: 1
+2024-03-15 14:57:47,006   INFO  ----------- DATA_SPLIT -----------
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.DATA_SPLIT.train: train
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.DATA_SPLIT.test: val
+2024-03-15 14:57:47,006   INFO  ----------- INFO_PATH -----------
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.INFO_PATH.train: ['nuscenes_infos_10sweeps_train.pkl']
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.INFO_PATH.test: ['nuscenes_infos_10sweeps_val.pkl']
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.POINT_CLOUD_RANGE: [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.BALANCED_RESAMPLING: True
+2024-03-15 14:57:47,006   INFO  ----------- DATA_AUGMENTOR -----------
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.DATA_AUGMENTOR.DISABLE_AUG_LIST: ['placeholder']
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.DATA_AUGMENTOR.AUG_CONFIG_LIST: [{'NAME': 'gt_sampling', 'DB_INFO_PATH': ['nuscenes_dbinfos_10sweeps_withvelo.pkl'], 'USE_SHARED_MEMORY': False, 'DB_DATA_PATH': ['nuscenes_dbinfos_10sweeps_withvelo_global.pkl.npy'], 'PREPARE': {'filter_by_min_points': ['car:5', 'bicycle:5', 'pedestrian:5']}, 'SAMPLE_GROUPS': ['car:2', 'bicycle:2', 'pedestrian:2'], 'NUM_POINT_FEATURES': 5, 'DATABASE_WITH_FAKELIDAR': False, 'REMOVE_EXTRA_WIDTH': [0.0, 0.0, 0.0], 'LIMIT_WHOLE_SCENE': True}, {'NAME': 'random_world_flip', 'ALONG_AXIS_LIST': ['x', 'y']}, {'NAME': 'random_world_rotation', 'WORLD_ROT_ANGLE': [-0.78539816, 0.78539816]}, {'NAME': 'random_world_scaling', 'WORLD_SCALE_RANGE': [0.9, 1.1]}, {'NAME': 'random_world_translation', 'NOISE_TRANSLATE_STD': [0.5, 0.5, 0.5]}]
+2024-03-15 14:57:47,006   INFO  ----------- POINT_FEATURE_ENCODING -----------
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.encoding_type: absolute_coordinates_encoding
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.used_feature_list: ['x', 'y', 'z', 'intensity', 'timestamp']
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.src_feature_list: ['x', 'y', 'z', 'intensity', 'timestamp']
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG.DATA_PROCESSOR: [{'NAME': 'mask_points_and_boxes_outside_range', 'REMOVE_OUTSIDE_BOXES': True}, {'NAME': 'shuffle_points', 'SHUFFLE_ENABLED': {'train': True, 'test': True}}, {'NAME': 'transform_points_to_voxels', 'VOXEL_SIZE': [0.075, 0.075, 0.2], 'MAX_POINTS_PER_VOXEL': 10, 'MAX_NUMBER_OF_VOXELS': {'train': 120000, 'test': 160000}}]
+2024-03-15 14:57:47,006   INFO  cfg.DATA_CONFIG._BASE_CONFIG_: cfgs/dataset_configs/nuscenes_dataset2.yaml
+2024-03-15 14:57:47,006   INFO  ----------- MODEL -----------
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.NAME: VoxelNeXt
+2024-03-15 14:57:47,006   INFO  ----------- VFE -----------
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.VFE.NAME: MeanVFE
+2024-03-15 14:57:47,006   INFO  ----------- BACKBONE_3D -----------
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.BACKBONE_3D.NAME: VoxelResBackBone8xVoxelNeXt
+2024-03-15 14:57:47,006   INFO  ----------- DENSE_HEAD -----------
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.NAME: VoxelNeXtHead
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.CLASS_AGNOSTIC: False
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.INPUT_FEATURES: 128
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.CLASS_NAMES_EACH_HEAD: [['car'], ['bicycle'], ['pedestrian']]
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SHARED_CONV_CHANNEL: 128
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.KERNEL_SIZE_HEAD: 1
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.USE_BIAS_BEFORE_NORM: True
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.NUM_HM_CONV: 2
+2024-03-15 14:57:47,006   INFO  ----------- SEPARATE_HEAD_CFG -----------
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_ORDER: ['center', 'center_z', 'dim', 'rot', 'vel']
+2024-03-15 14:57:47,006   INFO  ----------- HEAD_DICT -----------
+2024-03-15 14:57:47,006   INFO  ----------- center -----------
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.center.out_channels: 2
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.center.num_conv: 2
+2024-03-15 14:57:47,006   INFO  ----------- center_z -----------
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.center_z.out_channels: 1
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.center_z.num_conv: 2
+2024-03-15 14:57:47,006   INFO  ----------- dim -----------
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.dim.out_channels: 3
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.dim.num_conv: 2
+2024-03-15 14:57:47,006   INFO  ----------- rot -----------
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.rot.out_channels: 2
+2024-03-15 14:57:47,006   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.rot.num_conv: 2
+2024-03-15 14:57:47,006   INFO  ----------- vel -----------
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.vel.out_channels: 2
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.vel.num_conv: 2
+2024-03-15 14:57:47,007   INFO  ----------- TARGET_ASSIGNER_CONFIG -----------
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.FEATURE_MAP_STRIDE: 8
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.NUM_MAX_OBJS: 500
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.GAUSSIAN_OVERLAP: 0.1
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.MIN_RADIUS: 2
+2024-03-15 14:57:47,007   INFO  ----------- LOSS_CONFIG -----------
+2024-03-15 14:57:47,007   INFO  ----------- LOSS_WEIGHTS -----------
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.cls_weight: 1.0
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.loc_weight: 0.25
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.code_weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.2, 0.2, 1.0, 1.0]
+2024-03-15 14:57:47,007   INFO  ----------- POST_PROCESSING -----------
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.SCORE_THRESH: 0.1
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.POST_CENTER_LIMIT_RANGE: [-61.2, -61.2, -10.0, 61.2, 61.2, 10.0]
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.MAX_OBJ_PER_SAMPLE: 500
+2024-03-15 14:57:47,007   INFO  ----------- NMS_CONFIG -----------
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.NMS_CONFIG.NMS_TYPE: nms_gpu
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.NMS_CONFIG.NMS_THRESH: 0.2
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.NMS_CONFIG.NMS_PRE_MAXSIZE: 1000
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.NMS_CONFIG.NMS_POST_MAXSIZE: 83
+2024-03-15 14:57:47,007   INFO  ----------- POST_PROCESSING -----------
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.POST_PROCESSING.RECALL_THRESH_LIST: [0.3, 0.5, 0.7]
+2024-03-15 14:57:47,007   INFO  cfg.MODEL.POST_PROCESSING.EVAL_METRIC: kitti
+2024-03-15 14:57:47,007   INFO  ----------- OPTIMIZATION -----------
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.BATCH_SIZE_PER_GPU: 2
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.NUM_EPOCHS: 10
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.OPTIMIZER: adam_onecycle
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.LR: 0.001
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.WEIGHT_DECAY: 0.01
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.MOMENTUM: 0.9
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.MOMS: [0.95, 0.85]
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.PCT_START: 0.4
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.DIV_FACTOR: 10
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.DECAY_STEP_LIST: [35, 45]
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.LR_DECAY: 0.1
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.LR_CLIP: 1e-07
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.LR_WARMUP: False
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.WARMUP_EPOCH: 1
+2024-03-15 14:57:47,007   INFO  cfg.OPTIMIZATION.GRAD_NORM_CLIP: 10
+2024-03-15 14:57:47,007   INFO  cfg.TAG: cbgs_voxel0075_voxelnext2
+2024-03-15 14:57:47,007   INFO  cfg.EXP_GROUP_PATH: home/luis/OpenPCDet/tools/cfgs/nuscenes_models
+2024-03-15 14:57:47,010   INFO  ----------- Create dataloader & network & optimizer -----------
+2024-03-15 14:57:47,031   INFO  Database filter by min points car: 4082 => 3303
+2024-03-15 14:57:47,031   INFO  Database filter by min points bicycle: 147 => 136
+2024-03-15 14:57:47,031   INFO  Database filter by min points pedestrian: 3068 => 2799
+2024-03-15 14:57:47,032   INFO  Loading NuScenes dataset
+2024-03-15 14:57:47,042   INFO  Total samples for NuScenes dataset: 323
+2024-03-15 14:57:47,044   INFO  Total samples after balanced resampling: 667
+2024-03-15 14:57:48,354   INFO  ----------- Model VoxelNeXt created, param count: 7674801 -----------
+2024-03-15 14:57:48,354   INFO  VoxelNeXt(
+  (vfe): MeanVFE()
+  (backbone_3d): VoxelResBackBone8xVoxelNeXt(
+    (conv_input): SparseSequential(
+      (0): SubMConv3d(5, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+      (1): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (conv1): SparseSequential(
+      (0): SparseBasicBlock(
+        (conv1): SubMConv3d(16, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(16, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(16, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(16, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv2): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(16, 32, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(32, 32, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(32, 32, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(32, 32, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(32, 32, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv3): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(32, 64, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(64, 64, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(64, 64, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(64, 64, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(64, 64, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv4): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(64, 128, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv5): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(128, 128, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv6): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(128, 128, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv_out): SparseSequential(
+      (0): SparseConv2d(128, 128, kernel_size=[3, 3], stride=[1, 1], padding=[1, 1], dilation=[1, 1], output_padding=[0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+      (1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (shared_conv): SparseSequential(
+      (0): SubMConv2d(128, 128, kernel_size=[3, 3], stride=[1, 1], padding=[1, 1], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+      (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+    )
+  )
+  (map_to_bev_module): None
+  (pfe): None
+  (backbone_2d): None
+  (dense_head): VoxelNeXtHead(
+    (heads_list): ModuleList(
+      (0-2): 3 x SeparateHead(
+        (center): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (center_z): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 1, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (dim): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 3, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (rot): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (vel): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (hm): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 1, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+      )
+    )
+    (hm_loss_func): FocalLossSparse()
+    (reg_loss_func): RegLossSparse()
+  )
+  (point_head): None
+  (roi_head): None
+)
+2024-03-15 14:57:48,356   INFO  **********************Start training home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2(default)**********************
+2024-03-15 14:58:18,034   INFO  Train:    1/10 ( 10%) [   0/334 (  0%)]  Loss: 34.41 (34.4)  LR: 1.000e-04  Time cost: 00:29/2:43:58 [00:29/27:19:46]  Acc_iter 1           Data time: 1.58(1.58)  Forward time: 27.88(27.88)  Batch time: 29.46(29.46)
+2024-03-15 14:58:43,277   INFO  Train:    1/10 ( 10%) [  49/334 ( 15%)]  Loss: 12.67 (19.1)  LR: 1.030e-04  Time cost: 00:54/05:11 [00:54/1:00:00]  Acc_iter 50          Data time: 0.24(0.28)  Forward time: 0.28(0.80)  Batch time: 0.52(1.09)
+2024-03-15 14:59:09,843   INFO  Train:    1/10 ( 10%) [  99/334 ( 30%)]  Loss: 15.75 (16.1)  LR: 1.121e-04  Time cost: 01:21/03:10 [01:21/43:53]  Acc_iter 100         Data time: 0.14(0.28)  Forward time: 0.28(0.52)  Batch time: 0.42(0.81)
+2024-03-15 14:59:33,501   INFO  Train:    1/10 ( 10%) [ 149/334 ( 45%)]  Loss: 10.56 (14.5)  LR: 1.273e-04  Time cost: 01:44/02:09 [01:45/37:12]  Acc_iter 150         Data time: 0.19(0.27)  Forward time: 0.27(0.42)  Batch time: 0.46(0.70)
+2024-03-15 14:59:33,502   INFO  
+2024-03-15 15:00:01,268   INFO  Train:    1/10 ( 10%) [ 199/334 ( 60%)]  Loss: 9.301 (13.6)  LR: 1.484e-04  Time cost: 02:12/01:29 [02:12/34:43]  Acc_iter 200         Data time: 0.38(0.27)  Forward time: 0.33(0.39)  Batch time: 0.71(0.66)
+2024-03-15 15:00:26,962   INFO  Train:    1/10 ( 10%) [ 249/334 ( 75%)]  Loss: 10.43 (12.9)  LR: 1.750e-04  Time cost: 02:38/00:53 [02:38/32:38]  Acc_iter 250         Data time: 0.27(0.27)  Forward time: 0.29(0.36)  Batch time: 0.56(0.63)
+2024-03-15 15:00:53,355   INFO  Train:    1/10 ( 10%) [ 299/334 ( 90%)]  Loss: 9.662 (12.3)  LR: 2.067e-04  Time cost: 03:04/00:21 [03:04/31:13]  Acc_iter 300         Data time: 0.29(0.27)  Forward time: 0.24(0.34)  Batch time: 0.52(0.62)
+2024-03-15 15:00:53,356   INFO  
+2024-03-15 15:01:09,156   INFO  Train:    1/10 ( 10%) [ 333/334 (100%)]  Loss: 9.368 (12.0)  LR: 2.311e-04  Time cost: 03:20/00:00 [03:20/30:05]  Acc_iter 334         Data time: 0.33(0.27)  Forward time: 0.06(0.33)  Batch time: 0.40(0.60)
+2024-03-15 15:01:10,710   INFO  Train:    2/10 ( 20%) [   0/334 (  0%)]  Loss: 9.122 (9.12)  LR: 2.318e-04  Time cost: 00:01/07:51 [03:22/1:10:46]  Acc_iter 335         Data time: 1.01(1.01)  Forward time: 0.22(0.22)  Batch time: 1.23(1.23)
+2024-03-15 15:01:18,343   INFO  Train:    2/10 ( 20%) [  15/334 (  4%)]  Loss: 10.35 (9.38)  LR: 2.432e-04  Time cost: 00:09/03:00 [03:29/28:11]  Acc_iter 350         Data time: 0.38(0.31)  Forward time: 0.18(0.25)  Batch time: 0.56(0.55)
+2024-03-15 15:01:42,618   INFO  Train:    2/10 ( 20%) [  65/334 ( 19%)]  Loss: 10.85 (9.26)  LR: 2.840e-04  Time cost: 00:33/02:15 [03:54/24:44]  Acc_iter 400         Data time: 0.21(0.27)  Forward time: 0.24(0.23)  Batch time: 0.45(0.50)
+2024-03-15 15:02:09,040   INFO  Train:    2/10 ( 20%) [ 115/334 ( 34%)]  Loss: 8.264 (8.93)  LR: 3.284e-04  Time cost: 00:59/01:52 [04:20/24:48]  Acc_iter 450         Data time: 0.31(0.27)  Forward time: 0.22(0.24)  Batch time: 0.54(0.51)
+2024-03-15 15:02:09,041   INFO  
+2024-03-15 15:02:34,136   INFO  Train:    2/10 ( 20%) [ 165/334 ( 49%)]  Loss: 9.260 (8.89)  LR: 3.758e-04  Time cost: 01:24/01:26 [04:45/24:11]  Acc_iter 500         Data time: 0.27(0.27)  Forward time: 0.15(0.24)  Batch time: 0.43(0.51)
+2024-03-15 15:03:00,421   INFO  Train:    2/10 ( 20%) [ 215/334 ( 64%)]  Loss: 12.00 (8.80)  LR: 4.257e-04  Time cost: 01:51/01:01 [05:12/23:55]  Acc_iter 550         Data time: 0.17(0.27)  Forward time: 0.21(0.24)  Batch time: 0.38(0.51)
+2024-03-15 15:03:26,320   INFO  Train:    2/10 ( 20%) [ 265/334 ( 79%)]  Loss: 10.58 (8.74)  LR: 4.773e-04  Time cost: 02:17/00:35 [05:37/23:31]  Acc_iter 600         Data time: 0.37(0.27)  Forward time: 0.26(0.24)  Batch time: 0.63(0.51)
+2024-03-15 15:03:26,321   INFO  
+2024-03-15 15:03:53,896   INFO  Train:    2/10 ( 20%) [ 315/334 ( 94%)]  Loss: 9.953 (8.68)  LR: 5.299e-04  Time cost: 02:44/00:09 [06:05/23:21]  Acc_iter 650         Data time: 0.32(0.27)  Forward time: 0.31(0.25)  Batch time: 0.63(0.52)
+2024-03-15 15:04:01,340   INFO  Train:    2/10 ( 20%) [ 333/334 (100%)]  Loss: 10.69 (8.64)  LR: 5.489e-04  Time cost: 02:52/00:00 [06:12/22:56]  Acc_iter 668         Data time: 0.24(0.27)  Forward time: 0.15(0.24)  Batch time: 0.39(0.51)
+2024-03-15 15:04:03,083   INFO  Train:    3/10 ( 30%) [   0/334 (  0%)]  Loss: 9.055 (9.05)  LR: 5.500e-04  Time cost: 00:01/08:55 [06:14/1:11:25]  Acc_iter 669         Data time: 1.05(1.05)  Forward time: 0.33(0.33)  Batch time: 1.38(1.38)
+2024-03-15 15:04:18,883   INFO  Train:    3/10 ( 30%) [  31/334 (  9%)]  Loss: 7.437 (8.53)  LR: 5.828e-04  Time cost: 00:17/02:44 [06:30/23:56]  Acc_iter 700         Data time: 0.27(0.29)  Forward time: 0.25(0.24)  Batch time: 0.52(0.53)
+2024-03-15 15:04:45,110   INFO  Train:    3/10 ( 30%) [  81/334 ( 24%)]  Loss: 8.819 (8.25)  LR: 6.352e-04  Time cost: 00:43/02:14 [06:56/22:58]  Acc_iter 750         Data time: 0.30(0.28)  Forward time: 0.25(0.24)  Batch time: 0.55(0.53)
+2024-03-15 15:04:45,111   INFO  
+2024-03-15 15:05:10,123   INFO  Train:    3/10 ( 30%) [ 131/334 ( 39%)]  Loss: 6.306 (8.24)  LR: 6.864e-04  Time cost: 01:08/01:45 [07:21/22:01]  Acc_iter 800         Data time: 0.20(0.28)  Forward time: 0.26(0.24)  Batch time: 0.47(0.52)
+2024-03-15 15:05:34,348   INFO  Train:    3/10 ( 30%) [ 181/334 ( 54%)]  Loss: 9.067 (8.15)  LR: 7.358e-04  Time cost: 01:32/01:18 [07:45/21:11]  Acc_iter 850         Data time: 0.23(0.27)  Forward time: 0.26(0.24)  Batch time: 0.49(0.51)
+2024-03-15 15:06:00,273   INFO  Train:    3/10 ( 30%) [ 231/334 ( 69%)]  Loss: 8.220 (8.08)  LR: 7.826e-04  Time cost: 01:58/00:52 [08:11/20:49]  Acc_iter 900         Data time: 0.40(0.27)  Forward time: 0.27(0.24)  Batch time: 0.67(0.51)
+2024-03-15 15:06:00,274   INFO  
+2024-03-15 15:06:25,090   INFO  Train:    3/10 ( 30%) [ 281/334 ( 84%)]  Loss: 8.565 (7.98)  LR: 8.262e-04  Time cost: 02:23/00:26 [08:36/20:17]  Acc_iter 950         Data time: 0.37(0.27)  Forward time: 0.26(0.24)  Batch time: 0.63(0.51)
+2024-03-15 15:06:49,338   INFO  Train:    3/10 ( 30%) [ 331/334 ( 99%)]  Loss: 6.719 (7.92)  LR: 8.659e-04  Time cost: 02:47/00:01 [09:00/19:43]  Acc_iter 1000        Data time: 0.30(0.27)  Forward time: 0.19(0.23)  Batch time: 0.48(0.50)
+2024-03-15 15:06:49,914   INFO  Train:    3/10 ( 30%) [ 333/334 (100%)]  Loss: 9.455 (7.92)  LR: 8.674e-04  Time cost: 02:48/00:00 [09:01/19:39]  Acc_iter 1002        Data time: 0.25(0.27)  Forward time: 0.07(0.23)  Batch time: 0.32(0.50)
+2024-03-15 15:06:51,805   INFO  Train:    4/10 ( 40%) [   0/334 (  0%)]  Loss: 6.939 (6.94)  LR: 8.682e-04  Time cost: 00:01/09:45 [09:03/1:08:16]  Acc_iter 1003        Data time: 1.11(1.11)  Forward time: 0.38(0.38)  Batch time: 1.49(1.49)
+2024-03-15 15:07:15,198   INFO  Train:    4/10 ( 40%) [  47/334 ( 14%)]  Loss: 9.231 (7.60)  LR: 9.014e-04  Time cost: 00:25/02:30 [09:26/20:00]  Acc_iter 1050        Data time: 0.17(0.28)  Forward time: 0.21(0.24)  Batch time: 0.38(0.52)
+2024-03-15 15:07:15,199   INFO  
+2024-03-15 15:07:41,672   INFO  Train:    4/10 ( 40%) [  97/334 ( 29%)]  Loss: 7.636 (7.68)  LR: 9.319e-04  Time cost: 00:51/02:04 [09:53/19:40]  Acc_iter 1100        Data time: 0.29(0.28)  Forward time: 0.23(0.24)  Batch time: 0.52(0.52)
+2024-03-15 15:08:06,803   INFO  Train:    4/10 ( 40%) [ 147/334 ( 44%)]  Loss: 6.731 (7.60)  LR: 9.572e-04  Time cost: 01:16/01:36 [10:18/18:56]  Acc_iter 1150        Data time: 0.34(0.28)  Forward time: 0.25(0.24)  Batch time: 0.59(0.52)
+2024-03-15 15:08:31,205   INFO  Train:    4/10 ( 40%) [ 197/334 ( 59%)]  Loss: 6.477 (7.58)  LR: 9.768e-04  Time cost: 01:41/01:09 [10:42/18:13]  Acc_iter 1200        Data time: 0.32(0.27)  Forward time: 0.20(0.24)  Batch time: 0.52(0.51)
+2024-03-15 15:08:31,206   INFO  
+2024-03-15 15:08:57,004   INFO  Train:    4/10 ( 40%) [ 247/334 ( 74%)]  Loss: 5.279 (7.50)  LR: 9.906e-04  Time cost: 02:06/00:44 [11:08/17:50]  Acc_iter 1250        Data time: 0.36(0.27)  Forward time: 0.27(0.24)  Batch time: 0.62(0.51)
+2024-03-15 15:09:22,230   INFO  Train:    4/10 ( 40%) [ 297/334 ( 89%)]  Loss: 7.755 (7.39)  LR: 9.983e-04  Time cost: 02:32/00:18 [11:33/17:22]  Acc_iter 1300        Data time: 0.18(0.27)  Forward time: 0.29(0.24)  Batch time: 0.47(0.51)
+2024-03-15 15:09:39,278   INFO  Train:    4/10 ( 40%) [ 333/334 (100%)]  Loss: 9.226 (7.34)  LR: 1.000e-03  Time cost: 02:49/00:00 [11:50/16:55]  Acc_iter 1336        Data time: 0.28(0.27)  Forward time: 0.11(0.24)  Batch time: 0.39(0.51)
+2024-03-15 15:09:41,389   INFO  Train:    5/10 ( 50%) [   0/334 (  0%)]  Loss: 5.691 (5.69)  LR: 1.000e-03  Time cost: 00:01/10:56 [11:53/1:05:39]  Acc_iter 1337        Data time: 1.11(1.11)  Forward time: 0.52(0.52)  Batch time: 1.63(1.63)
+2024-03-15 15:09:47,971   INFO  Train:    5/10 ( 50%) [  13/334 (  4%)]  Loss: 5.774 (7.17)  LR: 9.999e-04  Time cost: 00:08/03:16 [11:59/20:15]  Acc_iter 1350        Data time: 0.23(0.33)  Forward time: 0.22(0.26)  Batch time: 0.45(0.59)
+2024-03-15 15:09:47,972   INFO  
+2024-03-15 15:10:13,801   INFO  Train:    5/10 ( 50%) [  63/334 ( 19%)]  Loss: 5.882 (6.95)  LR: 9.976e-04  Time cost: 00:34/02:25 [12:25/17:22]  Acc_iter 1400        Data time: 0.32(0.28)  Forward time: 0.23(0.25)  Batch time: 0.54(0.53)
+2024-03-15 15:10:41,329   INFO  Train:    5/10 ( 50%) [ 113/334 ( 34%)]  Loss: 5.879 (6.87)  LR: 9.922e-04  Time cost: 01:01/02:00 [12:52/17:06]  Acc_iter 1450        Data time: 0.37(0.28)  Forward time: 0.24(0.26)  Batch time: 0.62(0.54)
+2024-03-15 15:11:05,914   INFO  Train:    5/10 ( 50%) [ 163/334 ( 49%)]  Loss: 6.953 (6.86)  LR: 9.838e-04  Time cost: 01:26/01:30 [13:17/16:10]  Acc_iter 1500        Data time: 0.26(0.28)  Forward time: 0.29(0.25)  Batch time: 0.55(0.53)
+2024-03-15 15:11:05,915   INFO  
+2024-03-15 15:11:32,567   INFO  Train:    5/10 ( 50%) [ 213/334 ( 64%)]  Loss: 5.700 (6.91)  LR: 9.724e-04  Time cost: 01:53/01:03 [13:44/15:46]  Acc_iter 1550        Data time: 0.34(0.27)  Forward time: 0.29(0.25)  Batch time: 0.62(0.53)
+2024-03-15 15:11:59,453   INFO  Train:    5/10 ( 50%) [ 263/334 ( 79%)]  Loss: 5.756 (6.91)  LR: 9.581e-04  Time cost: 02:20/00:37 [14:11/15:23]  Acc_iter 1600        Data time: 0.32(0.27)  Forward time: 0.28(0.25)  Batch time: 0.60(0.53)
+2024-03-15 15:12:24,440   INFO  Train:    5/10 ( 50%) [ 313/334 ( 94%)]  Loss: 6.951 (6.84)  LR: 9.410e-04  Time cost: 02:45/00:11 [14:36/14:48]  Acc_iter 1650        Data time: 0.26(0.27)  Forward time: 0.32(0.25)  Batch time: 0.58(0.52)
+2024-03-15 15:12:24,441   INFO  
+2024-03-15 15:12:34,359   INFO  Train:    5/10 ( 50%) [ 333/334 (100%)]  Loss: 6.520 (6.83)  LR: 9.334e-04  Time cost: 02:54/00:00 [14:46/14:35]  Acc_iter 1670        Data time: 0.30(0.27)  Forward time: 0.10(0.25)  Batch time: 0.40(0.52)
+2024-03-15 15:12:36,210   INFO  Train:    6/10 ( 60%) [   0/334 (  0%)]  Loss: 7.304 (7.30)  LR: 9.330e-04  Time cost: 00:01/09:30 [14:47/47:30]  Acc_iter 1671        Data time: 0.98(0.98)  Forward time: 0.45(0.45)  Batch time: 1.44(1.44)
+2024-03-15 15:12:51,575   INFO  Train:    6/10 ( 60%) [  29/334 (  9%)]  Loss: 5.469 (6.59)  LR: 9.212e-04  Time cost: 00:17/02:53 [15:03/15:33]  Acc_iter 1700        Data time: 0.37(0.29)  Forward time: 0.22(0.27)  Batch time: 0.58(0.56)
+2024-03-15 15:13:17,572   INFO  Train:    6/10 ( 60%) [  79/334 ( 24%)]  Loss: 6.244 (6.66)  LR: 8.988e-04  Time cost: 00:43/02:17 [15:29/14:16]  Acc_iter 1750        Data time: 0.27(0.28)  Forward time: 0.31(0.26)  Batch time: 0.58(0.53)
+2024-03-15 15:13:43,367   INFO  Train:    6/10 ( 60%) [ 129/334 ( 39%)]  Loss: 6.889 (6.57)  LR: 8.740e-04  Time cost: 01:08/01:48 [15:55/13:36]  Acc_iter 1800        Data time: 0.28(0.28)  Forward time: 0.29(0.25)  Batch time: 0.57(0.53)
+2024-03-15 15:13:43,368   INFO  
+2024-03-15 15:14:09,274   INFO  Train:    6/10 ( 60%) [ 179/334 ( 54%)]  Loss: 7.166 (6.56)  LR: 8.468e-04  Time cost: 01:34/01:21 [16:20/13:05]  Acc_iter 1850        Data time: 0.28(0.28)  Forward time: 0.29(0.25)  Batch time: 0.58(0.53)
+2024-03-15 15:14:34,813   INFO  Train:    6/10 ( 60%) [ 229/334 ( 69%)]  Loss: 5.922 (6.44)  LR: 8.176e-04  Time cost: 02:00/00:54 [16:46/12:33]  Acc_iter 1900        Data time: 0.19(0.28)  Forward time: 0.19(0.25)  Batch time: 0.39(0.52)
+2024-03-15 15:15:00,522   INFO  Train:    6/10 ( 60%) [ 279/334 ( 84%)]  Loss: 5.516 (6.43)  LR: 7.864e-04  Time cost: 02:26/00:28 [17:12/12:05]  Acc_iter 1950        Data time: 0.32(0.27)  Forward time: 0.24(0.25)  Batch time: 0.55(0.52)
+2024-03-15 15:15:00,523   INFO  
+2024-03-15 15:15:25,989   INFO  Train:    6/10 ( 60%) [ 329/334 ( 99%)]  Loss: 5.703 (6.36)  LR: 7.534e-04  Time cost: 02:51/00:02 [17:37/11:36]  Acc_iter 2000        Data time: 0.20(0.27)  Forward time: 0.21(0.25)  Batch time: 0.41(0.52)
+2024-03-15 15:15:27,274   INFO  Train:    6/10 ( 60%) [ 333/334 (100%)]  Loss: 6.539 (6.36)  LR: 7.507e-04  Time cost: 02:52/00:00 [17:38/11:31]  Acc_iter 2004        Data time: 0.15(0.27)  Forward time: 0.10(0.25)  Batch time: 0.25(0.52)
+2024-03-15 15:15:28,964   INFO  Train:    7/10 ( 70%) [   0/334 (  0%)]  Loss: 6.315 (6.32)  LR: 7.500e-04  Time cost: 00:01/08:36 [17:40/34:24]  Acc_iter 2005        Data time: 1.17(1.17)  Forward time: 0.23(0.23)  Batch time: 1.40(1.40)
+2024-03-15 15:15:53,701   INFO  Train:    7/10 ( 70%) [  45/334 ( 13%)]  Loss: 4.701 (5.98)  LR: 7.189e-04  Time cost: 00:26/02:45 [18:05/12:17]  Acc_iter 2050        Data time: 0.35(0.30)  Forward time: 0.28(0.26)  Batch time: 0.63(0.56)
+2024-03-15 15:16:18,044   INFO  Train:    7/10 ( 70%) [  95/334 ( 28%)]  Loss: 6.290 (5.84)  LR: 6.830e-04  Time cost: 00:50/02:06 [18:29/10:54]  Acc_iter 2100        Data time: 0.37(0.28)  Forward time: 0.22(0.24)  Batch time: 0.60(0.52)
+2024-03-15 15:16:18,045   INFO  
+2024-03-15 15:16:42,227   INFO  Train:    7/10 ( 70%) [ 145/334 ( 43%)]  Loss: 5.293 (5.86)  LR: 6.460e-04  Time cost: 01:14/01:36 [18:53/10:10]  Acc_iter 2150        Data time: 0.33(0.27)  Forward time: 0.27(0.24)  Batch time: 0.60(0.51)
+2024-03-15 15:17:09,892   INFO  Train:    7/10 ( 70%) [ 195/334 ( 58%)]  Loss: 4.506 (5.94)  LR: 6.081e-04  Time cost: 01:42/01:12 [19:21/09:56]  Acc_iter 2200        Data time: 0.42(0.27)  Forward time: 0.25(0.25)  Batch time: 0.66(0.52)
+2024-03-15 15:17:34,471   INFO  Train:    7/10 ( 70%) [ 245/334 ( 73%)]  Loss: 8.754 (5.88)  LR: 5.695e-04  Time cost: 02:07/00:45 [19:46/09:23]  Acc_iter 2250        Data time: 0.29(0.27)  Forward time: 0.28(0.24)  Batch time: 0.57(0.52)
+2024-03-15 15:17:34,472   INFO  
+2024-03-15 15:17:58,799   INFO  Train:    7/10 ( 70%) [ 295/334 ( 88%)]  Loss: 7.419 (5.84)  LR: 5.306e-04  Time cost: 02:31/00:19 [20:10/08:52]  Acc_iter 2300        Data time: 0.31(0.27)  Forward time: 0.22(0.24)  Batch time: 0.53(0.51)
+2024-03-15 15:18:18,020   INFO  Train:    7/10 ( 70%) [ 333/334 (100%)]  Loss: 4.039 (5.80)  LR: 5.008e-04  Time cost: 02:50/00:00 [20:29/08:32]  Acc_iter 2338        Data time: 0.31(0.27)  Forward time: 0.07(0.24)  Batch time: 0.38(0.51)
+2024-03-15 15:18:20,054   INFO  Train:    8/10 ( 80%) [   0/334 (  0%)]  Loss: 3.897 (3.90)  LR: 5.000e-04  Time cost: 00:01/10:30 [20:31/31:32]  Acc_iter 2339        Data time: 1.17(1.17)  Forward time: 0.40(0.40)  Batch time: 1.58(1.58)
+2024-03-15 15:18:25,347   INFO  Train:    8/10 ( 80%) [  11/334 (  3%)]  Loss: 5.864 (4.74)  LR: 4.914e-04  Time cost: 00:07/03:13 [20:36/09:53]  Acc_iter 2350        Data time: 0.29(0.32)  Forward time: 0.27(0.25)  Batch time: 0.56(0.57)
+2024-03-15 15:18:50,729   INFO  Train:    8/10 ( 80%) [  61/334 ( 18%)]  Loss: 4.609 (5.06)  LR: 4.523e-04  Time cost: 00:32/02:23 [21:02/08:14]  Acc_iter 2400        Data time: 0.34(0.28)  Forward time: 0.23(0.24)  Batch time: 0.57(0.52)
+2024-03-15 15:18:50,730   INFO  
+2024-03-15 15:19:15,827   INFO  Train:    8/10 ( 80%) [ 111/334 ( 33%)]  Loss: 6.760 (5.40)  LR: 4.134e-04  Time cost: 00:57/01:54 [21:27/07:38]  Acc_iter 2450        Data time: 0.24(0.28)  Forward time: 0.24(0.24)  Batch time: 0.48(0.51)
+2024-03-15 15:19:40,425   INFO  Train:    8/10 ( 80%) [ 161/334 ( 48%)]  Loss: 9.674 (5.44)  LR: 3.751e-04  Time cost: 01:22/01:27 [21:52/07:07]  Acc_iter 2500        Data time: 0.37(0.27)  Forward time: 0.22(0.23)  Batch time: 0.59(0.51)
+2024-03-15 15:20:05,124   INFO  Train:    8/10 ( 80%) [ 211/334 ( 63%)]  Loss: 4.352 (5.42)  LR: 3.376e-04  Time cost: 01:46/01:02 [22:16/06:39]  Acc_iter 2550        Data time: 0.32(0.27)  Forward time: 0.20(0.23)  Batch time: 0.51(0.50)
+2024-03-15 15:20:05,125   INFO  
+2024-03-15 15:20:30,783   INFO  Train:    8/10 ( 80%) [ 261/334 ( 78%)]  Loss: 5.694 (5.43)  LR: 3.011e-04  Time cost: 02:12/00:36 [22:42/06:15]  Acc_iter 2600        Data time: 0.27(0.27)  Forward time: 0.33(0.23)  Batch time: 0.59(0.51)
+2024-03-15 15:20:57,231   INFO  Train:    8/10 ( 80%) [ 311/334 ( 93%)]  Loss: 6.000 (5.39)  LR: 2.658e-04  Time cost: 02:39/00:11 [23:08/05:52]  Acc_iter 2650        Data time: 0.34(0.27)  Forward time: 0.21(0.24)  Batch time: 0.55(0.51)
+2024-03-15 15:21:08,550   INFO  Train:    8/10 ( 80%) [ 333/334 (100%)]  Loss: 4.283 (5.38)  LR: 2.507e-04  Time cost: 02:50/00:00 [23:20/05:41]  Acc_iter 2672        Data time: 0.24(0.27)  Forward time: 0.09(0.24)  Batch time: 0.32(0.51)
+2024-03-15 15:21:10,346   INFO  Train:    9/10 ( 90%) [   0/334 (  0%)]  Loss: 3.177 (3.18)  LR: 2.500e-04  Time cost: 00:01/09:11 [23:21/18:23]  Acc_iter 2673        Data time: 0.99(0.99)  Forward time: 0.46(0.46)  Batch time: 1.44(1.44)
+2024-03-15 15:21:23,759   INFO  Train:    9/10 ( 90%) [  27/334 (  8%)]  Loss: 5.924 (4.77)  LR: 2.319e-04  Time cost: 00:15/02:45 [23:35/05:44]  Acc_iter 2700        Data time: 0.19(0.29)  Forward time: 0.22(0.24)  Batch time: 0.42(0.53)
+2024-03-15 15:21:23,760   INFO  
+2024-03-15 15:21:48,845   INFO  Train:    9/10 ( 90%) [  77/334 ( 23%)]  Loss: 4.088 (4.77)  LR: 1.997e-04  Time cost: 00:40/02:12 [24:00/05:04]  Acc_iter 2750        Data time: 0.24(0.27)  Forward time: 0.30(0.24)  Batch time: 0.54(0.51)
+2024-03-15 15:22:15,081   INFO  Train:    9/10 ( 90%) [ 127/334 ( 38%)]  Loss: 5.966 (4.95)  LR: 1.693e-04  Time cost: 01:06/01:47 [24:26/04:40]  Acc_iter 2800        Data time: 0.40(0.27)  Forward time: 0.26(0.24)  Batch time: 0.66(0.52)
+2024-03-15 15:22:40,788   INFO  Train:    9/10 ( 90%) [ 177/334 ( 53%)]  Loss: 4.299 (4.92)  LR: 1.410e-04  Time cost: 01:32/01:21 [24:52/04:14]  Acc_iter 2850        Data time: 0.28(0.27)  Forward time: 0.35(0.25)  Batch time: 0.62(0.52)
+2024-03-15 15:22:40,789   INFO  
+2024-03-15 15:23:07,797   INFO  Train:    9/10 ( 90%) [ 227/334 ( 68%)]  Loss: 3.733 (4.94)  LR: 1.148e-04  Time cost: 01:59/00:55 [25:19/03:50]  Acc_iter 2900        Data time: 0.41(0.27)  Forward time: 0.23(0.25)  Batch time: 0.64(0.52)
+2024-03-15 15:23:34,586   INFO  Train:    9/10 ( 90%) [ 277/334 ( 83%)]  Loss: 6.340 (5.00)  LR: 9.103e-05  Time cost: 02:25/00:29 [25:46/03:25]  Acc_iter 2950        Data time: 0.32(0.27)  Forward time: 0.19(0.25)  Batch time: 0.51(0.52)
+2024-03-15 15:23:59,487   INFO  Train:    9/10 ( 90%) [ 327/334 ( 98%)]  Loss: 3.332 (4.99)  LR: 6.977e-05  Time cost: 02:50/00:03 [26:11/02:57]  Acc_iter 3000        Data time: 0.34(0.27)  Forward time: 0.20(0.25)  Batch time: 0.54(0.52)
+2024-03-15 15:23:59,488   INFO  
+2024-03-15 15:24:01,958   INFO  Train:    9/10 ( 90%) [ 333/334 (100%)]  Loss: 6.133 (5.00)  LR: 6.739e-05  Time cost: 02:53/00:00 [26:13/02:53]  Acc_iter 3006        Data time: 0.15(0.27)  Forward time: 0.07(0.25)  Batch time: 0.22(0.52)
+2024-03-15 15:24:03,945   INFO  Train:   10/10 (100%) [   0/334 (  0%)]  Loss: 5.417 (5.42)  LR: 6.700e-05  Time cost: 00:01/10:15 [26:15/10:15]  Acc_iter 3007        Data time: 1.14(1.14)  Forward time: 0.38(0.38)  Batch time: 1.53(1.53)
+2024-03-15 15:24:25,464   INFO  Train:   10/10 (100%) [  43/334 ( 13%)]  Loss: 6.909 (4.81)  LR: 5.114e-05  Time cost: 00:23/02:34 [26:37/02:34]  Acc_iter 3050        Data time: 0.27(0.28)  Forward time: 0.30(0.24)  Batch time: 0.57(0.52)
+2024-03-15 15:24:50,770   INFO  Train:   10/10 (100%) [  93/334 ( 28%)]  Loss: 3.611 (4.90)  LR: 3.527e-05  Time cost: 00:48/02:04 [27:02/02:04]  Acc_iter 3100        Data time: 0.30(0.28)  Forward time: 0.25(0.24)  Batch time: 0.55(0.51)
+2024-03-15 15:25:16,400   INFO  Train:   10/10 (100%) [ 143/334 ( 43%)]  Loss: 4.180 (4.84)  LR: 2.226e-05  Time cost: 01:14/01:38 [27:28/01:38]  Acc_iter 3150        Data time: 0.34(0.27)  Forward time: 0.26(0.24)  Batch time: 0.60(0.51)
+2024-03-15 15:25:16,401   INFO  
+2024-03-15 15:25:42,574   INFO  Train:   10/10 (100%) [ 193/334 ( 58%)]  Loss: 5.277 (4.88)  LR: 1.217e-05  Time cost: 01:40/01:13 [27:54/01:13]  Acc_iter 3200        Data time: 0.32(0.27)  Forward time: 0.29(0.24)  Batch time: 0.61(0.52)
+2024-03-15 15:26:08,019   INFO  Train:   10/10 (100%) [ 243/334 ( 73%)]  Loss: 6.576 (4.95)  LR: 5.089e-06  Time cost: 02:05/00:46 [28:19/00:46]  Acc_iter 3250        Data time: 0.34(0.27)  Forward time: 0.24(0.24)  Batch time: 0.58(0.51)
+2024-03-15 15:26:33,094   INFO  Train:   10/10 (100%) [ 293/334 ( 88%)]  Loss: 4.306 (4.95)  LR: 1.042e-06  Time cost: 02:30/00:21 [28:44/00:21]  Acc_iter 3300        Data time: 0.43(0.27)  Forward time: 0.28(0.24)  Batch time: 0.71(0.51)
+2024-03-15 15:26:33,095   INFO  
+2024-03-15 15:26:52,799   INFO  Train:   10/10 (100%) [ 333/334 (100%)]  Loss: 4.191 (4.95)  LR: 1.061e-08  Time cost: 02:50/00:00 [29:04/00:00]  Acc_iter 3340        Data time: 0.34(0.27)  Forward time: 0.06(0.24)  Batch time: 0.41(0.51)
+2024-03-15 15:26:52,938   INFO  **********************End training home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2(default)**********************
+
+
+
+2024-03-15 15:26:52,938   INFO  **********************Start evaluation home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2(default)**********************
+2024-03-15 15:26:52,938   INFO  Loading NuScenes dataset
+2024-03-15 15:26:52,941   INFO  Total samples for NuScenes dataset: 81
+2024-03-15 15:26:52,942   INFO  ==> Loading parameters from checkpoint /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2/default/ckpt/checkpoint_epoch_10.pth to GPU
+2024-03-15 15:26:52,987   INFO  ==> Checkpoint trained from version: pcdet+0.6.0+255db8f
+2024-03-15 15:26:52,992   INFO  ==> Done (loaded 380/380)
+2024-03-15 15:26:52,995   INFO  *************** EPOCH 10 EVALUATION *****************
+2024-03-15 15:27:03,997   INFO  *************** Performance of EPOCH 10 *****************
+2024-03-15 15:27:03,997   INFO  Generate label finished(sec_per_example: 0.1358 second).
+2024-03-15 15:27:03,998   INFO  recall_roi_0.3: 0.000000
+2024-03-15 15:27:03,998   INFO  recall_rcnn_0.3: 0.444039
+2024-03-15 15:27:03,998   INFO  recall_roi_0.5: 0.000000
+2024-03-15 15:27:03,998   INFO  recall_rcnn_0.5: 0.118005
+2024-03-15 15:27:03,998   INFO  recall_roi_0.7: 0.000000
+2024-03-15 15:27:03,998   INFO  recall_rcnn_0.7: 0.009124
+2024-03-15 15:27:03,998   INFO  Average predicted number of objects(81 samples): 170.593
+2024-03-15 15:27:05,404   INFO  The predictions of NuScenes have been saved to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2/default/eval/eval_with_train/epoch_10/val/final_result/data/results_nusc.json
+2024-03-15 15:27:07,001   INFO  ----------------Nuscene detection_cvpr_2019 results-----------------
+***car error@trans, scale, orient, vel, attr | AP@0.5, 1.0, 2.0, 4.0
+0.45, 0.22, 1.35, 0.31, 0.15 | 23.36, 46.83, 64.12, 69.97 | mean AP: 0.5107104507615028
+***bicycle error@trans, scale, orient, vel, attr | AP@0.5, 1.0, 2.0, 4.0
+0.32, 0.27, 1.87, 0.01, 0.00 | 0.00, 0.00, 0.00, 0.00 | mean AP: 0.0
+***pedestrian error@trans, scale, orient, vel, attr | AP@0.5, 1.0, 2.0, 4.0
+0.31, 0.28, 1.66, 0.90, 0.23 | 63.18, 73.71, 76.61, 81.31 | mean AP: 0.7370376163453694
+--------------average performance-------------
+trans_err:	 0.8075
+scale_err:	 0.7774
+orient_err:	 1.2093
+vel_err:	 0.7769
+attr_err:	 0.6728
+mAP:	 0.1248
+NDS:	 0.1589
+
+2024-03-15 15:27:07,001   INFO  Result is saved to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2/default/eval/eval_with_train/epoch_10/val
+2024-03-15 15:27:07,001   INFO  ****************Evaluation done.*****************
+2024-03-15 15:27:07,003   INFO  Epoch 10 has been evaluated
+2024-03-15 15:27:37,004   INFO  **********************End evaluation home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext2(default)**********************

@@ -1,0 +1,1292 @@
+2024-03-09 11:29:35,562   INFO  **********************Start logging**********************
+2024-03-09 11:29:35,562   INFO  CUDA_VISIBLE_DEVICES=ALL
+2024-03-09 11:29:35,562   INFO  Training with a single process
+2024-03-09 11:29:35,562   INFO  cfg_file         /home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext.yaml
+2024-03-09 11:29:35,562   INFO  batch_size       2
+2024-03-09 11:29:35,562   INFO  epochs           5
+2024-03-09 11:29:35,562   INFO  workers          4
+2024-03-09 11:29:35,563   INFO  extra_tag        default
+2024-03-09 11:29:35,563   INFO  ckpt             None
+2024-03-09 11:29:35,563   INFO  pretrained_model None
+2024-03-09 11:29:35,563   INFO  launcher         none
+2024-03-09 11:29:35,563   INFO  tcp_port         18888
+2024-03-09 11:29:35,563   INFO  sync_bn          False
+2024-03-09 11:29:35,563   INFO  fix_random_seed  False
+2024-03-09 11:29:35,563   INFO  ckpt_save_interval 1
+2024-03-09 11:29:35,563   INFO  local_rank       0
+2024-03-09 11:29:35,563   INFO  max_ckpt_save_num 30
+2024-03-09 11:29:35,563   INFO  merge_all_iters_to_one_epoch False
+2024-03-09 11:29:35,563   INFO  set_cfgs         None
+2024-03-09 11:29:35,563   INFO  max_waiting_mins 0
+2024-03-09 11:29:35,563   INFO  start_epoch      0
+2024-03-09 11:29:35,563   INFO  num_epochs_to_eval 0
+2024-03-09 11:29:35,563   INFO  save_to_file     False
+2024-03-09 11:29:35,563   INFO  use_tqdm_to_record False
+2024-03-09 11:29:35,563   INFO  logger_iter_interval 50
+2024-03-09 11:29:35,563   INFO  ckpt_save_time_interval 300
+2024-03-09 11:29:35,563   INFO  wo_gpu_stat      False
+2024-03-09 11:29:35,563   INFO  use_amp          False
+2024-03-09 11:29:35,563   INFO  cfg.ROOT_DIR: /home/luis/OpenPCDet
+2024-03-09 11:29:35,563   INFO  cfg.LOCAL_RANK: 0
+2024-03-09 11:29:35,563   INFO  cfg.CLASS_NAMES: ['car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier', 'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone']
+2024-03-09 11:29:35,563   INFO  ----------- DATA_CONFIG -----------
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.DATASET: NuScenesDataset
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.DATA_PATH: ../data/nuscenes
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.VERSION: v1.0-trainval
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.MAX_SWEEPS: 10
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.PRED_VELOCITY: True
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.SET_NAN_VELOCITY_TO_ZEROS: True
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.FILTER_MIN_POINTS_IN_GT: 1
+2024-03-09 11:29:35,563   INFO  ----------- DATA_SPLIT -----------
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.DATA_SPLIT.train: train
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.DATA_SPLIT.test: val
+2024-03-09 11:29:35,563   INFO  ----------- INFO_PATH -----------
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.INFO_PATH.train: ['nuscenes_infos_10sweeps_train.pkl']
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.INFO_PATH.test: ['nuscenes_infos_10sweeps_val.pkl']
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.POINT_CLOUD_RANGE: [-54.0, -54.0, -5.0, 54.0, 54.0, 3.0]
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.BALANCED_RESAMPLING: True
+2024-03-09 11:29:35,563   INFO  ----------- DATA_AUGMENTOR -----------
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.DATA_AUGMENTOR.DISABLE_AUG_LIST: ['placeholder']
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.DATA_AUGMENTOR.AUG_CONFIG_LIST: [{'NAME': 'gt_sampling', 'DB_INFO_PATH': ['nuscenes_dbinfos_10sweeps_withvelo.pkl'], 'USE_SHARED_MEMORY': False, 'DB_DATA_PATH': ['nuscenes_dbinfos_10sweeps_withvelo_global.pkl.npy'], 'PREPARE': {'filter_by_min_points': ['car:5', 'truck:5', 'construction_vehicle:5', 'bus:5', 'trailer:5', 'barrier:5', 'motorcycle:5', 'bicycle:5', 'pedestrian:5', 'traffic_cone:5']}, 'SAMPLE_GROUPS': ['car:2', 'truck:2', 'construction_vehicle:2', 'bus:2', 'trailer:2', 'barrier:2', 'motorcycle:2', 'bicycle:2', 'pedestrian:2', 'traffic_cone:2'], 'NUM_POINT_FEATURES': 5, 'DATABASE_WITH_FAKELIDAR': False, 'REMOVE_EXTRA_WIDTH': [0.0, 0.0, 0.0], 'LIMIT_WHOLE_SCENE': True}, {'NAME': 'random_world_flip', 'ALONG_AXIS_LIST': ['x', 'y']}, {'NAME': 'random_world_rotation', 'WORLD_ROT_ANGLE': [-0.78539816, 0.78539816]}, {'NAME': 'random_world_scaling', 'WORLD_SCALE_RANGE': [0.9, 1.1]}, {'NAME': 'random_world_translation', 'NOISE_TRANSLATE_STD': [0.5, 0.5, 0.5]}]
+2024-03-09 11:29:35,563   INFO  ----------- POINT_FEATURE_ENCODING -----------
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.encoding_type: absolute_coordinates_encoding
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.used_feature_list: ['x', 'y', 'z', 'intensity', 'timestamp']
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.POINT_FEATURE_ENCODING.src_feature_list: ['x', 'y', 'z', 'intensity', 'timestamp']
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG.DATA_PROCESSOR: [{'NAME': 'mask_points_and_boxes_outside_range', 'REMOVE_OUTSIDE_BOXES': True}, {'NAME': 'shuffle_points', 'SHUFFLE_ENABLED': {'train': True, 'test': True}}, {'NAME': 'transform_points_to_voxels', 'VOXEL_SIZE': [0.075, 0.075, 0.2], 'MAX_POINTS_PER_VOXEL': 10, 'MAX_NUMBER_OF_VOXELS': {'train': 120000, 'test': 160000}}]
+2024-03-09 11:29:35,563   INFO  cfg.DATA_CONFIG._BASE_CONFIG_: cfgs/dataset_configs/nuscenes_dataset.yaml
+2024-03-09 11:29:35,563   INFO  ----------- MODEL -----------
+2024-03-09 11:29:35,563   INFO  cfg.MODEL.NAME: VoxelNeXt
+2024-03-09 11:29:35,563   INFO  ----------- VFE -----------
+2024-03-09 11:29:35,563   INFO  cfg.MODEL.VFE.NAME: MeanVFE
+2024-03-09 11:29:35,563   INFO  ----------- BACKBONE_3D -----------
+2024-03-09 11:29:35,563   INFO  cfg.MODEL.BACKBONE_3D.NAME: VoxelResBackBone8xVoxelNeXt
+2024-03-09 11:29:35,563   INFO  ----------- DENSE_HEAD -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.NAME: VoxelNeXtHead
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.CLASS_AGNOSTIC: False
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.INPUT_FEATURES: 128
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.CLASS_NAMES_EACH_HEAD: [['car'], ['truck', 'construction_vehicle'], ['bus', 'trailer'], ['barrier'], ['motorcycle', 'bicycle'], ['pedestrian', 'traffic_cone']]
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SHARED_CONV_CHANNEL: 128
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.KERNEL_SIZE_HEAD: 1
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.USE_BIAS_BEFORE_NORM: True
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.NUM_HM_CONV: 2
+2024-03-09 11:29:35,564   INFO  ----------- SEPARATE_HEAD_CFG -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_ORDER: ['center', 'center_z', 'dim', 'rot', 'vel']
+2024-03-09 11:29:35,564   INFO  ----------- HEAD_DICT -----------
+2024-03-09 11:29:35,564   INFO  ----------- center -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.center.out_channels: 2
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.center.num_conv: 2
+2024-03-09 11:29:35,564   INFO  ----------- center_z -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.center_z.out_channels: 1
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.center_z.num_conv: 2
+2024-03-09 11:29:35,564   INFO  ----------- dim -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.dim.out_channels: 3
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.dim.num_conv: 2
+2024-03-09 11:29:35,564   INFO  ----------- rot -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.rot.out_channels: 2
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.rot.num_conv: 2
+2024-03-09 11:29:35,564   INFO  ----------- vel -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.vel.out_channels: 2
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.SEPARATE_HEAD_CFG.HEAD_DICT.vel.num_conv: 2
+2024-03-09 11:29:35,564   INFO  ----------- TARGET_ASSIGNER_CONFIG -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.FEATURE_MAP_STRIDE: 8
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.NUM_MAX_OBJS: 500
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.GAUSSIAN_OVERLAP: 0.1
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.TARGET_ASSIGNER_CONFIG.MIN_RADIUS: 2
+2024-03-09 11:29:35,564   INFO  ----------- LOSS_CONFIG -----------
+2024-03-09 11:29:35,564   INFO  ----------- LOSS_WEIGHTS -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.cls_weight: 1.0
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.loc_weight: 0.25
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.LOSS_CONFIG.LOSS_WEIGHTS.code_weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.2, 0.2, 1.0, 1.0]
+2024-03-09 11:29:35,564   INFO  ----------- POST_PROCESSING -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.SCORE_THRESH: 0.1
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.POST_CENTER_LIMIT_RANGE: [-61.2, -61.2, -10.0, 61.2, 61.2, 10.0]
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.MAX_OBJ_PER_SAMPLE: 500
+2024-03-09 11:29:35,564   INFO  ----------- NMS_CONFIG -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.NMS_CONFIG.NMS_TYPE: nms_gpu
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.NMS_CONFIG.NMS_THRESH: 0.2
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.NMS_CONFIG.NMS_PRE_MAXSIZE: 1000
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.DENSE_HEAD.POST_PROCESSING.NMS_CONFIG.NMS_POST_MAXSIZE: 83
+2024-03-09 11:29:35,564   INFO  ----------- POST_PROCESSING -----------
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.POST_PROCESSING.RECALL_THRESH_LIST: [0.3, 0.5, 0.7]
+2024-03-09 11:29:35,564   INFO  cfg.MODEL.POST_PROCESSING.EVAL_METRIC: kitti
+2024-03-09 11:29:35,564   INFO  ----------- OPTIMIZATION -----------
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.BATCH_SIZE_PER_GPU: 2
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.NUM_EPOCHS: 5
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.OPTIMIZER: adam_onecycle
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.LR: 0.001
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.WEIGHT_DECAY: 0.01
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.MOMENTUM: 0.9
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.MOMS: [0.95, 0.85]
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.PCT_START: 0.4
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.DIV_FACTOR: 10
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.DECAY_STEP_LIST: [35, 45]
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.LR_DECAY: 0.1
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.LR_CLIP: 1e-07
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.LR_WARMUP: False
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.WARMUP_EPOCH: 1
+2024-03-09 11:29:35,564   INFO  cfg.OPTIMIZATION.GRAD_NORM_CLIP: 10
+2024-03-09 11:29:35,564   INFO  cfg.TAG: cbgs_voxel0075_voxelnext
+2024-03-09 11:29:35,565   INFO  cfg.EXP_GROUP_PATH: home/luis/OpenPCDet/tools/cfgs/nuscenes_models
+2024-03-09 11:29:35,568   INFO  ----------- Create dataloader & network & optimizer -----------
+2024-03-09 11:29:35,695   INFO  Database filter by min points car: 32863 => 27509
+2024-03-09 11:29:35,696   INFO  Database filter by min points truck: 9045 => 8115
+2024-03-09 11:29:35,696   INFO  Database filter by min points construction_vehicle: 1631 => 1520
+2024-03-09 11:29:35,696   INFO  Database filter by min points bus: 1158 => 1092
+2024-03-09 11:29:35,696   INFO  Database filter by min points trailer: 3007 => 2802
+2024-03-09 11:29:35,696   INFO  Database filter by min points barrier: 10536 => 9946
+2024-03-09 11:29:35,696   INFO  Database filter by min points motorcycle: 349 => 329
+2024-03-09 11:29:35,696   INFO  Database filter by min points bicycle: 305 => 278
+2024-03-09 11:29:35,697   INFO  Database filter by min points pedestrian: 6151 => 5774
+2024-03-09 11:29:35,697   INFO  Database filter by min points traffic_cone: 4316 => 3720
+2024-03-09 11:29:35,700   INFO  Loading NuScenes dataset
+2024-03-09 11:29:35,788   INFO  Total samples for NuScenes dataset: 2396
+2024-03-09 11:29:35,800   INFO  Total samples after balanced resampling: 10960
+2024-03-09 11:29:37,207   INFO  ----------- Model VoxelNeXt created, param count: 7981398 -----------
+2024-03-09 11:29:37,207   INFO  VoxelNeXt(
+  (vfe): MeanVFE()
+  (backbone_3d): VoxelResBackBone8xVoxelNeXt(
+    (conv_input): SparseSequential(
+      (0): SubMConv3d(5, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+      (1): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (conv1): SparseSequential(
+      (0): SparseBasicBlock(
+        (conv1): SubMConv3d(16, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(16, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(16, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(16, 16, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(16, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv2): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(16, 32, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(32, 32, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(32, 32, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(32, 32, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(32, 32, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(32, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv3): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(32, 64, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(64, 64, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(64, 64, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(64, 64, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(64, 64, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(64, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv4): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(64, 128, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv5): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(128, 128, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv6): SparseSequential(
+      (0): SparseSequential(
+        (0): SparseConv3d(128, 128, kernel_size=[3, 3, 3], stride=[2, 2, 2], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+        (1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (1): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (2): SparseBasicBlock(
+        (conv1): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+        (relu): ReLU()
+        (conv2): SubMConv3d(128, 128, kernel_size=[3, 3, 3], stride=[1, 1, 1], padding=[1, 1, 1], dilation=[1, 1, 1], output_padding=[0, 0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        (bn2): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+    (conv_out): SparseSequential(
+      (0): SparseConv2d(128, 128, kernel_size=[3, 3], stride=[1, 1], padding=[1, 1], dilation=[1, 1], output_padding=[0, 0], bias=False, algo=ConvAlgo.MaskImplicitGemm)
+      (1): BatchNorm1d(128, eps=0.001, momentum=0.01, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (shared_conv): SparseSequential(
+      (0): SubMConv2d(128, 128, kernel_size=[3, 3], stride=[1, 1], padding=[1, 1], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+      (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+    )
+  )
+  (map_to_bev_module): None
+  (pfe): None
+  (backbone_2d): None
+  (dense_head): VoxelNeXtHead(
+    (heads_list): ModuleList(
+      (0): SeparateHead(
+        (center): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (center_z): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 1, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (dim): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 3, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (rot): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (vel): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (hm): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 1, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+      )
+      (1-2): 2 x SeparateHead(
+        (center): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (center_z): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 1, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (dim): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 3, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (rot): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (vel): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (hm): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+      )
+      (3): SeparateHead(
+        (center): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (center_z): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 1, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (dim): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 3, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (rot): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (vel): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (hm): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 1, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+      )
+      (4-5): 2 x SeparateHead(
+        (center): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (center_z): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 1, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (dim): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 3, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (rot): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (vel): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+        (hm): Sequential(
+          (0): SparseSequential(
+            (0): SubMConv2d(128, 128, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+            (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): ReLU()
+          )
+          (1): SubMConv2d(128, 2, kernel_size=[1, 1], stride=[1, 1], padding=[0, 0], dilation=[1, 1], output_padding=[0, 0], algo=ConvAlgo.MaskImplicitGemm)
+        )
+      )
+    )
+    (hm_loss_func): FocalLossSparse()
+    (reg_loss_func): RegLossSparse()
+  )
+  (point_head): None
+  (roi_head): None
+)
+2024-03-09 11:29:37,210   INFO  **********************Start training home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext(default)**********************
+2024-03-09 11:30:09,098   INFO  Train:    1/5 ( 20%) [   0/5480 (  0%)]  Loss: 212.4 (212.)  LR: 1.000e-04  Time cost: 00:31/48:14:59 [00:31/241:14:56]  Acc_iter 1           Data time: 1.64(1.64)  Forward time: 30.05(30.05)  Batch time: 31.70(31.70)
+2024-03-09 11:30:34,348   INFO  Train:    1/5 ( 20%) [  49/5480 (  1%)]  Loss: 38.59 (56.9)  LR: 1.000e-04  Time cost: 00:56/1:43:05 [00:57/8:39:11]  Acc_iter 50          Data time: 0.24(0.30)  Forward time: 0.22(0.84)  Batch time: 0.46(1.13)
+2024-03-09 11:30:58,316   INFO  Train:    1/5 ( 20%) [  99/5480 (  2%)]  Loss: 27.48 (44.8)  LR: 1.002e-04  Time cost: 01:20/1:12:34 [01:21/6:08:10]  Acc_iter 100         Data time: 0.25(0.27)  Forward time: 0.27(0.53)  Batch time: 0.52(0.81)
+2024-03-09 11:31:23,829   INFO  Train:    1/5 ( 20%) [ 149/5480 (  3%)]  Loss: 25.08 (38.9)  LR: 1.004e-04  Time cost: 01:46/1:03:02 [01:46/5:22:15]  Acc_iter 150         Data time: 0.23(0.27)  Forward time: 0.31(0.43)  Batch time: 0.54(0.71)
+2024-03-09 11:31:23,830   INFO  
+2024-03-09 11:31:49,057   INFO  Train:    1/5 ( 20%) [ 199/5480 (  4%)]  Loss: 24.88 (35.2)  LR: 1.007e-04  Time cost: 02:11/57:56 [02:11/4:58:25]  Acc_iter 200         Data time: 0.19(0.27)  Forward time: 0.22(0.38)  Batch time: 0.41(0.66)
+2024-03-09 11:32:13,729   INFO  Train:    1/5 ( 20%) [ 249/5480 (  5%)]  Loss: 24.35 (32.9)  LR: 1.011e-04  Time cost: 02:36/54:31 [02:36/4:42:57]  Acc_iter 250         Data time: 0.31(0.27)  Forward time: 0.27(0.35)  Batch time: 0.58(0.62)
+2024-03-09 11:32:38,977   INFO  Train:    1/5 ( 20%) [ 299/5480 (  5%)]  Loss: 22.37 (31.2)  LR: 1.017e-04  Time cost: 03:01/52:15 [03:01/4:33:22]  Acc_iter 300         Data time: 0.23(0.27)  Forward time: 0.28(0.34)  Batch time: 0.50(0.60)
+2024-03-09 11:32:38,978   INFO  
+2024-03-09 11:33:03,969   INFO  Train:    1/5 ( 20%) [ 349/5480 (  6%)]  Loss: 21.75 (29.8)  LR: 1.022e-04  Time cost: 03:26/50:28 [03:26/4:26:05]  Acc_iter 350         Data time: 0.20(0.27)  Forward time: 0.25(0.32)  Batch time: 0.44(0.59)
+2024-03-09 11:33:29,007   INFO  Train:    1/5 ( 20%) [ 399/5480 (  7%)]  Loss: 19.80 (28.8)  LR: 1.029e-04  Time cost: 03:51/49:01 [03:51/4:20:33]  Acc_iter 400         Data time: 0.24(0.27)  Forward time: 0.18(0.31)  Batch time: 0.42(0.58)
+2024-03-09 11:33:54,254   INFO  Train:    1/5 ( 20%) [ 449/5480 (  8%)]  Loss: 22.78 (27.8)  LR: 1.037e-04  Time cost: 04:16/47:51 [04:17/4:16:23]  Acc_iter 450         Data time: 0.24(0.27)  Forward time: 0.18(0.30)  Batch time: 0.42(0.57)
+2024-03-09 11:33:54,260   INFO  
+2024-03-09 11:34:19,301   INFO  Train:    1/5 ( 20%) [ 499/5480 (  9%)]  Loss: 18.92 (27.1)  LR: 1.046e-04  Time cost: 04:41/46:48 [04:42/4:12:46]  Acc_iter 500         Data time: 0.20(0.27)  Forward time: 0.20(0.30)  Batch time: 0.40(0.56)
+2024-03-09 11:34:37,887   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 11:34:44,816   INFO  Train:    1/5 ( 20%) [ 549/5480 ( 10%)]  Loss: 21.19 (26.5)  LR: 1.056e-04  Time cost: 05:07/45:56 [05:07/4:10:08]  Acc_iter 550         Data time: 0.28(0.27)  Forward time: 0.24(0.29)  Batch time: 0.52(0.56)
+2024-03-09 11:35:09,190   INFO  Train:    1/5 ( 20%) [ 599/5480 ( 11%)]  Loss: 20.37 (25.9)  LR: 1.066e-04  Time cost: 05:31/44:59 [05:31/4:07:00]  Acc_iter 600         Data time: 0.23(0.27)  Forward time: 0.18(0.29)  Batch time: 0.41(0.55)
+2024-03-09 11:35:09,201   INFO  
+2024-03-09 11:35:34,939   INFO  Train:    1/5 ( 20%) [ 649/5480 ( 12%)]  Loss: 18.58 (25.4)  LR: 1.078e-04  Time cost: 05:57/44:17 [05:57/4:05:14]  Acc_iter 650         Data time: 0.20(0.27)  Forward time: 0.24(0.28)  Batch time: 0.45(0.55)
+2024-03-09 11:36:00,487   INFO  Train:    1/5 ( 20%) [ 699/5480 ( 13%)]  Loss: 20.19 (25.0)  LR: 1.090e-04  Time cost: 06:23/43:36 [06:23/4:03:32]  Acc_iter 700         Data time: 0.30(0.26)  Forward time: 0.28(0.28)  Batch time: 0.57(0.55)
+2024-03-09 11:36:25,770   INFO  Train:    1/5 ( 20%) [ 749/5480 ( 14%)]  Loss: 19.79 (24.6)  LR: 1.103e-04  Time cost: 06:48/42:55 [06:48/4:01:51]  Acc_iter 750         Data time: 0.28(0.26)  Forward time: 0.28(0.28)  Batch time: 0.55(0.54)
+2024-03-09 11:36:25,777   INFO  
+2024-03-09 11:36:51,688   INFO  Train:    1/5 ( 20%) [ 799/5480 ( 15%)]  Loss: 17.34 (24.2)  LR: 1.118e-04  Time cost: 07:14/42:21 [07:14/4:00:40]  Acc_iter 800         Data time: 0.32(0.26)  Forward time: 0.26(0.28)  Batch time: 0.58(0.54)
+2024-03-09 11:37:16,297   INFO  Train:    1/5 ( 20%) [ 849/5480 ( 15%)]  Loss: 16.75 (23.9)  LR: 1.133e-04  Time cost: 07:38/41:40 [07:39/3:58:54]  Acc_iter 850         Data time: 0.27(0.26)  Forward time: 0.25(0.28)  Batch time: 0.52(0.54)
+2024-03-09 11:37:40,827   INFO  Train:    1/5 ( 20%) [ 899/5480 ( 16%)]  Loss: 17.36 (23.6)  LR: 1.149e-04  Time cost: 08:03/41:00 [08:03/3:57:14]  Acc_iter 900         Data time: 0.21(0.26)  Forward time: 0.23(0.27)  Batch time: 0.43(0.54)
+2024-03-09 11:37:40,834   INFO  
+2024-03-09 11:38:05,583   INFO  Train:    1/5 ( 20%) [ 949/5480 ( 17%)]  Loss: 16.92 (23.3)  LR: 1.165e-04  Time cost: 08:28/40:23 [08:28/3:55:49]  Acc_iter 950         Data time: 0.21(0.26)  Forward time: 0.25(0.27)  Batch time: 0.46(0.53)
+2024-03-09 11:38:30,987   INFO  Train:    1/5 ( 20%) [ 999/5480 ( 18%)]  Loss: 18.51 (23.1)  LR: 1.183e-04  Time cost: 08:53/39:50 [08:53/3:54:47]  Acc_iter 1000        Data time: 0.31(0.26)  Forward time: 0.17(0.27)  Batch time: 0.48(0.53)
+2024-03-09 11:38:55,541   INFO  Train:    1/5 ( 20%) [1049/5480 ( 19%)]  Loss: 16.40 (22.8)  LR: 1.202e-04  Time cost: 09:18/39:15 [09:18/3:53:27]  Acc_iter 1050        Data time: 0.26(0.26)  Forward time: 0.24(0.27)  Batch time: 0.50(0.53)
+2024-03-09 11:38:55,542   INFO  
+2024-03-09 11:39:21,375   INFO  Train:    1/5 ( 20%) [1099/5480 ( 20%)]  Loss: 18.04 (22.6)  LR: 1.221e-04  Time cost: 09:43/38:45 [09:44/3:52:42]  Acc_iter 1100        Data time: 0.24(0.26)  Forward time: 0.24(0.27)  Batch time: 0.48(0.53)
+2024-03-09 11:39:37,919   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 11:39:46,637   INFO  Train:    1/5 ( 20%) [1149/5480 ( 21%)]  Loss: 18.24 (22.3)  LR: 1.242e-04  Time cost: 10:09/38:14 [10:09/3:51:47]  Acc_iter 1150        Data time: 0.33(0.26)  Forward time: 0.23(0.27)  Batch time: 0.56(0.53)
+2024-03-09 11:40:11,653   INFO  Train:    1/5 ( 20%) [1199/5480 ( 22%)]  Loss: 16.68 (22.1)  LR: 1.263e-04  Time cost: 10:34/37:42 [10:34/3:50:48]  Acc_iter 1200        Data time: 0.30(0.26)  Forward time: 0.26(0.27)  Batch time: 0.56(0.53)
+2024-03-09 11:40:11,659   INFO  
+2024-03-09 11:40:37,034   INFO  Train:    1/5 ( 20%) [1249/5480 ( 23%)]  Loss: 16.07 (21.9)  LR: 1.285e-04  Time cost: 10:59/37:12 [10:59/3:50:00]  Acc_iter 1250        Data time: 0.31(0.26)  Forward time: 0.25(0.26)  Batch time: 0.57(0.53)
+2024-03-09 11:41:02,387   INFO  Train:    1/5 ( 20%) [1299/5480 ( 24%)]  Loss: 17.22 (21.7)  LR: 1.308e-04  Time cost: 11:24/36:43 [11:25/3:49:12]  Acc_iter 1300        Data time: 0.34(0.26)  Forward time: 0.24(0.26)  Batch time: 0.58(0.53)
+2024-03-09 11:41:28,054   INFO  Train:    1/5 ( 20%) [1349/5480 ( 25%)]  Loss: 14.59 (21.6)  LR: 1.332e-04  Time cost: 11:50/36:14 [11:50/3:48:33]  Acc_iter 1350        Data time: 0.24(0.26)  Forward time: 0.19(0.26)  Batch time: 0.43(0.53)
+2024-03-09 11:41:28,062   INFO  
+2024-03-09 11:41:53,445   INFO  Train:    1/5 ( 20%) [1399/5480 ( 26%)]  Loss: 17.80 (21.4)  LR: 1.357e-04  Time cost: 12:16/35:45 [12:16/3:47:49]  Acc_iter 1400        Data time: 0.16(0.26)  Forward time: 0.27(0.26)  Batch time: 0.42(0.53)
+2024-03-09 11:42:18,554   INFO  Train:    1/5 ( 20%) [1449/5480 ( 26%)]  Loss: 15.54 (21.2)  LR: 1.383e-04  Time cost: 12:41/35:16 [12:41/3:47:02]  Acc_iter 1450        Data time: 0.20(0.26)  Forward time: 0.22(0.26)  Batch time: 0.42(0.52)
+2024-03-09 11:42:44,683   INFO  Train:    1/5 ( 20%) [1499/5480 ( 27%)]  Loss: 15.68 (21.1)  LR: 1.409e-04  Time cost: 13:07/34:49 [13:07/3:46:34]  Acc_iter 1500        Data time: 0.28(0.26)  Forward time: 0.22(0.26)  Batch time: 0.50(0.52)
+2024-03-09 11:42:44,684   INFO  
+2024-03-09 11:43:09,991   INFO  Train:    1/5 ( 20%) [1549/5480 ( 28%)]  Loss: 15.81 (20.9)  LR: 1.436e-04  Time cost: 13:32/34:20 [13:32/3:45:52]  Acc_iter 1550        Data time: 0.23(0.26)  Forward time: 0.19(0.26)  Batch time: 0.42(0.52)
+2024-03-09 11:43:35,592   INFO  Train:    1/5 ( 20%) [1599/5480 ( 29%)]  Loss: 15.45 (20.8)  LR: 1.464e-04  Time cost: 13:58/33:53 [13:58/3:45:16]  Acc_iter 1600        Data time: 0.20(0.26)  Forward time: 0.21(0.26)  Batch time: 0.41(0.52)
+2024-03-09 11:44:01,855   INFO  Train:    1/5 ( 20%) [1649/5480 ( 30%)]  Loss: 16.67 (20.7)  LR: 1.493e-04  Time cost: 14:24/33:27 [14:24/3:44:51]  Acc_iter 1650        Data time: 0.28(0.26)  Forward time: 0.21(0.26)  Batch time: 0.49(0.52)
+2024-03-09 11:44:01,862   INFO  
+2024-03-09 11:44:27,157   INFO  Train:    1/5 ( 20%) [1699/5480 ( 31%)]  Loss: 16.42 (20.5)  LR: 1.523e-04  Time cost: 14:49/32:58 [14:49/3:44:11]  Acc_iter 1700        Data time: 0.24(0.26)  Forward time: 0.33(0.26)  Batch time: 0.57(0.52)
+2024-03-09 11:44:37,606   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 11:44:53,017   INFO  Train:    1/5 ( 20%) [1749/5480 ( 32%)]  Loss: 14.58 (20.4)  LR: 1.554e-04  Time cost: 15:15/32:32 [15:15/3:43:40]  Acc_iter 1750        Data time: 0.28(0.26)  Forward time: 0.20(0.26)  Batch time: 0.48(0.52)
+2024-03-09 11:45:18,911   INFO  Train:    1/5 ( 20%) [1799/5480 ( 33%)]  Loss: 13.75 (20.3)  LR: 1.585e-04  Time cost: 15:41/32:05 [15:41/3:43:10]  Acc_iter 1800        Data time: 0.23(0.26)  Forward time: 0.26(0.26)  Batch time: 0.49(0.52)
+2024-03-09 11:45:18,912   INFO  
+2024-03-09 11:45:44,584   INFO  Train:    1/5 ( 20%) [1849/5480 ( 34%)]  Loss: 17.49 (20.2)  LR: 1.617e-04  Time cost: 16:07/31:38 [16:07/3:42:38]  Acc_iter 1850        Data time: 0.22(0.26)  Forward time: 0.29(0.26)  Batch time: 0.51(0.52)
+2024-03-09 11:46:09,809   INFO  Train:    1/5 ( 20%) [1899/5480 ( 35%)]  Loss: 16.07 (20.0)  LR: 1.650e-04  Time cost: 16:32/31:10 [16:32/3:41:59]  Acc_iter 1900        Data time: 0.23(0.26)  Forward time: 0.22(0.26)  Batch time: 0.45(0.52)
+2024-03-09 11:46:35,050   INFO  Train:    1/5 ( 20%) [1949/5480 ( 36%)]  Loss: 14.69 (19.9)  LR: 1.684e-04  Time cost: 16:57/30:42 [16:57/3:41:22]  Acc_iter 1950        Data time: 0.23(0.26)  Forward time: 0.24(0.26)  Batch time: 0.47(0.52)
+2024-03-09 11:46:35,058   INFO  
+2024-03-09 11:47:00,656   INFO  Train:    1/5 ( 20%) [1999/5480 ( 36%)]  Loss: 13.93 (19.8)  LR: 1.719e-04  Time cost: 17:23/30:15 [17:23/3:40:49]  Acc_iter 2000        Data time: 0.24(0.26)  Forward time: 0.30(0.26)  Batch time: 0.54(0.52)
+2024-03-09 11:47:26,286   INFO  Train:    1/5 ( 20%) [2049/5480 ( 37%)]  Loss: 14.19 (19.7)  LR: 1.754e-04  Time cost: 17:48/29:48 [17:49/3:40:18]  Acc_iter 2050        Data time: 0.30(0.26)  Forward time: 0.19(0.26)  Batch time: 0.49(0.52)
+2024-03-09 11:47:50,867   INFO  Train:    1/5 ( 20%) [2099/5480 ( 38%)]  Loss: 15.55 (19.6)  LR: 1.790e-04  Time cost: 18:13/29:20 [18:13/3:39:34]  Acc_iter 2100        Data time: 0.29(0.26)  Forward time: 0.20(0.26)  Batch time: 0.49(0.52)
+2024-03-09 11:47:50,875   INFO  
+2024-03-09 11:48:16,814   INFO  Train:    1/5 ( 20%) [2149/5480 ( 39%)]  Loss: 12.93 (19.5)  LR: 1.827e-04  Time cost: 18:39/28:54 [18:39/3:39:07]  Acc_iter 2150        Data time: 0.30(0.26)  Forward time: 0.18(0.26)  Batch time: 0.48(0.52)
+2024-03-09 11:48:43,224   INFO  Train:    1/5 ( 20%) [2199/5480 ( 40%)]  Loss: 16.76 (19.4)  LR: 1.865e-04  Time cost: 19:05/28:28 [19:06/3:38:45]  Acc_iter 2200        Data time: 0.24(0.26)  Forward time: 0.29(0.26)  Batch time: 0.52(0.52)
+2024-03-09 11:49:08,710   INFO  Train:    1/5 ( 20%) [2249/5480 ( 41%)]  Loss: 18.04 (19.3)  LR: 1.903e-04  Time cost: 19:31/28:02 [19:31/3:38:13]  Acc_iter 2250        Data time: 0.29(0.26)  Forward time: 0.23(0.26)  Batch time: 0.52(0.52)
+2024-03-09 11:49:08,711   INFO  
+2024-03-09 11:49:34,326   INFO  Train:    1/5 ( 20%) [2299/5480 ( 42%)]  Loss: 14.01 (19.3)  LR: 1.942e-04  Time cost: 19:56/27:35 [19:57/3:37:42]  Acc_iter 2300        Data time: 0.29(0.26)  Forward time: 0.20(0.26)  Batch time: 0.49(0.52)
+2024-03-09 11:49:38,054   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 11:50:00,102   INFO  Train:    1/5 ( 20%) [2349/5480 ( 43%)]  Loss: 15.52 (19.2)  LR: 1.982e-04  Time cost: 20:22/27:09 [20:22/3:37:13]  Acc_iter 2350        Data time: 0.20(0.26)  Forward time: 0.24(0.26)  Batch time: 0.44(0.52)
+2024-03-09 11:50:25,891   INFO  Train:    1/5 ( 20%) [2399/5480 ( 44%)]  Loss: 14.79 (19.1)  LR: 2.023e-04  Time cost: 20:48/26:42 [20:48/3:36:45]  Acc_iter 2400        Data time: 0.28(0.26)  Forward time: 0.22(0.26)  Batch time: 0.50(0.52)
+2024-03-09 11:50:25,898   INFO  
+2024-03-09 11:50:51,610   INFO  Train:    1/5 ( 20%) [2449/5480 ( 45%)]  Loss: 14.85 (19.0)  LR: 2.064e-04  Time cost: 21:14/26:16 [21:14/3:36:16]  Acc_iter 2450        Data time: 0.29(0.26)  Forward time: 0.28(0.26)  Batch time: 0.58(0.52)
+2024-03-09 11:51:17,486   INFO  Train:    1/5 ( 20%) [2499/5480 ( 46%)]  Loss: 13.95 (18.9)  LR: 2.106e-04  Time cost: 21:40/25:50 [21:40/3:35:49]  Acc_iter 2500        Data time: 0.18(0.26)  Forward time: 0.22(0.26)  Batch time: 0.40(0.52)
+2024-03-09 11:51:43,009   INFO  Train:    1/5 ( 20%) [2549/5480 ( 47%)]  Loss: 13.48 (18.9)  LR: 2.149e-04  Time cost: 22:05/25:23 [22:05/3:35:18]  Acc_iter 2550        Data time: 0.18(0.26)  Forward time: 0.18(0.26)  Batch time: 0.36(0.52)
+2024-03-09 11:51:43,010   INFO  
+2024-03-09 11:52:08,568   INFO  Train:    1/5 ( 20%) [2599/5480 ( 47%)]  Loss: 14.55 (18.8)  LR: 2.192e-04  Time cost: 22:31/24:57 [22:31/3:34:48]  Acc_iter 2600        Data time: 0.33(0.26)  Forward time: 0.25(0.26)  Batch time: 0.59(0.52)
+2024-03-09 11:52:34,248   INFO  Train:    1/5 ( 20%) [2649/5480 ( 48%)]  Loss: 14.23 (18.7)  LR: 2.236e-04  Time cost: 22:56/24:30 [22:57/3:34:19]  Acc_iter 2650        Data time: 0.28(0.26)  Forward time: 0.24(0.26)  Batch time: 0.52(0.52)
+2024-03-09 11:53:01,237   INFO  Train:    1/5 ( 20%) [2699/5480 ( 49%)]  Loss: 14.26 (18.6)  LR: 2.281e-04  Time cost: 23:23/24:05 [23:24/3:34:03]  Acc_iter 2700        Data time: 0.30(0.26)  Forward time: 0.28(0.26)  Batch time: 0.57(0.52)
+2024-03-09 11:53:01,246   INFO  
+2024-03-09 11:53:26,628   INFO  Train:    1/5 ( 20%) [2749/5480 ( 50%)]  Loss: 12.90 (18.6)  LR: 2.326e-04  Time cost: 23:49/23:39 [23:49/3:33:31]  Acc_iter 2750        Data time: 0.25(0.26)  Forward time: 0.21(0.25)  Batch time: 0.46(0.52)
+2024-03-09 11:53:51,118   INFO  Train:    1/5 ( 20%) [2799/5480 ( 51%)]  Loss: 17.08 (18.5)  LR: 2.372e-04  Time cost: 24:13/23:11 [24:13/3:32:52]  Acc_iter 2800        Data time: 0.31(0.26)  Forward time: 0.21(0.25)  Batch time: 0.52(0.52)
+2024-03-09 11:54:17,025   INFO  Train:    1/5 ( 20%) [2849/5480 ( 52%)]  Loss: 15.19 (18.4)  LR: 2.419e-04  Time cost: 24:39/22:45 [24:39/3:32:26]  Acc_iter 2850        Data time: 0.21(0.26)  Forward time: 0.20(0.25)  Batch time: 0.42(0.52)
+2024-03-09 11:54:17,026   INFO  
+2024-03-09 11:54:37,566   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 11:54:42,996   INFO  Train:    1/5 ( 20%) [2899/5480 ( 53%)]  Loss: 17.42 (18.4)  LR: 2.466e-04  Time cost: 25:05/22:19 [25:05/3:32:00]  Acc_iter 2900        Data time: 0.22(0.26)  Forward time: 0.23(0.25)  Batch time: 0.45(0.52)
+2024-03-09 11:55:08,310   INFO  Train:    1/5 ( 20%) [2949/5480 ( 54%)]  Loss: 15.60 (18.3)  LR: 2.514e-04  Time cost: 25:30/21:53 [25:31/3:31:28]  Acc_iter 2950        Data time: 0.21(0.26)  Forward time: 0.25(0.25)  Batch time: 0.46(0.52)
+2024-03-09 11:55:33,321   INFO  Train:    1/5 ( 20%) [2999/5480 ( 55%)]  Loss: 13.33 (18.2)  LR: 2.563e-04  Time cost: 25:55/21:26 [25:56/3:30:55]  Acc_iter 3000        Data time: 0.21(0.26)  Forward time: 0.26(0.25)  Batch time: 0.47(0.52)
+2024-03-09 11:55:33,322   INFO  
+2024-03-09 11:55:58,110   INFO  Train:    1/5 ( 20%) [3049/5480 ( 56%)]  Loss: 12.80 (18.2)  LR: 2.612e-04  Time cost: 26:20/20:59 [26:20/3:30:20]  Acc_iter 3050        Data time: 0.24(0.26)  Forward time: 0.22(0.25)  Batch time: 0.47(0.52)
+2024-03-09 11:56:24,402   INFO  Train:    1/5 ( 20%) [3099/5480 ( 57%)]  Loss: 14.02 (18.1)  LR: 2.662e-04  Time cost: 26:47/20:34 [26:47/3:29:57]  Acc_iter 3100        Data time: 0.33(0.26)  Forward time: 0.25(0.25)  Batch time: 0.58(0.52)
+2024-03-09 11:56:49,638   INFO  Train:    1/5 ( 20%) [3149/5480 ( 57%)]  Loss: 14.60 (18.1)  LR: 2.712e-04  Time cost: 27:12/20:07 [27:12/3:29:26]  Acc_iter 3150        Data time: 0.35(0.26)  Forward time: 0.29(0.25)  Batch time: 0.64(0.52)
+2024-03-09 11:56:49,645   INFO  
+2024-03-09 11:57:15,475   INFO  Train:    1/5 ( 20%) [3199/5480 ( 58%)]  Loss: 12.74 (18.0)  LR: 2.763e-04  Time cost: 27:38/19:41 [27:38/3:28:59]  Acc_iter 3200        Data time: 0.21(0.26)  Forward time: 0.24(0.25)  Batch time: 0.45(0.52)
+2024-03-09 11:57:40,568   INFO  Train:    1/5 ( 20%) [3249/5480 ( 59%)]  Loss: 13.98 (18.0)  LR: 2.814e-04  Time cost: 28:03/19:15 [28:03/3:28:27]  Acc_iter 3250        Data time: 0.23(0.26)  Forward time: 0.27(0.25)  Batch time: 0.49(0.52)
+2024-03-09 11:58:05,936   INFO  Train:    1/5 ( 20%) [3299/5480 ( 60%)]  Loss: 13.78 (17.9)  LR: 2.866e-04  Time cost: 28:28/18:49 [28:28/3:27:57]  Acc_iter 3300        Data time: 0.16(0.26)  Forward time: 0.29(0.25)  Batch time: 0.45(0.52)
+2024-03-09 11:58:05,937   INFO  
+2024-03-09 11:58:31,230   INFO  Train:    1/5 ( 20%) [3349/5480 ( 61%)]  Loss: 13.84 (17.8)  LR: 2.919e-04  Time cost: 28:53/18:22 [28:54/3:27:27]  Acc_iter 3350        Data time: 0.28(0.26)  Forward time: 0.28(0.25)  Batch time: 0.56(0.52)
+2024-03-09 11:58:56,114   INFO  Train:    1/5 ( 20%) [3399/5480 ( 62%)]  Loss: 13.37 (17.8)  LR: 2.972e-04  Time cost: 29:18/17:56 [29:18/3:26:54]  Acc_iter 3400        Data time: 0.35(0.26)  Forward time: 0.30(0.25)  Batch time: 0.65(0.52)
+2024-03-09 11:59:22,159   INFO  Train:    1/5 ( 20%) [3449/5480 ( 63%)]  Loss: 14.36 (17.7)  LR: 3.026e-04  Time cost: 29:44/17:30 [29:44/3:26:30]  Acc_iter 3450        Data time: 0.27(0.26)  Forward time: 0.26(0.25)  Batch time: 0.53(0.52)
+2024-03-09 11:59:22,167   INFO  
+2024-03-09 11:59:37,899   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 11:59:48,894   INFO  Train:    1/5 ( 20%) [3499/5480 ( 64%)]  Loss: 13.63 (17.7)  LR: 3.080e-04  Time cost: 30:11/17:05 [30:11/3:26:10]  Acc_iter 3500        Data time: 0.26(0.26)  Forward time: 0.24(0.25)  Batch time: 0.50(0.52)
+2024-03-09 12:00:14,941   INFO  Train:    1/5 ( 20%) [3549/5480 ( 65%)]  Loss: 12.64 (17.6)  LR: 3.134e-04  Time cost: 30:37/16:39 [30:37/3:25:45]  Acc_iter 3550        Data time: 0.19(0.26)  Forward time: 0.27(0.25)  Batch time: 0.46(0.52)
+2024-03-09 12:00:40,002   INFO  Train:    1/5 ( 20%) [3599/5480 ( 66%)]  Loss: 13.09 (17.6)  LR: 3.190e-04  Time cost: 31:02/16:13 [31:02/3:25:14]  Acc_iter 3600        Data time: 0.20(0.26)  Forward time: 0.20(0.25)  Batch time: 0.40(0.52)
+2024-03-09 12:00:40,003   INFO  
+2024-03-09 12:01:06,604   INFO  Train:    1/5 ( 20%) [3649/5480 ( 67%)]  Loss: 11.23 (17.5)  LR: 3.245e-04  Time cost: 31:29/15:47 [31:29/3:24:53]  Acc_iter 3650        Data time: 0.16(0.26)  Forward time: 0.28(0.25)  Batch time: 0.44(0.52)
+2024-03-09 12:01:33,593   INFO  Train:    1/5 ( 20%) [3699/5480 ( 68%)]  Loss: 15.57 (17.5)  LR: 3.301e-04  Time cost: 31:56/15:22 [31:56/3:24:34]  Acc_iter 3700        Data time: 0.30(0.26)  Forward time: 0.23(0.25)  Batch time: 0.53(0.52)
+2024-03-09 12:01:59,932   INFO  Train:    1/5 ( 20%) [3749/5480 ( 68%)]  Loss: 13.55 (17.4)  LR: 3.358e-04  Time cost: 32:22/14:56 [32:22/3:24:11]  Acc_iter 3750        Data time: 0.23(0.26)  Forward time: 0.32(0.25)  Batch time: 0.56(0.52)
+2024-03-09 12:01:59,940   INFO  
+2024-03-09 12:02:25,594   INFO  Train:    1/5 ( 20%) [3799/5480 ( 69%)]  Loss: 12.82 (17.4)  LR: 3.415e-04  Time cost: 32:48/14:30 [32:48/3:23:44]  Acc_iter 3800        Data time: 0.27(0.26)  Forward time: 0.27(0.25)  Batch time: 0.54(0.52)
+2024-03-09 12:02:51,651   INFO  Train:    1/5 ( 20%) [3849/5480 ( 70%)]  Loss: 12.51 (17.4)  LR: 3.472e-04  Time cost: 33:14/14:04 [33:14/3:23:19]  Acc_iter 3850        Data time: 0.23(0.27)  Forward time: 0.22(0.25)  Batch time: 0.45(0.52)
+2024-03-09 12:03:17,446   INFO  Train:    1/5 ( 20%) [3899/5480 ( 71%)]  Loss: 13.61 (17.3)  LR: 3.530e-04  Time cost: 33:40/13:38 [33:40/3:22:52]  Acc_iter 3900        Data time: 0.31(0.27)  Forward time: 0.25(0.25)  Batch time: 0.56(0.52)
+2024-03-09 12:03:17,446   INFO  
+2024-03-09 12:03:42,488   INFO  Train:    1/5 ( 20%) [3949/5480 ( 72%)]  Loss: 14.65 (17.3)  LR: 3.588e-04  Time cost: 34:05/13:12 [34:05/3:22:21]  Acc_iter 3950        Data time: 0.26(0.27)  Forward time: 0.18(0.25)  Batch time: 0.44(0.52)
+2024-03-09 12:04:07,605   INFO  Train:    1/5 ( 20%) [3999/5480 ( 73%)]  Loss: 15.31 (17.2)  LR: 3.647e-04  Time cost: 34:30/12:46 [34:30/3:21:51]  Acc_iter 4000        Data time: 0.18(0.26)  Forward time: 0.22(0.25)  Batch time: 0.40(0.52)
+2024-03-09 12:04:32,642   INFO  Train:    1/5 ( 20%) [4049/5480 ( 74%)]  Loss: 12.75 (17.2)  LR: 3.705e-04  Time cost: 34:55/12:20 [34:55/3:21:20]  Acc_iter 4050        Data time: 0.28(0.26)  Forward time: 0.22(0.25)  Batch time: 0.51(0.52)
+2024-03-09 12:04:32,643   INFO  
+2024-03-09 12:04:37,751   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:04:58,584   INFO  Train:    1/5 ( 20%) [4099/5480 ( 75%)]  Loss: 12.17 (17.2)  LR: 3.765e-04  Time cost: 35:21/11:54 [35:21/3:20:55]  Acc_iter 4100        Data time: 0.19(0.26)  Forward time: 0.34(0.25)  Batch time: 0.53(0.52)
+2024-03-09 12:05:24,084   INFO  Train:    1/5 ( 20%) [4149/5480 ( 76%)]  Loss: 17.87 (17.1)  LR: 3.825e-04  Time cost: 35:46/11:28 [35:46/3:20:27]  Acc_iter 4150        Data time: 0.30(0.26)  Forward time: 0.22(0.25)  Batch time: 0.51(0.52)
+2024-03-09 12:05:50,361   INFO  Train:    1/5 ( 20%) [4199/5480 ( 77%)]  Loss: 12.88 (17.1)  LR: 3.885e-04  Time cost: 36:12/11:02 [36:13/3:20:03]  Acc_iter 4200        Data time: 0.21(0.26)  Forward time: 0.27(0.25)  Batch time: 0.48(0.52)
+2024-03-09 12:05:50,370   INFO  
+2024-03-09 12:06:14,937   INFO  Train:    1/5 ( 20%) [4249/5480 ( 78%)]  Loss: 12.18 (17.0)  LR: 3.945e-04  Time cost: 36:37/10:36 [36:37/3:19:30]  Acc_iter 4250        Data time: 0.21(0.26)  Forward time: 0.21(0.25)  Batch time: 0.42(0.52)
+2024-03-09 12:06:41,592   INFO  Train:    1/5 ( 20%) [4299/5480 ( 78%)]  Loss: 14.57 (17.0)  LR: 4.006e-04  Time cost: 37:04/10:10 [37:04/3:19:09]  Acc_iter 4300        Data time: 0.29(0.27)  Forward time: 0.23(0.25)  Batch time: 0.52(0.52)
+2024-03-09 12:07:07,720   INFO  Train:    1/5 ( 20%) [4349/5480 ( 79%)]  Loss: 11.73 (17.0)  LR: 4.067e-04  Time cost: 37:30/09:45 [37:30/3:18:44]  Acc_iter 4350        Data time: 0.32(0.27)  Forward time: 0.20(0.25)  Batch time: 0.52(0.52)
+2024-03-09 12:07:07,721   INFO  
+2024-03-09 12:07:32,656   INFO  Train:    1/5 ( 20%) [4399/5480 ( 80%)]  Loss: 15.11 (16.9)  LR: 4.128e-04  Time cost: 37:55/09:18 [37:55/3:18:13]  Acc_iter 4400        Data time: 0.24(0.27)  Forward time: 0.29(0.25)  Batch time: 0.52(0.52)
+2024-03-09 12:07:58,768   INFO  Train:    1/5 ( 20%) [4449/5480 ( 81%)]  Loss: 13.04 (16.9)  LR: 4.189e-04  Time cost: 38:21/08:53 [38:21/3:17:49]  Acc_iter 4450        Data time: 0.20(0.27)  Forward time: 0.20(0.25)  Batch time: 0.40(0.52)
+2024-03-09 12:08:24,720   INFO  Train:    1/5 ( 20%) [4499/5480 ( 82%)]  Loss: 13.48 (16.9)  LR: 4.251e-04  Time cost: 38:47/08:27 [38:47/3:17:23]  Acc_iter 4500        Data time: 0.25(0.27)  Forward time: 0.27(0.25)  Batch time: 0.51(0.52)
+2024-03-09 12:08:24,727   INFO  
+2024-03-09 12:08:49,914   INFO  Train:    1/5 ( 20%) [4549/5480 ( 83%)]  Loss: 14.83 (16.8)  LR: 4.313e-04  Time cost: 39:12/08:01 [39:12/3:16:54]  Acc_iter 4550        Data time: 0.23(0.27)  Forward time: 0.21(0.25)  Batch time: 0.44(0.52)
+2024-03-09 12:09:14,301   INFO  Train:    1/5 ( 20%) [4599/5480 ( 84%)]  Loss: 13.62 (16.8)  LR: 4.376e-04  Time cost: 39:36/07:35 [39:37/3:16:21]  Acc_iter 4600        Data time: 0.19(0.26)  Forward time: 0.26(0.25)  Batch time: 0.45(0.52)
+2024-03-09 12:09:38,039   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:09:40,262   INFO  Train:    1/5 ( 20%) [4649/5480 ( 85%)]  Loss: 14.30 (16.7)  LR: 4.438e-04  Time cost: 40:02/07:09 [40:03/3:15:56]  Acc_iter 4650        Data time: 0.28(0.27)  Forward time: 0.19(0.25)  Batch time: 0.47(0.52)
+2024-03-09 12:09:40,263   INFO  
+2024-03-09 12:10:06,221   INFO  Train:    1/5 ( 20%) [4699/5480 ( 86%)]  Loss: 13.04 (16.7)  LR: 4.501e-04  Time cost: 40:28/06:43 [40:29/3:15:31]  Acc_iter 4700        Data time: 0.25(0.27)  Forward time: 0.33(0.25)  Batch time: 0.59(0.52)
+2024-03-09 12:10:31,630   INFO  Train:    1/5 ( 20%) [4749/5480 ( 87%)]  Loss: 14.99 (16.7)  LR: 4.564e-04  Time cost: 40:54/06:17 [40:54/3:15:03]  Acc_iter 4750        Data time: 0.31(0.27)  Forward time: 0.19(0.25)  Batch time: 0.50(0.52)
+2024-03-09 12:10:57,983   INFO  Train:    1/5 ( 20%) [4799/5480 ( 88%)]  Loss: 14.21 (16.6)  LR: 4.627e-04  Time cost: 41:20/05:51 [41:20/3:14:39]  Acc_iter 4800        Data time: 0.28(0.27)  Forward time: 0.26(0.25)  Batch time: 0.54(0.52)
+2024-03-09 12:10:57,984   INFO  
+2024-03-09 12:11:23,831   INFO  Train:    1/5 ( 20%) [4849/5480 ( 88%)]  Loss: 12.90 (16.6)  LR: 4.691e-04  Time cost: 41:46/05:26 [41:46/3:14:14]  Acc_iter 4850        Data time: 0.18(0.27)  Forward time: 0.27(0.25)  Batch time: 0.45(0.52)
+2024-03-09 12:11:49,290   INFO  Train:    1/5 ( 20%) [4899/5480 ( 89%)]  Loss: 10.53 (16.6)  LR: 4.754e-04  Time cost: 42:11/05:00 [42:12/3:13:46]  Acc_iter 4900        Data time: 0.24(0.27)  Forward time: 0.22(0.25)  Batch time: 0.46(0.52)
+2024-03-09 12:12:14,857   INFO  Train:    1/5 ( 20%) [4949/5480 ( 90%)]  Loss: 15.17 (16.5)  LR: 4.818e-04  Time cost: 42:37/04:34 [42:37/3:13:19]  Acc_iter 4950        Data time: 0.31(0.27)  Forward time: 0.22(0.25)  Batch time: 0.53(0.52)
+2024-03-09 12:12:14,859   INFO  
+2024-03-09 12:12:40,774   INFO  Train:    1/5 ( 20%) [4999/5480 ( 91%)]  Loss: 13.42 (16.5)  LR: 4.882e-04  Time cost: 43:03/04:08 [43:03/3:12:54]  Acc_iter 5000        Data time: 0.27(0.27)  Forward time: 0.26(0.25)  Batch time: 0.53(0.52)
+2024-03-09 12:13:06,478   INFO  Train:    1/5 ( 20%) [5049/5480 ( 92%)]  Loss: 11.98 (16.5)  LR: 4.945e-04  Time cost: 43:29/03:42 [43:29/3:12:27]  Acc_iter 5050        Data time: 0.20(0.27)  Forward time: 0.28(0.25)  Batch time: 0.48(0.52)
+2024-03-09 12:13:31,808   INFO  Train:    1/5 ( 20%) [5099/5480 ( 93%)]  Loss: 13.93 (16.4)  LR: 5.010e-04  Time cost: 43:54/03:16 [43:54/3:11:59]  Acc_iter 5100        Data time: 0.24(0.27)  Forward time: 0.25(0.25)  Batch time: 0.50(0.52)
+2024-03-09 12:13:31,816   INFO  
+2024-03-09 12:13:56,383   INFO  Train:    1/5 ( 20%) [5149/5480 ( 94%)]  Loss: 12.41 (16.4)  LR: 5.074e-04  Time cost: 44:18/02:50 [44:19/3:11:28]  Acc_iter 5150        Data time: 0.17(0.27)  Forward time: 0.24(0.25)  Batch time: 0.40(0.52)
+2024-03-09 12:14:21,996   INFO  Train:    1/5 ( 20%) [5199/5480 ( 95%)]  Loss: 12.41 (16.4)  LR: 5.138e-04  Time cost: 44:44/02:25 [44:44/3:11:01]  Acc_iter 5200        Data time: 0.26(0.27)  Forward time: 0.25(0.25)  Batch time: 0.51(0.52)
+2024-03-09 12:14:37,905   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:14:47,391   INFO  Train:    1/5 ( 20%) [5249/5480 ( 96%)]  Loss: 13.17 (16.4)  LR: 5.202e-04  Time cost: 45:09/01:59 [45:10/3:10:34]  Acc_iter 5250        Data time: 0.32(0.27)  Forward time: 0.27(0.25)  Batch time: 0.60(0.52)
+2024-03-09 12:14:47,392   INFO  
+2024-03-09 12:15:13,051   INFO  Train:    1/5 ( 20%) [5299/5480 ( 97%)]  Loss: 14.24 (16.3)  LR: 5.267e-04  Time cost: 45:35/01:33 [45:35/3:10:07]  Acc_iter 5300        Data time: 0.31(0.27)  Forward time: 0.22(0.25)  Batch time: 0.53(0.52)
+2024-03-09 12:15:39,345   INFO  Train:    1/5 ( 20%) [5349/5480 ( 98%)]  Loss: 15.44 (16.3)  LR: 5.331e-04  Time cost: 46:01/01:07 [46:02/3:09:43]  Acc_iter 5350        Data time: 0.24(0.27)  Forward time: 0.25(0.25)  Batch time: 0.49(0.52)
+2024-03-09 12:16:04,691   INFO  Train:    1/5 ( 20%) [5399/5480 ( 99%)]  Loss: 17.53 (16.3)  LR: 5.396e-04  Time cost: 46:27/00:41 [46:27/3:09:16]  Acc_iter 5400        Data time: 0.30(0.27)  Forward time: 0.21(0.25)  Batch time: 0.51(0.52)
+2024-03-09 12:16:04,692   INFO  
+2024-03-09 12:16:30,198   INFO  Train:    1/5 ( 20%) [5449/5480 ( 99%)]  Loss: 14.84 (16.2)  LR: 5.460e-04  Time cost: 46:52/00:15 [46:52/3:08:49]  Acc_iter 5450        Data time: 0.31(0.27)  Forward time: 0.22(0.25)  Batch time: 0.52(0.52)
+2024-03-09 12:16:45,771   INFO  Train:    1/5 ( 20%) [5479/5480 (100%)]  Loss: 11.20 (16.2)  LR: 5.499e-04  Time cost: 47:08/00:00 [47:08/3:08:33]  Acc_iter 5480        Data time: 0.30(0.27)  Forward time: 0.19(0.25)  Batch time: 0.49(0.52)
+2024-03-09 12:16:47,773   INFO  Train:    2/5 ( 40%) [   0/5480 (  0%)]  Loss: 13.66 (13.7)  LR: 5.500e-04  Time cost: 00:01/2:47:18 [47:10/11:09:14]  Acc_iter 5481        Data time: 0.83(0.83)  Forward time: 0.81(0.81)  Batch time: 1.64(1.64)
+2024-03-09 12:16:57,871   INFO  Train:    2/5 ( 40%) [  19/5480 (  0%)]  Loss: 11.79 (13.1)  LR: 5.525e-04  Time cost: 00:11/54:17 [47:20/3:37:44]  Acc_iter 5500        Data time: 0.28(0.30)  Forward time: 0.31(0.28)  Batch time: 0.58(0.58)
+2024-03-09 12:17:23,811   INFO  Train:    2/5 ( 40%) [  69/5480 (  1%)]  Loss: 11.70 (13.0)  LR: 5.589e-04  Time cost: 00:37/48:47 [47:46/3:17:01]  Acc_iter 5550        Data time: 0.33(0.28)  Forward time: 0.25(0.26)  Batch time: 0.59(0.54)
+2024-03-09 12:17:23,819   INFO  
+2024-03-09 12:17:48,986   INFO  Train:    2/5 ( 40%) [ 119/5480 (  2%)]  Loss: 15.26 (13.0)  LR: 5.653e-04  Time cost: 01:03/46:56 [48:11/3:10:53]  Acc_iter 5600        Data time: 0.23(0.27)  Forward time: 0.21(0.25)  Batch time: 0.44(0.52)
+2024-03-09 12:18:15,173   INFO  Train:    2/5 ( 40%) [ 169/5480 (  3%)]  Loss: 13.03 (13.1)  LR: 5.718e-04  Time cost: 01:29/46:27 [48:37/3:10:16]  Acc_iter 5650        Data time: 0.34(0.27)  Forward time: 0.29(0.25)  Batch time: 0.63(0.52)
+2024-03-09 12:18:40,681   INFO  Train:    2/5 ( 40%) [ 219/5480 (  4%)]  Loss: 12.91 (13.1)  LR: 5.782e-04  Time cost: 01:54/45:43 [49:03/3:08:38]  Acc_iter 5700        Data time: 0.29(0.27)  Forward time: 0.23(0.25)  Batch time: 0.52(0.52)
+2024-03-09 12:18:40,688   INFO  
+2024-03-09 12:19:07,428   INFO  Train:    2/5 ( 40%) [ 269/5480 (  5%)]  Loss: 12.13 (13.1)  LR: 5.847e-04  Time cost: 02:21/45:30 [49:30/3:09:05]  Acc_iter 5750        Data time: 0.23(0.27)  Forward time: 0.23(0.25)  Batch time: 0.46(0.52)
+2024-03-09 12:19:32,794   INFO  Train:    2/5 ( 40%) [ 319/5480 (  6%)]  Loss: 13.10 (13.0)  LR: 5.911e-04  Time cost: 02:46/44:51 [49:55/3:07:43]  Acc_iter 5800        Data time: 0.25(0.27)  Forward time: 0.20(0.25)  Batch time: 0.45(0.52)
+2024-03-09 12:19:57,390   INFO  Train:    2/5 ( 40%) [ 369/5480 (  7%)]  Loss: 12.79 (13.0)  LR: 5.975e-04  Time cost: 03:11/44:04 [50:20/3:05:51]  Acc_iter 5850        Data time: 0.31(0.27)  Forward time: 0.24(0.25)  Batch time: 0.56(0.52)
+2024-03-09 12:19:57,391   INFO  
+2024-03-09 12:20:22,826   INFO  Train:    2/5 ( 40%) [ 419/5480 (  8%)]  Loss: 12.70 (13.0)  LR: 6.039e-04  Time cost: 03:36/43:33 [50:45/3:05:02]  Acc_iter 5900        Data time: 0.30(0.27)  Forward time: 0.17(0.25)  Batch time: 0.47(0.52)
+2024-03-09 12:20:47,255   INFO  Train:    2/5 ( 40%) [ 469/5480 (  9%)]  Loss: 13.13 (12.9)  LR: 6.103e-04  Time cost: 04:01/42:52 [51:10/3:03:33]  Acc_iter 5950        Data time: 0.18(0.27)  Forward time: 0.23(0.25)  Batch time: 0.41(0.51)
+2024-03-09 12:21:12,140   INFO  Train:    2/5 ( 40%) [ 519/5480 (  9%)]  Loss: 12.81 (12.9)  LR: 6.167e-04  Time cost: 04:26/42:19 [51:34/3:02:35]  Acc_iter 6000        Data time: 0.25(0.27)  Forward time: 0.24(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:21:12,141   INFO  
+2024-03-09 12:21:38,156   INFO  Train:    2/5 ( 40%) [ 569/5480 ( 10%)]  Loss: 14.64 (12.9)  LR: 6.231e-04  Time cost: 04:52/41:57 [52:00/3:02:25]  Acc_iter 6050        Data time: 0.34(0.27)  Forward time: 0.29(0.25)  Batch time: 0.64(0.51)
+2024-03-09 12:21:46,197   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:22:04,623   INFO  Train:    2/5 ( 40%) [ 619/5480 ( 11%)]  Loss: 12.42 (12.9)  LR: 6.294e-04  Time cost: 05:18/41:38 [52:27/3:02:28]  Acc_iter 6100        Data time: 0.21(0.27)  Forward time: 0.25(0.25)  Batch time: 0.46(0.51)
+2024-03-09 12:22:30,265   INFO  Train:    2/5 ( 40%) [ 669/5480 ( 12%)]  Loss: 12.57 (12.8)  LR: 6.358e-04  Time cost: 05:44/41:12 [52:53/3:02:01]  Acc_iter 6150        Data time: 0.34(0.27)  Forward time: 0.21(0.25)  Batch time: 0.55(0.51)
+2024-03-09 12:22:30,268   INFO  
+2024-03-09 12:22:55,635   INFO  Train:    2/5 ( 40%) [ 719/5480 ( 13%)]  Loss: 12.95 (12.8)  LR: 6.421e-04  Time cost: 06:09/40:44 [53:18/3:01:25]  Acc_iter 6200        Data time: 0.23(0.27)  Forward time: 0.26(0.25)  Batch time: 0.48(0.51)
+2024-03-09 12:23:20,895   INFO  Train:    2/5 ( 40%) [ 769/5480 ( 14%)]  Loss: 14.01 (12.8)  LR: 6.484e-04  Time cost: 06:34/40:16 [53:43/3:00:48]  Acc_iter 6250        Data time: 0.18(0.26)  Forward time: 0.33(0.25)  Batch time: 0.51(0.51)
+2024-03-09 12:23:47,166   INFO  Train:    2/5 ( 40%) [ 819/5480 ( 15%)]  Loss: 11.15 (12.8)  LR: 6.547e-04  Time cost: 07:01/39:54 [54:09/3:00:39]  Acc_iter 6300        Data time: 0.29(0.27)  Forward time: 0.24(0.25)  Batch time: 0.53(0.51)
+2024-03-09 12:23:47,173   INFO  
+2024-03-09 12:24:13,057   INFO  Train:    2/5 ( 40%) [ 869/5480 ( 16%)]  Loss: 10.55 (12.8)  LR: 6.609e-04  Time cost: 07:27/39:29 [54:35/3:00:18]  Acc_iter 6350        Data time: 0.42(0.27)  Forward time: 0.27(0.25)  Batch time: 0.69(0.51)
+2024-03-09 12:24:37,915   INFO  Train:    2/5 ( 40%) [ 919/5480 ( 17%)]  Loss: 12.40 (12.8)  LR: 6.672e-04  Time cost: 07:51/38:59 [55:00/2:59:33]  Acc_iter 6400        Data time: 0.29(0.26)  Forward time: 0.23(0.25)  Batch time: 0.52(0.51)
+2024-03-09 12:25:03,535   INFO  Train:    2/5 ( 40%) [ 969/5480 ( 18%)]  Loss: 11.36 (12.7)  LR: 6.734e-04  Time cost: 08:17/38:34 [55:26/2:59:07]  Acc_iter 6450        Data time: 0.27(0.26)  Forward time: 0.19(0.25)  Batch time: 0.45(0.51)
+2024-03-09 12:25:03,536   INFO  
+2024-03-09 12:25:29,015   INFO  Train:    2/5 ( 40%) [1019/5480 ( 19%)]  Loss: 12.31 (12.7)  LR: 6.796e-04  Time cost: 08:43/38:07 [55:51/2:58:38]  Acc_iter 6500        Data time: 0.29(0.26)  Forward time: 0.21(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:25:54,527   INFO  Train:    2/5 ( 40%) [1069/5480 ( 20%)]  Loss: 12.40 (12.7)  LR: 6.857e-04  Time cost: 09:08/37:41 [56:17/2:58:10]  Acc_iter 6550        Data time: 0.26(0.26)  Forward time: 0.23(0.25)  Batch time: 0.48(0.51)
+2024-03-09 12:26:20,024   INFO  Train:    2/5 ( 40%) [1119/5480 ( 20%)]  Loss: 11.81 (12.7)  LR: 6.919e-04  Time cost: 09:34/37:15 [56:42/2:57:42]  Acc_iter 6600        Data time: 0.27(0.26)  Forward time: 0.24(0.25)  Batch time: 0.51(0.51)
+2024-03-09 12:26:20,025   INFO  
+2024-03-09 12:26:45,175   INFO  Train:    2/5 ( 40%) [1169/5480 ( 21%)]  Loss: 13.27 (12.7)  LR: 6.980e-04  Time cost: 09:59/36:47 [57:07/2:57:07]  Acc_iter 6650        Data time: 0.28(0.26)  Forward time: 0.22(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:26:46,597   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:27:10,858   INFO  Train:    2/5 ( 40%) [1219/5480 ( 22%)]  Loss: 12.95 (12.7)  LR: 7.041e-04  Time cost: 10:24/36:22 [57:33/2:56:43]  Acc_iter 6700        Data time: 0.30(0.26)  Forward time: 0.33(0.25)  Batch time: 0.63(0.51)
+2024-03-09 12:27:37,763   INFO  Train:    2/5 ( 40%) [1269/5480 ( 23%)]  Loss: 13.14 (12.7)  LR: 7.101e-04  Time cost: 10:51/36:01 [58:00/2:56:39]  Acc_iter 6750        Data time: 0.28(0.27)  Forward time: 0.19(0.25)  Batch time: 0.47(0.51)
+2024-03-09 12:27:37,771   INFO  
+2024-03-09 12:28:02,518   INFO  Train:    2/5 ( 40%) [1319/5480 ( 24%)]  Loss: 11.62 (12.7)  LR: 7.161e-04  Time cost: 11:16/35:32 [58:25/2:55:59]  Acc_iter 6800        Data time: 0.23(0.26)  Forward time: 0.27(0.25)  Batch time: 0.51(0.51)
+2024-03-09 12:28:28,315   INFO  Train:    2/5 ( 40%) [1369/5480 ( 25%)]  Loss: 13.66 (12.7)  LR: 7.221e-04  Time cost: 11:42/35:07 [58:51/2:55:36]  Acc_iter 6850        Data time: 0.28(0.26)  Forward time: 0.29(0.25)  Batch time: 0.57(0.51)
+2024-03-09 12:28:54,443   INFO  Train:    2/5 ( 40%) [1419/5480 ( 26%)]  Loss: 13.29 (12.7)  LR: 7.280e-04  Time cost: 12:08/34:43 [59:17/2:55:17]  Acc_iter 6900        Data time: 0.30(0.26)  Forward time: 0.25(0.25)  Batch time: 0.55(0.51)
+2024-03-09 12:28:54,450   INFO  
+2024-03-09 12:29:20,309   INFO  Train:    2/5 ( 40%) [1469/5480 ( 27%)]  Loss: 13.58 (12.7)  LR: 7.339e-04  Time cost: 12:34/34:18 [59:43/2:54:54]  Acc_iter 6950        Data time: 0.27(0.27)  Forward time: 0.23(0.25)  Batch time: 0.49(0.51)
+2024-03-09 12:29:44,964   INFO  Train:    2/5 ( 40%) [1519/5480 ( 28%)]  Loss: 11.09 (12.7)  LR: 7.398e-04  Time cost: 12:59/33:50 [1:00:07/2:54:15]  Acc_iter 7000        Data time: 0.17(0.26)  Forward time: 0.23(0.25)  Batch time: 0.40(0.51)
+2024-03-09 12:30:10,989   INFO  Train:    2/5 ( 40%) [1569/5480 ( 29%)]  Loss: 12.02 (12.6)  LR: 7.456e-04  Time cost: 13:25/33:25 [1:00:33/2:53:55]  Acc_iter 7050        Data time: 0.22(0.26)  Forward time: 0.21(0.25)  Batch time: 0.43(0.51)
+2024-03-09 12:30:10,990   INFO  
+2024-03-09 12:30:36,706   INFO  Train:    2/5 ( 40%) [1619/5480 ( 30%)]  Loss: 11.57 (12.6)  LR: 7.514e-04  Time cost: 13:50/32:59 [1:00:59/2:53:30]  Acc_iter 7100        Data time: 0.22(0.26)  Forward time: 0.25(0.25)  Batch time: 0.48(0.51)
+2024-03-09 12:31:02,184   INFO  Train:    2/5 ( 40%) [1669/5480 ( 30%)]  Loss: 12.44 (12.6)  LR: 7.572e-04  Time cost: 14:16/32:33 [1:01:24/2:53:03]  Acc_iter 7150        Data time: 0.27(0.26)  Forward time: 0.22(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:31:28,293   INFO  Train:    2/5 ( 40%) [1719/5480 ( 31%)]  Loss: 13.21 (12.6)  LR: 7.629e-04  Time cost: 14:42/32:09 [1:01:51/2:52:43]  Acc_iter 7200        Data time: 0.26(0.26)  Forward time: 0.24(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:31:28,294   INFO  
+2024-03-09 12:31:46,244   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:31:53,612   INFO  Train:    2/5 ( 40%) [1769/5480 ( 32%)]  Loss: 14.39 (12.6)  LR: 7.685e-04  Time cost: 15:07/31:43 [1:02:16/2:52:13]  Acc_iter 7250        Data time: 0.21(0.26)  Forward time: 0.25(0.25)  Batch time: 0.46(0.51)
+2024-03-09 12:32:19,090   INFO  Train:    2/5 ( 40%) [1819/5480 ( 33%)]  Loss: 11.50 (12.6)  LR: 7.741e-04  Time cost: 15:33/31:17 [1:02:41/2:51:46]  Acc_iter 7300        Data time: 0.22(0.26)  Forward time: 0.35(0.25)  Batch time: 0.56(0.51)
+2024-03-09 12:32:44,615   INFO  Train:    2/5 ( 40%) [1869/5480 ( 34%)]  Loss: 13.73 (12.6)  LR: 7.797e-04  Time cost: 15:58/30:51 [1:03:07/2:51:19]  Acc_iter 7350        Data time: 0.28(0.26)  Forward time: 0.20(0.25)  Batch time: 0.48(0.51)
+2024-03-09 12:32:44,623   INFO  
+2024-03-09 12:33:10,774   INFO  Train:    2/5 ( 40%) [1919/5480 ( 35%)]  Loss: 13.34 (12.5)  LR: 7.852e-04  Time cost: 16:24/30:26 [1:03:33/2:50:59]  Acc_iter 7400        Data time: 0.30(0.26)  Forward time: 0.25(0.25)  Batch time: 0.56(0.51)
+2024-03-09 12:33:35,702   INFO  Train:    2/5 ( 40%) [1969/5480 ( 36%)]  Loss: 10.84 (12.5)  LR: 7.907e-04  Time cost: 16:49/29:59 [1:03:58/2:50:26]  Acc_iter 7450        Data time: 0.30(0.26)  Forward time: 0.22(0.25)  Batch time: 0.52(0.51)
+2024-03-09 12:34:01,631   INFO  Train:    2/5 ( 40%) [2019/5480 ( 37%)]  Loss: 12.43 (12.5)  LR: 7.961e-04  Time cost: 17:15/29:34 [1:04:24/2:50:03]  Acc_iter 7500        Data time: 0.30(0.26)  Forward time: 0.24(0.25)  Batch time: 0.54(0.51)
+2024-03-09 12:34:01,639   INFO  
+2024-03-09 12:34:28,077   INFO  Train:    2/5 ( 40%) [2069/5480 ( 38%)]  Loss: 13.79 (12.5)  LR: 8.015e-04  Time cost: 17:42/29:10 [1:04:50/2:49:45]  Acc_iter 7550        Data time: 0.23(0.26)  Forward time: 0.24(0.25)  Batch time: 0.46(0.51)
+2024-03-09 12:34:53,053   INFO  Train:    2/5 ( 40%) [2119/5480 ( 39%)]  Loss: 10.05 (12.5)  LR: 8.068e-04  Time cost: 18:07/28:43 [1:05:15/2:49:13]  Acc_iter 7600        Data time: 0.25(0.26)  Forward time: 0.25(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:35:19,224   INFO  Train:    2/5 ( 40%) [2169/5480 ( 40%)]  Loss: 11.74 (12.5)  LR: 8.121e-04  Time cost: 18:33/28:18 [1:05:42/2:48:52]  Acc_iter 7650        Data time: 0.25(0.26)  Forward time: 0.23(0.25)  Batch time: 0.49(0.51)
+2024-03-09 12:35:19,225   INFO  
+2024-03-09 12:35:45,387   INFO  Train:    2/5 ( 40%) [2219/5480 ( 40%)]  Loss: 13.37 (12.5)  LR: 8.173e-04  Time cost: 18:59/27:53 [1:06:08/2:48:31]  Acc_iter 7700        Data time: 0.38(0.26)  Forward time: 0.23(0.25)  Batch time: 0.61(0.51)
+2024-03-09 12:36:10,536   INFO  Train:    2/5 ( 40%) [2269/5480 ( 41%)]  Loss: 12.96 (12.5)  LR: 8.225e-04  Time cost: 19:24/27:27 [1:06:33/2:48:01]  Acc_iter 7750        Data time: 0.22(0.26)  Forward time: 0.25(0.25)  Batch time: 0.47(0.51)
+2024-03-09 12:36:35,598   INFO  Train:    2/5 ( 40%) [2319/5480 ( 42%)]  Loss: 10.99 (12.5)  LR: 8.276e-04  Time cost: 19:49/27:00 [1:06:58/2:47:31]  Acc_iter 7800        Data time: 0.23(0.26)  Forward time: 0.20(0.25)  Batch time: 0.43(0.51)
+2024-03-09 12:36:35,599   INFO  
+2024-03-09 12:36:46,139   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:37:01,060   INFO  Train:    2/5 ( 40%) [2369/5480 ( 43%)]  Loss: 11.16 (12.4)  LR: 8.326e-04  Time cost: 20:15/26:35 [1:07:23/2:47:03]  Acc_iter 7850        Data time: 0.24(0.26)  Forward time: 0.15(0.25)  Batch time: 0.39(0.51)
+2024-03-09 12:37:26,357   INFO  Train:    2/5 ( 40%) [2419/5480 ( 44%)]  Loss: 12.30 (12.4)  LR: 8.376e-04  Time cost: 20:40/26:08 [1:07:49/2:46:35]  Acc_iter 7900        Data time: 0.29(0.26)  Forward time: 0.18(0.25)  Batch time: 0.47(0.51)
+2024-03-09 12:37:51,469   INFO  Train:    2/5 ( 40%) [2469/5480 ( 45%)]  Loss: 11.96 (12.4)  LR: 8.425e-04  Time cost: 21:05/25:42 [1:08:14/2:46:05]  Acc_iter 7950        Data time: 0.24(0.26)  Forward time: 0.27(0.25)  Batch time: 0.52(0.51)
+2024-03-09 12:37:51,477   INFO  
+2024-03-09 12:38:16,890   INFO  Train:    2/5 ( 40%) [2519/5480 ( 46%)]  Loss: 13.99 (12.4)  LR: 8.474e-04  Time cost: 21:30/25:16 [1:08:39/2:45:38]  Acc_iter 8000        Data time: 0.23(0.26)  Forward time: 0.25(0.25)  Batch time: 0.48(0.51)
+2024-03-09 12:38:41,918   INFO  Train:    2/5 ( 40%) [2569/5480 ( 47%)]  Loss: 10.72 (12.4)  LR: 8.522e-04  Time cost: 21:55/24:50 [1:09:04/2:45:08]  Acc_iter 8050        Data time: 0.22(0.26)  Forward time: 0.20(0.25)  Batch time: 0.42(0.51)
+2024-03-09 12:39:08,061   INFO  Train:    2/5 ( 40%) [2619/5480 ( 48%)]  Loss: 12.40 (12.4)  LR: 8.570e-04  Time cost: 22:22/24:25 [1:09:30/2:44:47]  Acc_iter 8100        Data time: 0.30(0.26)  Forward time: 0.21(0.25)  Batch time: 0.51(0.51)
+2024-03-09 12:39:08,068   INFO  
+2024-03-09 12:39:33,253   INFO  Train:    2/5 ( 40%) [2669/5480 ( 49%)]  Loss: 11.12 (12.4)  LR: 8.617e-04  Time cost: 22:47/23:59 [1:09:56/2:44:18]  Acc_iter 8150        Data time: 0.37(0.26)  Forward time: 0.22(0.25)  Batch time: 0.59(0.51)
+2024-03-09 12:39:58,119   INFO  Train:    2/5 ( 40%) [2719/5480 ( 50%)]  Loss: 10.05 (12.4)  LR: 8.663e-04  Time cost: 23:12/23:33 [1:10:20/2:43:47]  Acc_iter 8200        Data time: 0.19(0.26)  Forward time: 0.28(0.25)  Batch time: 0.46(0.51)
+2024-03-09 12:40:23,532   INFO  Train:    2/5 ( 40%) [2769/5480 ( 51%)]  Loss: 13.12 (12.4)  LR: 8.708e-04  Time cost: 23:37/23:07 [1:10:46/2:43:20]  Acc_iter 8250        Data time: 0.24(0.26)  Forward time: 0.23(0.25)  Batch time: 0.48(0.51)
+2024-03-09 12:40:23,532   INFO  
+2024-03-09 12:40:50,074   INFO  Train:    2/5 ( 40%) [2819/5480 ( 51%)]  Loss: 11.27 (12.3)  LR: 8.753e-04  Time cost: 24:04/22:42 [1:11:12/2:43:01]  Acc_iter 8300        Data time: 0.29(0.26)  Forward time: 0.29(0.25)  Batch time: 0.58(0.51)
+2024-03-09 12:41:16,687   INFO  Train:    2/5 ( 40%) [2869/5480 ( 52%)]  Loss: 12.45 (12.3)  LR: 8.797e-04  Time cost: 24:30/22:18 [1:11:39/2:42:42]  Acc_iter 8350        Data time: 0.32(0.26)  Forward time: 0.27(0.25)  Batch time: 0.59(0.51)
+2024-03-09 12:41:43,354   INFO  Train:    2/5 ( 40%) [2919/5480 ( 53%)]  Loss: 10.16 (12.3)  LR: 8.841e-04  Time cost: 24:57/21:53 [1:12:06/2:42:23]  Acc_iter 8400        Data time: 0.21(0.26)  Forward time: 0.29(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:41:43,355   INFO  
+2024-03-09 12:41:46,219   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:42:08,373   INFO  Train:    2/5 ( 40%) [2969/5480 ( 54%)]  Loss: 11.34 (12.3)  LR: 8.884e-04  Time cost: 25:22/21:27 [1:12:31/2:41:54]  Acc_iter 8450        Data time: 0.26(0.26)  Forward time: 0.22(0.25)  Batch time: 0.48(0.51)
+2024-03-09 12:42:35,132   INFO  Train:    2/5 ( 40%) [3019/5480 ( 55%)]  Loss: 10.71 (12.3)  LR: 8.926e-04  Time cost: 25:49/21:02 [1:12:57/2:41:35]  Acc_iter 8500        Data time: 0.37(0.26)  Forward time: 0.24(0.25)  Batch time: 0.60(0.51)
+2024-03-09 12:43:00,520   INFO  Train:    2/5 ( 40%) [3069/5480 ( 56%)]  Loss: 11.76 (12.3)  LR: 8.967e-04  Time cost: 26:14/20:36 [1:13:23/2:41:08]  Acc_iter 8550        Data time: 0.32(0.26)  Forward time: 0.23(0.25)  Batch time: 0.55(0.51)
+2024-03-09 12:43:00,529   INFO  
+2024-03-09 12:43:25,888   INFO  Train:    2/5 ( 40%) [3119/5480 ( 57%)]  Loss: 10.82 (12.3)  LR: 9.008e-04  Time cost: 26:39/20:10 [1:13:48/2:40:41]  Acc_iter 8600        Data time: 0.28(0.26)  Forward time: 0.25(0.25)  Batch time: 0.54(0.51)
+2024-03-09 12:43:51,232   INFO  Train:    2/5 ( 40%) [3169/5480 ( 58%)]  Loss: 10.78 (12.3)  LR: 9.048e-04  Time cost: 27:05/19:44 [1:14:14/2:40:13]  Acc_iter 8650        Data time: 0.23(0.26)  Forward time: 0.18(0.25)  Batch time: 0.40(0.51)
+2024-03-09 12:44:16,689   INFO  Train:    2/5 ( 40%) [3219/5480 ( 59%)]  Loss: 11.88 (12.3)  LR: 9.088e-04  Time cost: 27:30/19:19 [1:14:39/2:39:47]  Acc_iter 8700        Data time: 0.22(0.26)  Forward time: 0.27(0.25)  Batch time: 0.49(0.51)
+2024-03-09 12:44:16,697   INFO  
+2024-03-09 12:44:41,378   INFO  Train:    2/5 ( 40%) [3269/5480 ( 60%)]  Loss: 10.52 (12.2)  LR: 9.126e-04  Time cost: 27:55/18:52 [1:15:04/2:39:16]  Acc_iter 8750        Data time: 0.25(0.26)  Forward time: 0.26(0.25)  Batch time: 0.51(0.51)
+2024-03-09 12:45:06,571   INFO  Train:    2/5 ( 40%) [3319/5480 ( 61%)]  Loss: 13.62 (12.2)  LR: 9.164e-04  Time cost: 28:20/18:26 [1:15:29/2:38:48]  Acc_iter 8800        Data time: 0.21(0.26)  Forward time: 0.32(0.25)  Batch time: 0.53(0.51)
+2024-03-09 12:45:31,766   INFO  Train:    2/5 ( 40%) [3369/5480 ( 61%)]  Loss: 12.68 (12.2)  LR: 9.201e-04  Time cost: 28:45/18:01 [1:15:54/2:38:20]  Acc_iter 8850        Data time: 0.34(0.26)  Forward time: 0.22(0.25)  Batch time: 0.56(0.51)
+2024-03-09 12:45:31,767   INFO  
+2024-03-09 12:45:57,684   INFO  Train:    2/5 ( 40%) [3419/5480 ( 62%)]  Loss: 11.19 (12.2)  LR: 9.237e-04  Time cost: 29:11/17:35 [1:16:20/2:37:56]  Acc_iter 8900        Data time: 0.28(0.26)  Forward time: 0.31(0.25)  Batch time: 0.59(0.51)
+2024-03-09 12:46:23,803   INFO  Train:    2/5 ( 40%) [3469/5480 ( 63%)]  Loss: 9.665 (12.2)  LR: 9.273e-04  Time cost: 29:37/17:10 [1:16:46/2:37:33]  Acc_iter 8950        Data time: 0.22(0.26)  Forward time: 0.23(0.25)  Batch time: 0.44(0.51)
+2024-03-09 12:46:46,641   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:46:49,476   INFO  Train:    2/5 ( 40%) [3519/5480 ( 64%)]  Loss: 10.15 (12.2)  LR: 9.308e-04  Time cost: 30:03/16:44 [1:17:12/2:37:08]  Acc_iter 9000        Data time: 0.25(0.26)  Forward time: 0.26(0.25)  Batch time: 0.51(0.51)
+2024-03-09 12:46:49,477   INFO  
+2024-03-09 12:47:15,282   INFO  Train:    2/5 ( 40%) [3569/5480 ( 65%)]  Loss: 8.885 (12.2)  LR: 9.342e-04  Time cost: 30:29/16:19 [1:17:38/2:36:43]  Acc_iter 9050        Data time: 0.25(0.26)  Forward time: 0.32(0.25)  Batch time: 0.57(0.51)
+2024-03-09 12:47:40,162   INFO  Train:    2/5 ( 40%) [3619/5480 ( 66%)]  Loss: 12.10 (12.2)  LR: 9.375e-04  Time cost: 30:54/15:53 [1:18:02/2:36:14]  Acc_iter 9100        Data time: 0.23(0.26)  Forward time: 0.22(0.25)  Batch time: 0.46(0.51)
+2024-03-09 12:48:04,569   INFO  Train:    2/5 ( 40%) [3669/5480 ( 67%)]  Loss: 11.18 (12.2)  LR: 9.407e-04  Time cost: 31:18/15:27 [1:18:27/2:35:42]  Acc_iter 9150        Data time: 0.25(0.26)  Forward time: 0.20(0.25)  Batch time: 0.45(0.51)
+2024-03-09 12:48:04,577   INFO  
+2024-03-09 12:48:29,655   INFO  Train:    2/5 ( 40%) [3719/5480 ( 68%)]  Loss: 11.72 (12.1)  LR: 9.439e-04  Time cost: 31:43/15:01 [1:18:52/2:35:14]  Acc_iter 9200        Data time: 0.26(0.26)  Forward time: 0.20(0.25)  Batch time: 0.46(0.51)
+2024-03-09 12:48:55,122   INFO  Train:    2/5 ( 40%) [3769/5480 ( 69%)]  Loss: 11.30 (12.1)  LR: 9.470e-04  Time cost: 32:09/14:35 [1:19:17/2:34:48]  Acc_iter 9250        Data time: 0.20(0.26)  Forward time: 0.22(0.25)  Batch time: 0.42(0.51)
+2024-03-09 12:49:20,309   INFO  Train:    2/5 ( 40%) [3819/5480 ( 70%)]  Loss: 10.66 (12.1)  LR: 9.500e-04  Time cost: 32:34/14:09 [1:19:43/2:34:20]  Acc_iter 9300        Data time: 0.29(0.26)  Forward time: 0.25(0.25)  Batch time: 0.53(0.51)
+2024-03-09 12:49:20,316   INFO  
+2024-03-09 12:49:45,753   INFO  Train:    2/5 ( 40%) [3869/5480 ( 71%)]  Loss: 11.81 (12.1)  LR: 9.529e-04  Time cost: 32:59/13:44 [1:20:08/2:33:54]  Acc_iter 9350        Data time: 0.31(0.26)  Forward time: 0.26(0.25)  Batch time: 0.57(0.51)
+2024-03-09 12:50:12,434   INFO  Train:    2/5 ( 40%) [3919/5480 ( 72%)]  Loss: 11.04 (12.1)  LR: 9.557e-04  Time cost: 33:26/13:19 [1:20:35/2:33:34]  Acc_iter 9400        Data time: 0.26(0.26)  Forward time: 0.26(0.25)  Batch time: 0.52(0.51)
+2024-03-09 12:50:38,623   INFO  Train:    2/5 ( 40%) [3969/5480 ( 72%)]  Loss: 11.28 (12.1)  LR: 9.584e-04  Time cost: 33:52/12:53 [1:21:01/2:33:11]  Acc_iter 9450        Data time: 0.31(0.26)  Forward time: 0.26(0.25)  Batch time: 0.57(0.51)
+2024-03-09 12:50:38,624   INFO  
+2024-03-09 12:51:04,381   INFO  Train:    2/5 ( 40%) [4019/5480 ( 73%)]  Loss: 11.24 (12.1)  LR: 9.611e-04  Time cost: 34:18/12:28 [1:21:27/2:32:46]  Acc_iter 9500        Data time: 0.25(0.26)  Forward time: 0.33(0.25)  Batch time: 0.58(0.51)
+2024-03-09 12:51:28,486   INFO  Train:    2/5 ( 40%) [4069/5480 ( 74%)]  Loss: 11.74 (12.1)  LR: 9.637e-04  Time cost: 34:42/12:01 [1:21:51/2:32:14]  Acc_iter 9550        Data time: 0.27(0.26)  Forward time: 0.24(0.25)  Batch time: 0.51(0.51)
+2024-03-09 12:51:46,183   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:51:54,142   INFO  Train:    2/5 ( 40%) [4119/5480 ( 75%)]  Loss: 11.81 (12.1)  LR: 9.662e-04  Time cost: 35:08/11:36 [1:22:16/2:31:48]  Acc_iter 9600        Data time: 0.13(0.26)  Forward time: 0.19(0.25)  Batch time: 0.32(0.51)
+2024-03-09 12:51:54,143   INFO  
+2024-03-09 12:52:20,123   INFO  Train:    2/5 ( 40%) [4169/5480 ( 76%)]  Loss: 12.16 (12.0)  LR: 9.686e-04  Time cost: 35:34/11:10 [1:22:42/2:31:24]  Acc_iter 9650        Data time: 0.22(0.26)  Forward time: 0.21(0.25)  Batch time: 0.44(0.51)
+2024-03-09 12:52:45,744   INFO  Train:    2/5 ( 40%) [4219/5480 ( 77%)]  Loss: 10.88 (12.0)  LR: 9.709e-04  Time cost: 35:59/10:45 [1:23:08/2:30:59]  Acc_iter 9700        Data time: 0.27(0.26)  Forward time: 0.25(0.25)  Batch time: 0.52(0.51)
+2024-03-09 12:53:10,672   INFO  Train:    2/5 ( 40%) [4269/5480 ( 78%)]  Loss: 8.859 (12.0)  LR: 9.732e-04  Time cost: 36:24/10:19 [1:23:33/2:30:31]  Acc_iter 9750        Data time: 0.35(0.26)  Forward time: 0.20(0.25)  Batch time: 0.56(0.51)
+2024-03-09 12:53:10,680   INFO  
+2024-03-09 12:53:36,096   INFO  Train:    2/5 ( 40%) [4319/5480 ( 79%)]  Loss: 12.08 (12.0)  LR: 9.753e-04  Time cost: 36:50/09:53 [1:23:58/2:30:04]  Acc_iter 9800        Data time: 0.35(0.26)  Forward time: 0.21(0.25)  Batch time: 0.56(0.51)
+2024-03-09 12:54:01,386   INFO  Train:    2/5 ( 40%) [4369/5480 ( 80%)]  Loss: 11.10 (12.0)  LR: 9.774e-04  Time cost: 37:15/09:28 [1:24:24/2:29:38]  Acc_iter 9850        Data time: 0.31(0.26)  Forward time: 0.21(0.25)  Batch time: 0.52(0.51)
+2024-03-09 12:54:27,759   INFO  Train:    2/5 ( 40%) [4419/5480 ( 81%)]  Loss: 12.53 (12.0)  LR: 9.793e-04  Time cost: 37:41/09:02 [1:24:50/2:29:15]  Acc_iter 9900        Data time: 0.27(0.26)  Forward time: 0.26(0.25)  Batch time: 0.53(0.51)
+2024-03-09 12:54:27,766   INFO  
+2024-03-09 12:54:52,710   INFO  Train:    2/5 ( 40%) [4469/5480 ( 82%)]  Loss: 11.62 (12.0)  LR: 9.812e-04  Time cost: 38:06/08:37 [1:25:15/2:28:47]  Acc_iter 9950        Data time: 0.24(0.26)  Forward time: 0.26(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:55:18,433   INFO  Train:    2/5 ( 40%) [4519/5480 ( 82%)]  Loss: 11.30 (12.0)  LR: 9.830e-04  Time cost: 38:32/08:11 [1:25:41/2:28:22]  Acc_iter 10000       Data time: 0.34(0.26)  Forward time: 0.21(0.25)  Batch time: 0.55(0.51)
+2024-03-09 12:55:43,989   INFO  Train:    2/5 ( 40%) [4569/5480 ( 83%)]  Loss: 9.242 (11.9)  LR: 9.847e-04  Time cost: 38:58/07:46 [1:26:06/2:27:56]  Acc_iter 10050       Data time: 0.26(0.26)  Forward time: 0.24(0.25)  Batch time: 0.51(0.51)
+2024-03-09 12:55:43,990   INFO  
+2024-03-09 12:56:09,330   INFO  Train:    2/5 ( 40%) [4619/5480 ( 84%)]  Loss: 12.24 (11.9)  LR: 9.864e-04  Time cost: 39:23/07:20 [1:26:32/2:27:30]  Acc_iter 10100       Data time: 0.20(0.26)  Forward time: 0.30(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:56:34,930   INFO  Train:    2/5 ( 40%) [4669/5480 ( 85%)]  Loss: 10.79 (11.9)  LR: 9.879e-04  Time cost: 39:48/06:54 [1:26:57/2:27:04]  Acc_iter 10150       Data time: 0.25(0.26)  Forward time: 0.30(0.25)  Batch time: 0.55(0.51)
+2024-03-09 12:56:46,277   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 12:57:01,480   INFO  Train:    2/5 ( 40%) [4719/5480 ( 86%)]  Loss: 8.763 (11.9)  LR: 9.893e-04  Time cost: 40:15/06:29 [1:27:24/2:26:42]  Acc_iter 10200       Data time: 0.36(0.26)  Forward time: 0.26(0.25)  Batch time: 0.62(0.51)
+2024-03-09 12:57:01,481   INFO  
+2024-03-09 12:57:27,593   INFO  Train:    2/5 ( 40%) [4769/5480 ( 87%)]  Loss: 12.03 (11.9)  LR: 9.907e-04  Time cost: 40:41/06:03 [1:27:50/2:26:19]  Acc_iter 10250       Data time: 0.36(0.26)  Forward time: 0.21(0.25)  Batch time: 0.57(0.51)
+2024-03-09 12:57:53,969   INFO  Train:    2/5 ( 40%) [4819/5480 ( 88%)]  Loss: 13.00 (11.9)  LR: 9.919e-04  Time cost: 41:08/05:38 [1:28:16/2:25:56]  Acc_iter 10300       Data time: 0.28(0.26)  Forward time: 0.25(0.25)  Batch time: 0.53(0.51)
+2024-03-09 12:58:19,146   INFO  Train:    2/5 ( 40%) [4869/5480 ( 89%)]  Loss: 9.930 (11.9)  LR: 9.931e-04  Time cost: 41:33/05:12 [1:28:41/2:25:29]  Acc_iter 10350       Data time: 0.27(0.26)  Forward time: 0.23(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:58:19,153   INFO  
+2024-03-09 12:58:44,337   INFO  Train:    2/5 ( 40%) [4919/5480 ( 90%)]  Loss: 10.22 (11.9)  LR: 9.942e-04  Time cost: 41:58/04:47 [1:29:07/2:25:02]  Acc_iter 10400       Data time: 0.24(0.26)  Forward time: 0.19(0.25)  Batch time: 0.43(0.51)
+2024-03-09 12:59:09,811   INFO  Train:    2/5 ( 40%) [4969/5480 ( 91%)]  Loss: 9.239 (11.9)  LR: 9.952e-04  Time cost: 42:23/04:21 [1:29:32/2:24:36]  Acc_iter 10450       Data time: 0.33(0.26)  Forward time: 0.28(0.25)  Batch time: 0.62(0.51)
+2024-03-09 12:59:36,176   INFO  Train:    2/5 ( 40%) [5019/5480 ( 92%)]  Loss: 10.51 (11.9)  LR: 9.961e-04  Time cost: 42:50/03:56 [1:29:58/2:24:13]  Acc_iter 10500       Data time: 0.28(0.26)  Forward time: 0.23(0.25)  Batch time: 0.50(0.51)
+2024-03-09 12:59:36,183   INFO  
+2024-03-09 13:00:01,457   INFO  Train:    2/5 ( 40%) [5069/5480 ( 92%)]  Loss: 12.26 (11.8)  LR: 9.969e-04  Time cost: 43:15/03:30 [1:30:24/2:23:46]  Acc_iter 10550       Data time: 0.32(0.26)  Forward time: 0.21(0.25)  Batch time: 0.53(0.51)
+2024-03-09 13:00:26,604   INFO  Train:    2/5 ( 40%) [5119/5480 ( 93%)]  Loss: 11.79 (11.8)  LR: 9.976e-04  Time cost: 43:40/03:04 [1:30:49/2:23:19]  Acc_iter 10600       Data time: 0.30(0.26)  Forward time: 0.26(0.25)  Batch time: 0.56(0.51)
+2024-03-09 13:00:51,594   INFO  Train:    2/5 ( 40%) [5169/5480 ( 94%)]  Loss: 13.76 (11.8)  LR: 9.982e-04  Time cost: 44:05/02:39 [1:31:14/2:22:52]  Acc_iter 10650       Data time: 0.32(0.26)  Forward time: 0.31(0.25)  Batch time: 0.64(0.51)
+2024-03-09 13:00:51,601   INFO  
+2024-03-09 13:01:17,452   INFO  Train:    2/5 ( 40%) [5219/5480 ( 95%)]  Loss: 11.98 (11.8)  LR: 9.987e-04  Time cost: 44:31/02:13 [1:31:40/2:22:27]  Acc_iter 10700       Data time: 0.30(0.26)  Forward time: 0.26(0.25)  Batch time: 0.56(0.51)
+2024-03-09 13:01:42,891   INFO  Train:    2/5 ( 40%) [5269/5480 ( 96%)]  Loss: 8.539 (11.8)  LR: 9.992e-04  Time cost: 44:56/01:47 [1:32:05/2:22:01]  Acc_iter 10750       Data time: 0.26(0.26)  Forward time: 0.22(0.25)  Batch time: 0.47(0.51)
+2024-03-09 13:01:46,423   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:02:09,800   INFO  Train:    2/5 ( 40%) [5319/5480 ( 97%)]  Loss: 10.82 (11.8)  LR: 9.995e-04  Time cost: 45:23/01:22 [1:32:32/2:21:39]  Acc_iter 10800       Data time: 0.31(0.26)  Forward time: 0.28(0.25)  Batch time: 0.59(0.51)
+2024-03-09 13:02:09,801   INFO  
+2024-03-09 13:02:35,952   INFO  Train:    2/5 ( 40%) [5369/5480 ( 98%)]  Loss: 10.07 (11.8)  LR: 9.998e-04  Time cost: 45:50/00:56 [1:32:58/2:21:15]  Acc_iter 10850       Data time: 0.42(0.26)  Forward time: 0.32(0.25)  Batch time: 0.74(0.51)
+2024-03-09 13:03:01,002   INFO  Train:    2/5 ( 40%) [5419/5480 ( 99%)]  Loss: 11.80 (11.8)  LR: 9.999e-04  Time cost: 46:15/00:31 [1:33:23/2:20:48]  Acc_iter 10900       Data time: 0.26(0.26)  Forward time: 0.22(0.25)  Batch time: 0.47(0.51)
+2024-03-09 13:03:27,160   INFO  Train:    2/5 ( 40%) [5469/5480 (100%)]  Loss: 10.35 (11.8)  LR: 1.000e-03  Time cost: 46:41/00:05 [1:33:49/2:20:24]  Acc_iter 10950       Data time: 0.18(0.26)  Forward time: 0.19(0.25)  Batch time: 0.36(0.51)
+2024-03-09 13:03:27,168   INFO  
+2024-03-09 13:03:32,315   INFO  Train:    2/5 ( 40%) [5479/5480 (100%)]  Loss: 9.006 (11.8)  LR: 1.000e-03  Time cost: 46:46/00:00 [1:33:55/2:20:19]  Acc_iter 10960       Data time: 0.37(0.26)  Forward time: 0.21(0.25)  Batch time: 0.58(0.51)
+2024-03-09 13:03:33,884   INFO  Train:    3/5 ( 60%) [   0/5480 (  0%)]  Loss: 11.67 (11.7)  LR: 1.000e-03  Time cost: 00:01/2:06:53 [1:33:56/6:20:40]  Acc_iter 10961       Data time: 0.71(0.71)  Forward time: 0.48(0.48)  Batch time: 1.19(1.19)
+2024-03-09 13:03:53,822   INFO  Train:    3/5 ( 60%) [  39/5480 (  1%)]  Loss: 9.665 (10.4)  LR: 1.000e-03  Time cost: 00:21/48:21 [1:34:16/2:25:44]  Acc_iter 11000       Data time: 0.27(0.28)  Forward time: 0.22(0.25)  Batch time: 0.49(0.53)
+2024-03-09 13:04:19,778   INFO  Train:    3/5 ( 60%) [  89/5480 (  2%)]  Loss: 11.29 (10.6)  LR: 9.999e-04  Time cost: 00:47/47:12 [1:34:42/2:23:10]  Acc_iter 11050       Data time: 0.28(0.27)  Forward time: 0.30(0.25)  Batch time: 0.58(0.52)
+2024-03-09 13:04:45,054   INFO  Train:    3/5 ( 60%) [ 139/5480 (  3%)]  Loss: 10.84 (10.5)  LR: 9.998e-04  Time cost: 01:12/46:08 [1:35:07/2:20:48]  Acc_iter 11100       Data time: 0.38(0.27)  Forward time: 0.25(0.25)  Batch time: 0.63(0.52)
+2024-03-09 13:04:45,061   INFO  
+2024-03-09 13:05:10,256   INFO  Train:    3/5 ( 60%) [ 189/5480 (  3%)]  Loss: 10.58 (10.6)  LR: 9.997e-04  Time cost: 01:37/45:22 [1:35:33/2:19:21]  Acc_iter 11150       Data time: 0.41(0.27)  Forward time: 0.24(0.25)  Batch time: 0.65(0.51)
+2024-03-09 13:05:36,493   INFO  Train:    3/5 ( 60%) [ 239/5480 (  4%)]  Loss: 9.839 (10.5)  LR: 9.995e-04  Time cost: 02:03/45:07 [1:35:59/2:19:30]  Acc_iter 11200       Data time: 0.21(0.27)  Forward time: 0.27(0.25)  Batch time: 0.48(0.52)
+2024-03-09 13:06:01,897   INFO  Train:    3/5 ( 60%) [ 289/5480 (  5%)]  Loss: 10.50 (10.6)  LR: 9.992e-04  Time cost: 02:29/44:34 [1:36:24/2:18:40]  Acc_iter 11250       Data time: 0.22(0.27)  Forward time: 0.23(0.25)  Batch time: 0.46(0.51)
+2024-03-09 13:06:01,898   INFO  
+2024-03-09 13:06:27,568   INFO  Train:    3/5 ( 60%) [ 339/5480 (  6%)]  Loss: 9.581 (10.6)  LR: 9.990e-04  Time cost: 02:55/44:07 [1:36:50/2:18:10]  Acc_iter 11300       Data time: 0.35(0.27)  Forward time: 0.25(0.25)  Batch time: 0.60(0.51)
+2024-03-09 13:06:52,526   INFO  Train:    3/5 ( 60%) [ 389/5480 (  7%)]  Loss: 10.78 (10.5)  LR: 9.986e-04  Time cost: 03:20/43:31 [1:37:15/2:17:12]  Acc_iter 11350       Data time: 0.18(0.27)  Forward time: 0.27(0.25)  Batch time: 0.44(0.51)
+2024-03-09 13:07:17,652   INFO  Train:    3/5 ( 60%) [ 439/5480 (  8%)]  Loss: 9.493 (10.5)  LR: 9.982e-04  Time cost: 03:45/42:59 [1:37:40/2:16:28]  Acc_iter 11400       Data time: 0.34(0.27)  Forward time: 0.29(0.25)  Batch time: 0.63(0.51)
+2024-03-09 13:07:17,653   INFO  
+2024-03-09 13:07:42,781   INFO  Train:    3/5 ( 60%) [ 489/5480 (  9%)]  Loss: 9.377 (10.5)  LR: 9.978e-04  Time cost: 04:10/42:29 [1:38:05/2:15:47]  Acc_iter 11450       Data time: 0.25(0.26)  Forward time: 0.18(0.25)  Batch time: 0.43(0.51)
+2024-03-09 13:08:08,529   INFO  Train:    3/5 ( 60%) [ 539/5480 ( 10%)]  Loss: 11.07 (10.5)  LR: 9.974e-04  Time cost: 04:36/42:05 [1:38:31/2:15:28]  Acc_iter 11500       Data time: 0.28(0.26)  Forward time: 0.27(0.25)  Batch time: 0.55(0.51)
+2024-03-09 13:08:32,886   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:08:35,195   INFO  Train:    3/5 ( 60%) [ 589/5480 ( 11%)]  Loss: 9.060 (10.5)  LR: 9.968e-04  Time cost: 05:02/41:49 [1:38:57/2:15:32]  Acc_iter 11550       Data time: 0.33(0.27)  Forward time: 0.21(0.25)  Batch time: 0.54(0.51)
+2024-03-09 13:08:35,203   INFO  
+2024-03-09 13:09:01,216   INFO  Train:    3/5 ( 60%) [ 639/5480 ( 12%)]  Loss: 10.85 (10.5)  LR: 9.963e-04  Time cost: 05:28/41:26 [1:39:24/2:15:15]  Acc_iter 11600       Data time: 0.27(0.27)  Forward time: 0.28(0.25)  Batch time: 0.55(0.51)
+2024-03-09 13:09:26,641   INFO  Train:    3/5 ( 60%) [ 689/5480 ( 13%)]  Loss: 9.057 (10.5)  LR: 9.957e-04  Time cost: 05:54/40:59 [1:39:49/2:14:44]  Acc_iter 11650       Data time: 0.27(0.27)  Forward time: 0.30(0.25)  Batch time: 0.56(0.51)
+2024-03-09 13:09:51,784   INFO  Train:    3/5 ( 60%) [ 739/5480 ( 13%)]  Loss: 9.323 (10.5)  LR: 9.950e-04  Time cost: 06:19/40:30 [1:40:14/2:14:07]  Acc_iter 11700       Data time: 0.37(0.27)  Forward time: 0.21(0.25)  Batch time: 0.58(0.51)
+2024-03-09 13:09:51,791   INFO  
+2024-03-09 13:10:17,547   INFO  Train:    3/5 ( 60%) [ 789/5480 ( 14%)]  Loss: 9.616 (10.5)  LR: 9.943e-04  Time cost: 06:45/40:05 [1:40:40/2:13:44]  Acc_iter 11750       Data time: 0.32(0.27)  Forward time: 0.24(0.25)  Batch time: 0.57(0.51)
+2024-03-09 13:10:43,051   INFO  Train:    3/5 ( 60%) [ 839/5480 ( 15%)]  Loss: 11.60 (10.4)  LR: 9.936e-04  Time cost: 07:10/39:38 [1:41:05/2:13:16]  Acc_iter 11800       Data time: 0.23(0.27)  Forward time: 0.26(0.25)  Batch time: 0.49(0.51)
+2024-03-09 13:11:08,382   INFO  Train:    3/5 ( 60%) [ 889/5480 ( 16%)]  Loss: 11.09 (10.4)  LR: 9.928e-04  Time cost: 07:35/39:11 [1:41:31/2:12:45]  Acc_iter 11850       Data time: 0.30(0.27)  Forward time: 0.22(0.25)  Batch time: 0.52(0.51)
+2024-03-09 13:11:08,383   INFO  
+2024-03-09 13:11:33,620   INFO  Train:    3/5 ( 60%) [ 939/5480 ( 17%)]  Loss: 11.54 (10.4)  LR: 9.920e-04  Time cost: 08:01/38:44 [1:41:56/2:12:13]  Acc_iter 11900       Data time: 0.40(0.27)  Forward time: 0.22(0.25)  Batch time: 0.62(0.51)
+2024-03-09 13:11:57,441   INFO  Train:    3/5 ( 60%) [ 989/5480 ( 18%)]  Loss: 13.66 (10.4)  LR: 9.911e-04  Time cost: 08:24/38:10 [1:42:20/2:11:20]  Acc_iter 11950       Data time: 0.22(0.26)  Forward time: 0.18(0.25)  Batch time: 0.41(0.51)
+2024-03-09 13:12:23,358   INFO  Train:    3/5 ( 60%) [1039/5480 ( 19%)]  Loss: 7.585 (10.4)  LR: 9.902e-04  Time cost: 08:50/37:46 [1:42:46/2:11:01]  Acc_iter 12000       Data time: 0.28(0.26)  Forward time: 0.28(0.25)  Batch time: 0.56(0.51)
+2024-03-09 13:12:23,359   INFO  
+2024-03-09 13:12:47,712   INFO  Train:    3/5 ( 60%) [1089/5480 ( 20%)]  Loss: 9.518 (10.4)  LR: 9.892e-04  Time cost: 09:15/37:16 [1:43:10/2:10:19]  Acc_iter 12050       Data time: 0.19(0.26)  Forward time: 0.17(0.25)  Batch time: 0.36(0.51)
+2024-03-09 13:13:13,361   INFO  Train:    3/5 ( 60%) [1139/5480 ( 21%)]  Loss: 8.149 (10.4)  LR: 9.882e-04  Time cost: 09:40/36:51 [1:43:36/2:09:56]  Acc_iter 12100       Data time: 0.28(0.26)  Forward time: 0.26(0.25)  Batch time: 0.55(0.51)
+2024-03-09 13:13:33,004   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:13:39,080   INFO  Train:    3/5 ( 60%) [1189/5480 ( 22%)]  Loss: 10.40 (10.4)  LR: 9.871e-04  Time cost: 10:06/36:27 [1:44:01/2:09:33]  Acc_iter 12150       Data time: 0.24(0.26)  Forward time: 0.24(0.25)  Batch time: 0.47(0.51)
+2024-03-09 13:13:39,088   INFO  
+2024-03-09 13:14:04,645   INFO  Train:    3/5 ( 60%) [1239/5480 ( 23%)]  Loss: 9.368 (10.4)  LR: 9.861e-04  Time cost: 10:32/36:02 [1:44:27/2:09:09]  Acc_iter 12200       Data time: 0.37(0.26)  Forward time: 0.28(0.25)  Batch time: 0.65(0.51)
+2024-03-09 13:14:29,571   INFO  Train:    3/5 ( 60%) [1289/5480 ( 24%)]  Loss: 12.03 (10.4)  LR: 9.849e-04  Time cost: 10:57/35:34 [1:44:52/2:08:37]  Acc_iter 12250       Data time: 0.24(0.26)  Forward time: 0.25(0.24)  Batch time: 0.48(0.51)
+2024-03-09 13:14:55,868   INFO  Train:    3/5 ( 60%) [1339/5480 ( 24%)]  Loss: 9.455 (10.4)  LR: 9.837e-04  Time cost: 11:23/35:11 [1:45:18/2:08:21]  Acc_iter 12300       Data time: 0.19(0.26)  Forward time: 0.21(0.25)  Batch time: 0.40(0.51)
+2024-03-09 13:14:55,875   INFO  
+2024-03-09 13:15:21,802   INFO  Train:    3/5 ( 60%) [1389/5480 ( 25%)]  Loss: 9.413 (10.3)  LR: 9.825e-04  Time cost: 11:49/34:47 [1:45:44/2:08:00]  Acc_iter 12350       Data time: 0.25(0.26)  Forward time: 0.18(0.25)  Batch time: 0.43(0.51)
+2024-03-09 13:15:47,592   INFO  Train:    3/5 ( 60%) [1439/5480 ( 26%)]  Loss: 10.11 (10.4)  LR: 9.812e-04  Time cost: 12:15/34:22 [1:46:10/2:07:37]  Acc_iter 12400       Data time: 0.35(0.26)  Forward time: 0.26(0.25)  Batch time: 0.61(0.51)
+2024-03-09 13:16:13,155   INFO  Train:    3/5 ( 60%) [1489/5480 ( 27%)]  Loss: 8.467 (10.3)  LR: 9.799e-04  Time cost: 12:40/33:57 [1:46:35/2:07:12]  Acc_iter 12450       Data time: 0.31(0.26)  Forward time: 0.23(0.25)  Batch time: 0.54(0.51)
+2024-03-09 13:16:13,156   INFO  
+2024-03-09 13:16:39,016   INFO  Train:    3/5 ( 60%) [1539/5480 ( 28%)]  Loss: 10.34 (10.3)  LR: 9.785e-04  Time cost: 13:06/33:32 [1:47:01/2:06:50]  Acc_iter 12500       Data time: 0.24(0.26)  Forward time: 0.29(0.25)  Batch time: 0.53(0.51)
+2024-03-09 13:17:04,284   INFO  Train:    3/5 ( 60%) [1589/5480 ( 29%)]  Loss: 9.199 (10.3)  LR: 9.771e-04  Time cost: 13:31/33:06 [1:47:27/2:06:22]  Acc_iter 12550       Data time: 0.24(0.26)  Forward time: 0.21(0.25)  Batch time: 0.46(0.51)
+2024-03-09 13:17:29,522   INFO  Train:    3/5 ( 60%) [1639/5480 ( 30%)]  Loss: 11.04 (10.3)  LR: 9.757e-04  Time cost: 13:57/32:40 [1:47:52/2:05:54]  Acc_iter 12600       Data time: 0.27(0.26)  Forward time: 0.25(0.25)  Batch time: 0.51(0.51)
+2024-03-09 13:17:29,523   INFO  
+2024-03-09 13:17:54,922   INFO  Train:    3/5 ( 60%) [1689/5480 ( 31%)]  Loss: 10.71 (10.3)  LR: 9.742e-04  Time cost: 14:22/32:14 [1:48:17/2:05:27]  Acc_iter 12650       Data time: 0.27(0.26)  Forward time: 0.25(0.25)  Batch time: 0.51(0.51)
+2024-03-09 13:18:21,558   INFO  Train:    3/5 ( 60%) [1739/5480 ( 32%)]  Loss: 9.743 (10.3)  LR: 9.726e-04  Time cost: 14:49/31:51 [1:48:44/2:05:11]  Acc_iter 12700       Data time: 0.27(0.27)  Forward time: 0.27(0.25)  Batch time: 0.54(0.51)
+2024-03-09 13:18:33,116   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:18:46,834   INFO  Train:    3/5 ( 60%) [1789/5480 ( 33%)]  Loss: 11.70 (10.3)  LR: 9.711e-04  Time cost: 15:14/31:25 [1:49:09/2:04:43]  Acc_iter 12750       Data time: 0.21(0.27)  Forward time: 0.30(0.25)  Batch time: 0.50(0.51)
+2024-03-09 13:18:46,842   INFO  
+2024-03-09 13:19:11,684   INFO  Train:    3/5 ( 60%) [1839/5480 ( 34%)]  Loss: 9.385 (10.3)  LR: 9.694e-04  Time cost: 15:39/30:58 [1:49:34/2:04:12]  Acc_iter 12800       Data time: 0.34(0.26)  Forward time: 0.27(0.25)  Batch time: 0.61(0.51)
+2024-03-09 13:19:36,959   INFO  Train:    3/5 ( 60%) [1889/5480 ( 34%)]  Loss: 10.27 (10.3)  LR: 9.678e-04  Time cost: 16:04/30:32 [1:49:59/2:03:45]  Acc_iter 12850       Data time: 0.32(0.26)  Forward time: 0.25(0.25)  Batch time: 0.57(0.51)
+2024-03-09 13:20:02,205   INFO  Train:    3/5 ( 60%) [1939/5480 ( 35%)]  Loss: 9.136 (10.3)  LR: 9.661e-04  Time cost: 16:29/30:06 [1:50:24/2:03:17]  Acc_iter 12900       Data time: 0.24(0.26)  Forward time: 0.27(0.25)  Batch time: 0.50(0.51)
+2024-03-09 13:20:02,212   INFO  
+2024-03-09 13:20:27,619   INFO  Train:    3/5 ( 60%) [1989/5480 ( 36%)]  Loss: 9.339 (10.3)  LR: 9.643e-04  Time cost: 16:55/29:40 [1:50:50/2:02:51]  Acc_iter 12950       Data time: 0.25(0.26)  Forward time: 0.25(0.25)  Batch time: 0.50(0.51)
+2024-03-09 13:20:53,394   INFO  Train:    3/5 ( 60%) [2039/5480 ( 37%)]  Loss: 6.957 (10.3)  LR: 9.625e-04  Time cost: 17:20/29:15 [1:51:16/2:02:28]  Acc_iter 13000       Data time: 0.28(0.26)  Forward time: 0.18(0.25)  Batch time: 0.47(0.51)
+2024-03-09 13:21:18,057   INFO  Train:    3/5 ( 60%) [2089/5480 ( 38%)]  Loss: 10.42 (10.2)  LR: 9.607e-04  Time cost: 17:45/28:48 [1:51:40/2:01:56]  Acc_iter 13050       Data time: 0.27(0.26)  Forward time: 0.31(0.25)  Batch time: 0.58(0.51)
+2024-03-09 13:21:18,058   INFO  
+2024-03-09 13:21:43,647   INFO  Train:    3/5 ( 60%) [2139/5480 ( 39%)]  Loss: 9.760 (10.2)  LR: 9.588e-04  Time cost: 18:11/28:23 [1:52:06/2:01:31]  Acc_iter 13100       Data time: 0.36(0.26)  Forward time: 0.20(0.25)  Batch time: 0.56(0.51)
+2024-03-09 13:22:10,196   INFO  Train:    3/5 ( 60%) [2189/5480 ( 40%)]  Loss: 9.707 (10.2)  LR: 9.569e-04  Time cost: 18:37/27:59 [1:52:32/2:01:13]  Acc_iter 13150       Data time: 0.37(0.26)  Forward time: 0.27(0.25)  Batch time: 0.65(0.51)
+2024-03-09 13:22:35,033   INFO  Train:    3/5 ( 60%) [2239/5480 ( 41%)]  Loss: 8.874 (10.2)  LR: 9.549e-04  Time cost: 19:02/27:33 [1:52:57/2:00:43]  Acc_iter 13200       Data time: 0.29(0.26)  Forward time: 0.23(0.25)  Batch time: 0.52(0.51)
+2024-03-09 13:22:35,034   INFO  
+2024-03-09 13:23:01,292   INFO  Train:    3/5 ( 60%) [2289/5480 ( 42%)]  Loss: 11.01 (10.2)  LR: 9.529e-04  Time cost: 19:28/27:08 [1:53:24/2:00:22]  Acc_iter 13250       Data time: 0.21(0.26)  Forward time: 0.22(0.25)  Batch time: 0.43(0.51)
+2024-03-09 13:23:26,886   INFO  Train:    3/5 ( 60%) [2339/5480 ( 43%)]  Loss: 10.15 (10.2)  LR: 9.509e-04  Time cost: 19:54/26:43 [1:53:49/1:59:57]  Acc_iter 13300       Data time: 0.28(0.26)  Forward time: 0.23(0.25)  Batch time: 0.52(0.51)
+2024-03-09 13:23:33,158   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:23:52,445   INFO  Train:    3/5 ( 60%) [2389/5480 ( 44%)]  Loss: 7.996 (10.2)  LR: 9.488e-04  Time cost: 20:19/26:17 [1:54:15/1:59:32]  Acc_iter 13350       Data time: 0.27(0.26)  Forward time: 0.16(0.25)  Batch time: 0.43(0.51)
+2024-03-09 13:23:52,453   INFO  
+2024-03-09 13:24:16,932   INFO  Train:    3/5 ( 60%) [2439/5480 ( 45%)]  Loss: 11.06 (10.2)  LR: 9.467e-04  Time cost: 20:44/25:50 [1:54:39/1:59:00]  Acc_iter 13400       Data time: 0.19(0.26)  Forward time: 0.23(0.25)  Batch time: 0.42(0.51)
+2024-03-09 13:24:43,014   INFO  Train:    3/5 ( 60%) [2489/5480 ( 45%)]  Loss: 10.61 (10.2)  LR: 9.445e-04  Time cost: 21:10/25:26 [1:55:05/1:58:38]  Acc_iter 13450       Data time: 0.28(0.26)  Forward time: 0.26(0.25)  Batch time: 0.54(0.51)
+2024-03-09 13:25:09,600   INFO  Train:    3/5 ( 60%) [2539/5480 ( 46%)]  Loss: 9.081 (10.2)  LR: 9.423e-04  Time cost: 21:37/25:01 [1:55:32/1:58:18]  Acc_iter 13500       Data time: 0.34(0.26)  Forward time: 0.28(0.25)  Batch time: 0.63(0.51)
+2024-03-09 13:25:09,607   INFO  
+2024-03-09 13:25:35,245   INFO  Train:    3/5 ( 60%) [2589/5480 ( 47%)]  Loss: 6.818 (10.2)  LR: 9.400e-04  Time cost: 22:02/24:36 [1:55:58/1:57:53]  Acc_iter 13550       Data time: 0.35(0.26)  Forward time: 0.20(0.25)  Batch time: 0.55(0.51)
+2024-03-09 13:26:01,221   INFO  Train:    3/5 ( 60%) [2639/5480 ( 48%)]  Loss: 9.133 (10.2)  LR: 9.378e-04  Time cost: 22:28/24:11 [1:56:24/1:57:30]  Acc_iter 13600       Data time: 0.23(0.26)  Forward time: 0.27(0.25)  Batch time: 0.50(0.51)
+2024-03-09 13:26:27,595   INFO  Train:    3/5 ( 60%) [2689/5480 ( 49%)]  Loss: 6.922 (10.1)  LR: 9.354e-04  Time cost: 22:55/23:46 [1:56:50/1:57:09]  Acc_iter 13650       Data time: 0.22(0.27)  Forward time: 0.27(0.25)  Batch time: 0.49(0.51)
+2024-03-09 13:26:27,596   INFO  
+2024-03-09 13:26:53,288   INFO  Train:    3/5 ( 60%) [2739/5480 ( 50%)]  Loss: 9.798 (10.1)  LR: 9.331e-04  Time cost: 23:20/23:21 [1:57:16/1:56:44]  Acc_iter 13700       Data time: 0.29(0.27)  Forward time: 0.27(0.25)  Batch time: 0.56(0.51)
+2024-03-09 13:27:19,585   INFO  Train:    3/5 ( 60%) [2789/5480 ( 51%)]  Loss: 10.93 (10.1)  LR: 9.307e-04  Time cost: 23:47/22:56 [1:57:42/1:56:22]  Acc_iter 13750       Data time: 0.29(0.27)  Forward time: 0.18(0.25)  Batch time: 0.46(0.51)
+2024-03-09 13:27:46,820   INFO  Train:    3/5 ( 60%) [2839/5480 ( 52%)]  Loss: 6.999 (10.1)  LR: 9.282e-04  Time cost: 24:14/22:32 [1:58:09/1:56:04]  Acc_iter 13800       Data time: 0.19(0.27)  Forward time: 0.26(0.25)  Batch time: 0.45(0.51)
+2024-03-09 13:27:46,821   INFO  
+2024-03-09 13:28:12,934   INFO  Train:    3/5 ( 60%) [2889/5480 ( 53%)]  Loss: 8.487 (10.1)  LR: 9.257e-04  Time cost: 24:40/22:07 [1:58:35/1:55:41]  Acc_iter 13850       Data time: 0.19(0.27)  Forward time: 0.26(0.25)  Batch time: 0.45(0.51)
+2024-03-09 13:28:32,757   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:28:39,047   INFO  Train:    3/5 ( 60%) [2939/5480 ( 54%)]  Loss: 9.964 (10.1)  LR: 9.232e-04  Time cost: 25:06/21:42 [1:59:01/1:55:18]  Acc_iter 13900       Data time: 0.21(0.27)  Forward time: 0.29(0.25)  Batch time: 0.50(0.51)
+2024-03-09 13:29:04,271   INFO  Train:    3/5 ( 60%) [2989/5480 ( 55%)]  Loss: 9.470 (10.1)  LR: 9.206e-04  Time cost: 25:31/21:16 [1:59:27/1:54:50]  Acc_iter 13950       Data time: 0.30(0.27)  Forward time: 0.27(0.25)  Batch time: 0.57(0.51)
+2024-03-09 13:29:04,280   INFO  
+2024-03-09 13:29:29,797   INFO  Train:    3/5 ( 60%) [3039/5480 ( 55%)]  Loss: 10.88 (10.1)  LR: 9.180e-04  Time cost: 25:57/20:50 [1:59:52/1:54:24]  Acc_iter 14000       Data time: 0.24(0.27)  Forward time: 0.22(0.25)  Batch time: 0.46(0.51)
+2024-03-09 13:29:55,355   INFO  Train:    3/5 ( 60%) [3089/5480 ( 56%)]  Loss: 7.368 (10.1)  LR: 9.154e-04  Time cost: 26:22/20:24 [2:00:18/1:53:59]  Acc_iter 14050       Data time: 0.29(0.27)  Forward time: 0.17(0.25)  Batch time: 0.46(0.51)
+2024-03-09 13:30:20,080   INFO  Train:    3/5 ( 60%) [3139/5480 ( 57%)]  Loss: 8.701 (10.1)  LR: 9.127e-04  Time cost: 26:47/19:58 [2:00:42/1:53:29]  Acc_iter 14100       Data time: 0.43(0.27)  Forward time: 0.22(0.25)  Batch time: 0.66(0.51)
+2024-03-09 13:30:20,081   INFO  
+2024-03-09 13:30:46,013   INFO  Train:    3/5 ( 60%) [3189/5480 ( 58%)]  Loss: 9.574 (10.1)  LR: 9.100e-04  Time cost: 27:13/19:33 [2:01:08/1:53:05]  Acc_iter 14150       Data time: 0.33(0.27)  Forward time: 0.26(0.25)  Batch time: 0.59(0.51)
+2024-03-09 13:31:11,739   INFO  Train:    3/5 ( 60%) [3239/5480 ( 59%)]  Loss: 8.050 (10.1)  LR: 9.072e-04  Time cost: 27:39/19:07 [2:01:34/1:52:40]  Acc_iter 14200       Data time: 0.31(0.27)  Forward time: 0.30(0.25)  Batch time: 0.61(0.51)
+2024-03-09 13:31:36,271   INFO  Train:    3/5 ( 60%) [3289/5480 ( 60%)]  Loss: 12.23 (10.1)  LR: 9.045e-04  Time cost: 28:03/18:41 [2:01:59/1:52:10]  Acc_iter 14250       Data time: 0.31(0.27)  Forward time: 0.28(0.25)  Batch time: 0.59(0.51)
+2024-03-09 13:31:36,272   INFO  
+2024-03-09 13:32:02,026   INFO  Train:    3/5 ( 60%) [3339/5480 ( 61%)]  Loss: 10.59 (10.0)  LR: 9.016e-04  Time cost: 28:29/18:15 [2:02:24/1:51:45]  Acc_iter 14300       Data time: 0.18(0.27)  Forward time: 0.25(0.25)  Batch time: 0.43(0.51)
+2024-03-09 13:32:27,862   INFO  Train:    3/5 ( 60%) [3389/5480 ( 62%)]  Loss: 10.02 (10.0)  LR: 8.988e-04  Time cost: 28:55/17:50 [2:02:50/1:51:20]  Acc_iter 14350       Data time: 0.21(0.27)  Forward time: 0.27(0.25)  Batch time: 0.49(0.51)
+2024-03-09 13:32:53,959   INFO  Train:    3/5 ( 60%) [3439/5480 ( 63%)]  Loss: 8.844 (10.0)  LR: 8.959e-04  Time cost: 29:21/17:25 [2:03:16/1:50:57]  Acc_iter 14400       Data time: 0.37(0.27)  Forward time: 0.34(0.25)  Batch time: 0.71(0.51)
+2024-03-09 13:32:53,960   INFO  
+2024-03-09 13:33:19,082   INFO  Train:    3/5 ( 60%) [3489/5480 ( 64%)]  Loss: 8.908 (10.0)  LR: 8.929e-04  Time cost: 29:46/16:59 [2:03:41/1:50:29]  Acc_iter 14450       Data time: 0.30(0.27)  Forward time: 0.22(0.25)  Batch time: 0.52(0.51)
+2024-03-09 13:33:33,070   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:33:44,742   INFO  Train:    3/5 ( 60%) [3539/5480 ( 65%)]  Loss: 8.389 (10.0)  LR: 8.900e-04  Time cost: 30:12/16:33 [2:04:07/1:50:04]  Acc_iter 14500       Data time: 0.31(0.27)  Forward time: 0.25(0.25)  Batch time: 0.55(0.51)
+2024-03-09 13:34:10,773   INFO  Train:    3/5 ( 60%) [3589/5480 ( 65%)]  Loss: 12.54 (10.0)  LR: 8.869e-04  Time cost: 30:38/16:08 [2:04:33/1:49:40]  Acc_iter 14550       Data time: 0.27(0.27)  Forward time: 0.20(0.25)  Batch time: 0.48(0.51)
+2024-03-09 13:34:10,782   INFO  
+2024-03-09 13:34:35,800   INFO  Train:    3/5 ( 60%) [3639/5480 ( 66%)]  Loss: 8.208 (10.0)  LR: 8.839e-04  Time cost: 31:03/15:42 [2:04:58/1:49:12]  Acc_iter 14600       Data time: 0.25(0.27)  Forward time: 0.27(0.25)  Batch time: 0.51(0.51)
+2024-03-09 13:35:00,884   INFO  Train:    3/5 ( 60%) [3689/5480 ( 67%)]  Loss: 10.96 (9.99)  LR: 8.808e-04  Time cost: 31:28/15:16 [2:05:23/1:48:45]  Acc_iter 14650       Data time: 0.30(0.26)  Forward time: 0.31(0.25)  Batch time: 0.62(0.51)
+2024-03-09 13:35:25,663   INFO  Train:    3/5 ( 60%) [3739/5480 ( 68%)]  Loss: 9.572 (9.98)  LR: 8.777e-04  Time cost: 31:53/14:50 [2:05:48/1:48:17]  Acc_iter 14700       Data time: 0.25(0.26)  Forward time: 0.19(0.25)  Batch time: 0.45(0.51)
+2024-03-09 13:35:25,664   INFO  
+2024-03-09 13:35:51,139   INFO  Train:    3/5 ( 60%) [3789/5480 ( 69%)]  Loss: 9.719 (9.97)  LR: 8.746e-04  Time cost: 32:18/14:24 [2:06:13/1:47:51]  Acc_iter 14750       Data time: 0.24(0.26)  Forward time: 0.22(0.25)  Batch time: 0.47(0.51)
+2024-03-09 13:36:16,706   INFO  Train:    3/5 ( 60%) [3839/5480 ( 70%)]  Loss: 10.33 (9.97)  LR: 8.714e-04  Time cost: 32:44/13:59 [2:06:39/1:47:25]  Acc_iter 14800       Data time: 0.29(0.26)  Forward time: 0.25(0.25)  Batch time: 0.54(0.51)
+2024-03-09 13:36:40,933   INFO  Train:    3/5 ( 60%) [3889/5480 ( 71%)]  Loss: 9.886 (9.96)  LR: 8.682e-04  Time cost: 33:08/13:33 [2:07:03/1:46:55]  Acc_iter 14850       Data time: 0.28(0.26)  Forward time: 0.23(0.25)  Batch time: 0.51(0.51)
+2024-03-09 13:36:40,934   INFO  
+2024-03-09 13:37:06,395   INFO  Train:    3/5 ( 60%) [3939/5480 ( 72%)]  Loss: 9.172 (9.96)  LR: 8.649e-04  Time cost: 33:33/13:07 [2:07:29/1:46:29]  Acc_iter 14900       Data time: 0.26(0.26)  Forward time: 0.28(0.25)  Batch time: 0.55(0.51)
+2024-03-09 13:37:30,493   INFO  Train:    3/5 ( 60%) [3989/5480 ( 73%)]  Loss: 8.895 (9.95)  LR: 8.616e-04  Time cost: 33:57/12:41 [2:07:53/1:45:59]  Acc_iter 14950       Data time: 0.25(0.26)  Forward time: 0.24(0.25)  Batch time: 0.49(0.51)
+2024-03-09 13:37:55,890   INFO  Train:    3/5 ( 60%) [4039/5480 ( 74%)]  Loss: 11.70 (9.94)  LR: 8.583e-04  Time cost: 34:23/12:15 [2:08:18/1:45:33]  Acc_iter 15000       Data time: 0.23(0.26)  Forward time: 0.22(0.25)  Batch time: 0.44(0.51)
+2024-03-09 13:37:55,891   INFO  
+2024-03-09 13:38:20,608   INFO  Train:    3/5 ( 60%) [4089/5480 ( 75%)]  Loss: 10.69 (9.93)  LR: 8.550e-04  Time cost: 34:48/11:50 [2:08:43/1:45:05]  Acc_iter 15050       Data time: 0.26(0.26)  Forward time: 0.32(0.25)  Batch time: 0.59(0.51)
+2024-03-09 13:38:32,995   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:38:46,174   INFO  Train:    3/5 ( 60%) [4139/5480 ( 76%)]  Loss: 9.190 (9.93)  LR: 8.516e-04  Time cost: 35:13/11:24 [2:09:08/1:44:40]  Acc_iter 15100       Data time: 0.25(0.26)  Forward time: 0.20(0.25)  Batch time: 0.45(0.51)
+2024-03-09 13:39:11,307   INFO  Train:    3/5 ( 60%) [4189/5480 ( 76%)]  Loss: 8.375 (9.92)  LR: 8.482e-04  Time cost: 35:38/10:58 [2:09:34/1:44:13]  Acc_iter 15150       Data time: 0.29(0.26)  Forward time: 0.26(0.25)  Batch time: 0.55(0.51)
+2024-03-09 13:39:11,316   INFO  
+2024-03-09 13:39:36,583   INFO  Train:    3/5 ( 60%) [4239/5480 ( 77%)]  Loss: 10.74 (9.91)  LR: 8.447e-04  Time cost: 36:04/10:33 [2:09:59/1:43:47]  Acc_iter 15200       Data time: 0.28(0.26)  Forward time: 0.31(0.25)  Batch time: 0.59(0.51)
+2024-03-09 13:40:02,491   INFO  Train:    3/5 ( 60%) [4289/5480 ( 78%)]  Loss: 9.783 (9.91)  LR: 8.413e-04  Time cost: 36:29/10:07 [2:10:25/1:43:22]  Acc_iter 15250       Data time: 0.23(0.26)  Forward time: 0.30(0.25)  Batch time: 0.53(0.51)
+2024-03-09 13:40:28,714   INFO  Train:    3/5 ( 60%) [4339/5480 ( 79%)]  Loss: 8.720 (9.90)  LR: 8.377e-04  Time cost: 36:56/09:42 [2:10:51/1:42:59]  Acc_iter 15300       Data time: 0.25(0.26)  Forward time: 0.19(0.25)  Batch time: 0.44(0.51)
+2024-03-09 13:40:28,715   INFO  
+2024-03-09 13:40:55,022   INFO  Train:    3/5 ( 60%) [4389/5480 ( 80%)]  Loss: 11.03 (9.89)  LR: 8.342e-04  Time cost: 37:22/09:17 [2:11:17/1:42:35]  Acc_iter 15350       Data time: 0.25(0.26)  Forward time: 0.14(0.25)  Batch time: 0.39(0.51)
+2024-03-09 13:41:20,989   INFO  Train:    3/5 ( 60%) [4439/5480 ( 81%)]  Loss: 9.003 (9.89)  LR: 8.306e-04  Time cost: 37:48/08:51 [2:11:43/1:42:11]  Acc_iter 15400       Data time: 0.21(0.26)  Forward time: 0.32(0.25)  Batch time: 0.52(0.51)
+2024-03-09 13:41:46,986   INFO  Train:    3/5 ( 60%) [4489/5480 ( 82%)]  Loss: 9.953 (9.88)  LR: 8.270e-04  Time cost: 38:14/08:26 [2:12:09/1:41:47]  Acc_iter 15450       Data time: 0.29(0.26)  Forward time: 0.27(0.25)  Batch time: 0.56(0.51)
+2024-03-09 13:41:46,987   INFO  
+2024-03-09 13:42:12,452   INFO  Train:    3/5 ( 60%) [4539/5480 ( 83%)]  Loss: 9.154 (9.87)  LR: 8.234e-04  Time cost: 38:39/08:00 [2:12:35/1:41:21]  Acc_iter 15500       Data time: 0.20(0.26)  Forward time: 0.24(0.25)  Batch time: 0.44(0.51)
+2024-03-09 13:42:37,965   INFO  Train:    3/5 ( 60%) [4589/5480 ( 84%)]  Loss: 8.169 (9.86)  LR: 8.198e-04  Time cost: 39:05/07:35 [2:13:00/1:40:55]  Acc_iter 15550       Data time: 0.22(0.26)  Forward time: 0.24(0.25)  Batch time: 0.45(0.51)
+2024-03-09 13:43:02,790   INFO  Train:    3/5 ( 60%) [4639/5480 ( 85%)]  Loss: 8.112 (9.85)  LR: 8.161e-04  Time cost: 39:30/07:09 [2:13:25/1:40:28]  Acc_iter 15600       Data time: 0.26(0.26)  Forward time: 0.31(0.25)  Batch time: 0.57(0.51)
+2024-03-09 13:43:02,791   INFO  
+2024-03-09 13:43:27,720   INFO  Train:    3/5 ( 60%) [4689/5480 ( 86%)]  Loss: 10.59 (9.84)  LR: 8.124e-04  Time cost: 39:55/06:43 [2:13:50/1:40:01]  Acc_iter 15650       Data time: 0.38(0.26)  Forward time: 0.27(0.25)  Batch time: 0.65(0.51)
+2024-03-09 13:43:33,131   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:43:54,373   INFO  Train:    3/5 ( 60%) [4739/5480 ( 86%)]  Loss: 8.324 (9.83)  LR: 8.086e-04  Time cost: 40:21/06:18 [2:14:17/1:39:38]  Acc_iter 15700       Data time: 0.31(0.26)  Forward time: 0.28(0.25)  Batch time: 0.59(0.51)
+2024-03-09 13:44:19,667   INFO  Train:    3/5 ( 60%) [4789/5480 ( 87%)]  Loss: 8.572 (9.83)  LR: 8.048e-04  Time cost: 40:47/05:53 [2:14:42/1:39:12]  Acc_iter 15750       Data time: 0.28(0.26)  Forward time: 0.20(0.25)  Batch time: 0.48(0.51)
+2024-03-09 13:44:19,676   INFO  
+2024-03-09 13:44:44,685   INFO  Train:    3/5 ( 60%) [4839/5480 ( 88%)]  Loss: 9.612 (9.82)  LR: 8.010e-04  Time cost: 41:12/05:27 [2:15:07/1:38:45]  Acc_iter 15800       Data time: 0.26(0.26)  Forward time: 0.32(0.25)  Batch time: 0.58(0.51)
+2024-03-09 13:45:10,804   INFO  Train:    3/5 ( 60%) [4889/5480 ( 89%)]  Loss: 9.902 (9.81)  LR: 7.972e-04  Time cost: 41:38/05:01 [2:15:33/1:38:21]  Acc_iter 15850       Data time: 0.22(0.26)  Forward time: 0.24(0.25)  Batch time: 0.46(0.51)
+2024-03-09 13:45:34,945   INFO  Train:    3/5 ( 60%) [4939/5480 ( 90%)]  Loss: 8.172 (9.80)  LR: 7.934e-04  Time cost: 42:02/04:36 [2:15:57/1:37:52]  Acc_iter 15900       Data time: 0.26(0.26)  Forward time: 0.26(0.25)  Batch time: 0.53(0.51)
+2024-03-09 13:45:34,946   INFO  
+2024-03-09 13:45:59,884   INFO  Train:    3/5 ( 60%) [4989/5480 ( 91%)]  Loss: 9.734 (9.79)  LR: 7.895e-04  Time cost: 42:27/04:10 [2:16:22/1:37:25]  Acc_iter 15950       Data time: 0.38(0.26)  Forward time: 0.28(0.25)  Batch time: 0.66(0.51)
+2024-03-09 13:46:25,395   INFO  Train:    3/5 ( 60%) [5039/5480 ( 92%)]  Loss: 8.701 (9.78)  LR: 7.856e-04  Time cost: 42:52/03:45 [2:16:48/1:37:00]  Acc_iter 16000       Data time: 0.22(0.26)  Forward time: 0.31(0.25)  Batch time: 0.53(0.51)
+2024-03-09 13:46:51,720   INFO  Train:    3/5 ( 60%) [5089/5480 ( 93%)]  Loss: 8.602 (9.78)  LR: 7.816e-04  Time cost: 43:19/03:19 [2:17:14/1:36:36]  Acc_iter 16050       Data time: 0.31(0.26)  Forward time: 0.28(0.25)  Batch time: 0.60(0.51)
+2024-03-09 13:46:51,721   INFO  
+2024-03-09 13:47:17,055   INFO  Train:    3/5 ( 60%) [5139/5480 ( 94%)]  Loss: 9.536 (9.77)  LR: 7.777e-04  Time cost: 43:44/02:54 [2:17:39/1:36:10]  Acc_iter 16100       Data time: 0.29(0.26)  Forward time: 0.29(0.25)  Batch time: 0.58(0.51)
+2024-03-09 13:47:42,862   INFO  Train:    3/5 ( 60%) [5189/5480 ( 95%)]  Loss: 8.680 (9.76)  LR: 7.737e-04  Time cost: 44:10/02:28 [2:18:05/1:35:45]  Acc_iter 16150       Data time: 0.21(0.26)  Forward time: 0.25(0.25)  Batch time: 0.46(0.51)
+2024-03-09 13:48:07,590   INFO  Train:    3/5 ( 60%) [5239/5480 ( 96%)]  Loss: 10.11 (9.75)  LR: 7.697e-04  Time cost: 44:35/02:03 [2:18:30/1:35:18]  Acc_iter 16200       Data time: 0.22(0.26)  Forward time: 0.26(0.25)  Batch time: 0.48(0.51)
+2024-03-09 13:48:07,591   INFO  
+2024-03-09 13:48:32,936   INFO  Train:    3/5 ( 60%) [5289/5480 ( 97%)]  Loss: 9.169 (9.75)  LR: 7.656e-04  Time cost: 45:00/01:37 [2:18:55/1:34:52]  Acc_iter 16250       Data time: 0.29(0.26)  Forward time: 0.27(0.25)  Batch time: 0.56(0.51)
+2024-03-09 13:48:33,095   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:48:58,157   INFO  Train:    3/5 ( 60%) [5339/5480 ( 97%)]  Loss: 8.768 (9.74)  LR: 7.616e-04  Time cost: 45:25/01:11 [2:19:20/1:34:26]  Acc_iter 16300       Data time: 0.30(0.26)  Forward time: 0.28(0.25)  Batch time: 0.58(0.51)
+2024-03-09 13:49:23,835   INFO  Train:    3/5 ( 60%) [5389/5480 ( 98%)]  Loss: 9.835 (9.73)  LR: 7.575e-04  Time cost: 45:51/00:46 [2:19:46/1:34:01]  Acc_iter 16350       Data time: 0.32(0.26)  Forward time: 0.27(0.25)  Batch time: 0.59(0.51)
+2024-03-09 13:49:23,844   INFO  
+2024-03-09 13:49:49,320   INFO  Train:    3/5 ( 60%) [5439/5480 ( 99%)]  Loss: 11.25 (9.72)  LR: 7.534e-04  Time cost: 46:16/00:20 [2:20:12/1:33:35]  Acc_iter 16400       Data time: 0.21(0.26)  Forward time: 0.23(0.25)  Batch time: 0.44(0.51)
+2024-03-09 13:50:08,875   INFO  Train:    3/5 ( 60%) [5479/5480 (100%)]  Loss: 9.125 (9.72)  LR: 7.501e-04  Time cost: 46:36/00:00 [2:20:31/1:33:13]  Acc_iter 16440       Data time: 0.20(0.26)  Forward time: 0.21(0.25)  Batch time: 0.41(0.51)
+2024-03-09 13:50:10,466   INFO  Train:    4/5 ( 80%) [   0/5480 (  0%)]  Loss: 9.627 (9.63)  LR: 7.500e-04  Time cost: 00:01/2:08:29 [2:20:33/4:16:59]  Acc_iter 16441       Data time: 0.73(0.73)  Forward time: 0.49(0.49)  Batch time: 1.22(1.22)
+2024-03-09 13:50:14,727   INFO  Train:    4/5 ( 80%) [   9/5480 (  0%)]  Loss: 9.794 (9.96)  LR: 7.493e-04  Time cost: 00:05/51:41 [2:20:37/1:43:27]  Acc_iter 16450       Data time: 0.20(0.27)  Forward time: 0.26(0.27)  Batch time: 0.47(0.55)
+2024-03-09 13:50:40,757   INFO  Train:    4/5 ( 80%) [  59/5480 (  1%)]  Loss: 8.542 (9.00)  LR: 7.451e-04  Time cost: 00:31/47:43 [2:21:03/1:35:59]  Acc_iter 16500       Data time: 0.29(0.27)  Forward time: 0.25(0.26)  Batch time: 0.54(0.52)
+2024-03-09 13:50:40,758   INFO  
+2024-03-09 13:51:06,432   INFO  Train:    4/5 ( 80%) [ 109/5480 (  2%)]  Loss: 10.39 (8.95)  LR: 7.409e-04  Time cost: 00:57/46:41 [2:21:29/1:34:19]  Acc_iter 16550       Data time: 0.29(0.27)  Forward time: 0.21(0.25)  Batch time: 0.51(0.52)
+2024-03-09 13:51:31,391   INFO  Train:    4/5 ( 80%) [ 159/5480 (  3%)]  Loss: 6.977 (9.01)  LR: 7.367e-04  Time cost: 01:22/45:38 [2:21:54/1:32:37]  Acc_iter 16600       Data time: 0.25(0.26)  Forward time: 0.22(0.25)  Batch time: 0.46(0.51)
+2024-03-09 13:51:56,731   INFO  Train:    4/5 ( 80%) [ 209/5480 (  4%)]  Loss: 7.331 (8.91)  LR: 7.325e-04  Time cost: 01:47/45:02 [2:22:19/1:31:52]  Acc_iter 16650       Data time: 0.31(0.26)  Forward time: 0.17(0.25)  Batch time: 0.48(0.51)
+2024-03-09 13:51:56,732   INFO  
+2024-03-09 13:52:22,697   INFO  Train:    4/5 ( 80%) [ 259/5480 (  5%)]  Loss: 10.30 (8.87)  LR: 7.283e-04  Time cost: 02:13/44:43 [2:22:45/1:31:40]  Acc_iter 16700       Data time: 0.28(0.27)  Forward time: 0.21(0.25)  Batch time: 0.49(0.51)
+2024-03-09 13:52:48,526   INFO  Train:    4/5 ( 80%) [ 309/5480 (  6%)]  Loss: 8.472 (8.90)  LR: 7.240e-04  Time cost: 02:39/44:20 [2:23:11/1:31:19]  Acc_iter 16750       Data time: 0.26(0.26)  Forward time: 0.31(0.25)  Batch time: 0.57(0.51)
+2024-03-09 13:53:13,675   INFO  Train:    4/5 ( 80%) [ 359/5480 (  7%)]  Loss: 12.80 (8.87)  LR: 7.197e-04  Time cost: 03:04/43:46 [2:23:36/1:30:36]  Acc_iter 16800       Data time: 0.34(0.26)  Forward time: 0.21(0.25)  Batch time: 0.55(0.51)
+2024-03-09 13:53:13,676   INFO  
+2024-03-09 13:53:39,449   INFO  Train:    4/5 ( 80%) [ 409/5480 (  7%)]  Loss: 7.325 (8.87)  LR: 7.154e-04  Time cost: 03:30/43:22 [2:24:02/1:30:14]  Acc_iter 16850       Data time: 0.20(0.26)  Forward time: 0.23(0.25)  Batch time: 0.43(0.51)
+2024-03-09 13:54:04,766   INFO  Train:    4/5 ( 80%) [ 459/5480 (  8%)]  Loss: 8.822 (8.87)  LR: 7.111e-04  Time cost: 03:55/42:52 [2:24:27/1:29:40]  Acc_iter 16900       Data time: 0.34(0.26)  Forward time: 0.20(0.25)  Batch time: 0.54(0.51)
+2024-03-09 13:54:30,185   INFO  Train:    4/5 ( 80%) [ 509/5480 (  9%)]  Loss: 6.613 (8.88)  LR: 7.068e-04  Time cost: 04:21/42:25 [2:24:52/1:29:11]  Acc_iter 16950       Data time: 0.25(0.26)  Forward time: 0.21(0.25)  Batch time: 0.47(0.51)
+2024-03-09 13:54:30,193   INFO  
+2024-03-09 13:54:55,126   INFO  Train:    4/5 ( 80%) [ 559/5480 ( 10%)]  Loss: 7.590 (8.88)  LR: 7.024e-04  Time cost: 04:46/41:53 [2:25:17/1:28:33]  Acc_iter 17000       Data time: 0.33(0.26)  Forward time: 0.20(0.25)  Batch time: 0.53(0.51)
+2024-03-09 13:55:09,663   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 13:55:20,911   INFO  Train:    4/5 ( 80%) [ 609/5480 ( 11%)]  Loss: 8.259 (8.90)  LR: 6.980e-04  Time cost: 05:11/41:30 [2:25:43/1:28:11]  Acc_iter 17050       Data time: 0.26(0.26)  Forward time: 0.28(0.25)  Batch time: 0.54(0.51)
+2024-03-09 13:55:47,111   INFO  Train:    4/5 ( 80%) [ 659/5480 ( 12%)]  Loss: 9.431 (8.92)  LR: 6.936e-04  Time cost: 05:38/41:09 [2:26:09/1:27:56]  Acc_iter 17100       Data time: 0.22(0.26)  Forward time: 0.23(0.25)  Batch time: 0.46(0.51)
+2024-03-09 13:55:47,112   INFO  
+2024-03-09 13:56:12,019   INFO  Train:    4/5 ( 80%) [ 709/5480 ( 13%)]  Loss: 9.020 (8.87)  LR: 6.892e-04  Time cost: 06:02/40:38 [2:26:34/1:27:20]  Acc_iter 17150       Data time: 0.21(0.26)  Forward time: 0.27(0.25)  Batch time: 0.48(0.51)
+2024-03-09 13:56:37,965   INFO  Train:    4/5 ( 80%) [ 759/5480 ( 14%)]  Loss: 10.25 (8.88)  LR: 6.848e-04  Time cost: 06:28/40:15 [2:27:00/1:27:00]  Acc_iter 17200       Data time: 0.25(0.26)  Forward time: 0.18(0.25)  Batch time: 0.43(0.51)
+2024-03-09 13:57:03,493   INFO  Train:    4/5 ( 80%) [ 809/5480 ( 15%)]  Loss: 9.144 (8.88)  LR: 6.803e-04  Time cost: 06:54/39:49 [2:27:26/1:26:33]  Acc_iter 17250       Data time: 0.14(0.26)  Forward time: 0.22(0.25)  Batch time: 0.36(0.51)
+2024-03-09 13:57:03,499   INFO  
+2024-03-09 13:57:29,644   INFO  Train:    4/5 ( 80%) [ 859/5480 ( 16%)]  Loss: 11.69 (8.87)  LR: 6.759e-04  Time cost: 07:20/39:27 [2:27:52/1:26:14]  Acc_iter 17300       Data time: 0.24(0.26)  Forward time: 0.27(0.25)  Batch time: 0.51(0.51)
+2024-03-09 13:57:54,813   INFO  Train:    4/5 ( 80%) [ 909/5480 ( 17%)]  Loss: 9.823 (8.88)  LR: 6.714e-04  Time cost: 07:45/38:59 [2:28:17/1:25:44]  Acc_iter 17350       Data time: 0.36(0.26)  Forward time: 0.18(0.25)  Batch time: 0.54(0.51)
+2024-03-09 13:58:19,730   INFO  Train:    4/5 ( 80%) [ 959/5480 ( 18%)]  Loss: 7.891 (8.87)  LR: 6.669e-04  Time cost: 08:10/38:30 [2:28:42/1:25:11]  Acc_iter 17400       Data time: 0.26(0.26)  Forward time: 0.22(0.25)  Batch time: 0.47(0.51)
+2024-03-09 13:58:19,731   INFO  
+2024-03-09 13:58:46,013   INFO  Train:    4/5 ( 80%) [1009/5480 ( 18%)]  Loss: 8.136 (8.86)  LR: 6.624e-04  Time cost: 08:36/38:08 [2:29:08/1:24:53]  Acc_iter 17450       Data time: 0.18(0.26)  Forward time: 0.26(0.25)  Batch time: 0.44(0.51)
+2024-03-09 13:59:10,608   INFO  Train:    4/5 ( 80%) [1059/5480 ( 19%)]  Loss: 6.873 (8.84)  LR: 6.579e-04  Time cost: 09:01/37:38 [2:29:33/1:24:18]  Acc_iter 17500       Data time: 0.31(0.26)  Forward time: 0.22(0.25)  Batch time: 0.53(0.51)
+2024-03-09 13:59:36,882   INFO  Train:    4/5 ( 80%) [1109/5480 ( 20%)]  Loss: 9.636 (8.83)  LR: 6.533e-04  Time cost: 09:27/37:15 [2:29:59/1:23:59]  Acc_iter 17550       Data time: 0.28(0.26)  Forward time: 0.25(0.25)  Batch time: 0.53(0.51)
+2024-03-09 13:59:36,890   INFO  
+2024-03-09 14:00:02,337   INFO  Train:    4/5 ( 80%) [1159/5480 ( 21%)]  Loss: 8.803 (8.83)  LR: 6.488e-04  Time cost: 09:53/36:49 [2:30:25/1:23:32]  Acc_iter 17600       Data time: 0.29(0.26)  Forward time: 0.23(0.25)  Batch time: 0.51(0.51)
+2024-03-09 14:00:09,351   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:00:29,184   INFO  Train:    4/5 ( 80%) [1209/5480 ( 22%)]  Loss: 8.663 (8.82)  LR: 6.442e-04  Time cost: 10:20/36:28 [2:30:51/1:23:17]  Acc_iter 17650       Data time: 0.24(0.26)  Forward time: 0.31(0.25)  Batch time: 0.54(0.51)
+2024-03-09 14:00:55,436   INFO  Train:    4/5 ( 80%) [1259/5480 ( 23%)]  Loss: 8.809 (8.80)  LR: 6.396e-04  Time cost: 10:46/36:05 [2:31:18/1:22:56]  Acc_iter 17700       Data time: 0.24(0.26)  Forward time: 0.22(0.25)  Batch time: 0.46(0.51)
+2024-03-09 14:00:55,437   INFO  
+2024-03-09 14:01:21,662   INFO  Train:    4/5 ( 80%) [1309/5480 ( 24%)]  Loss: 7.061 (8.79)  LR: 6.350e-04  Time cost: 11:12/35:41 [2:31:44/1:22:35]  Acc_iter 17750       Data time: 0.23(0.27)  Forward time: 0.27(0.25)  Batch time: 0.50(0.51)
+2024-03-09 14:01:45,981   INFO  Train:    4/5 ( 80%) [1359/5480 ( 25%)]  Loss: 6.604 (8.79)  LR: 6.304e-04  Time cost: 11:36/35:11 [2:32:08/1:21:59]  Acc_iter 17800       Data time: 0.25(0.26)  Forward time: 0.24(0.25)  Batch time: 0.49(0.51)
+2024-03-09 14:02:11,031   INFO  Train:    4/5 ( 80%) [1409/5480 ( 26%)]  Loss: 10.16 (8.78)  LR: 6.258e-04  Time cost: 12:01/34:44 [2:32:33/1:21:30]  Acc_iter 17850       Data time: 0.31(0.26)  Forward time: 0.23(0.25)  Batch time: 0.54(0.51)
+2024-03-09 14:02:11,032   INFO  
+2024-03-09 14:02:35,798   INFO  Train:    4/5 ( 80%) [1459/5480 ( 27%)]  Loss: 13.74 (8.79)  LR: 6.212e-04  Time cost: 12:26/34:16 [2:32:58/1:20:59]  Acc_iter 17900       Data time: 0.21(0.26)  Forward time: 0.24(0.25)  Batch time: 0.45(0.51)
+2024-03-09 14:03:01,855   INFO  Train:    4/5 ( 80%) [1509/5480 ( 28%)]  Loss: 9.025 (8.78)  LR: 6.165e-04  Time cost: 12:52/33:52 [2:33:24/1:20:36]  Acc_iter 17950       Data time: 0.26(0.26)  Forward time: 0.27(0.25)  Batch time: 0.53(0.51)
+2024-03-09 14:03:25,749   INFO  Train:    4/5 ( 80%) [1559/5480 ( 28%)]  Loss: 7.762 (8.77)  LR: 6.119e-04  Time cost: 13:16/33:22 [2:33:48/1:20:01]  Acc_iter 18000       Data time: 0.28(0.26)  Forward time: 0.20(0.25)  Batch time: 0.48(0.51)
+2024-03-09 14:03:25,751   INFO  
+2024-03-09 14:03:52,169   INFO  Train:    4/5 ( 80%) [1609/5480 ( 29%)]  Loss: 8.574 (8.76)  LR: 6.072e-04  Time cost: 13:43/32:59 [2:34:14/1:19:40]  Acc_iter 18050       Data time: 0.30(0.26)  Forward time: 0.27(0.25)  Batch time: 0.57(0.51)
+2024-03-09 14:04:17,956   INFO  Train:    4/5 ( 80%) [1659/5480 ( 30%)]  Loss: 8.419 (8.75)  LR: 6.026e-04  Time cost: 14:08/32:33 [2:34:40/1:19:16]  Acc_iter 18100       Data time: 0.34(0.26)  Forward time: 0.21(0.25)  Batch time: 0.55(0.51)
+2024-03-09 14:04:42,832   INFO  Train:    4/5 ( 80%) [1709/5480 ( 31%)]  Loss: 5.297 (8.75)  LR: 5.979e-04  Time cost: 14:33/32:06 [2:35:05/1:18:47]  Acc_iter 18150       Data time: 0.26(0.26)  Forward time: 0.19(0.25)  Batch time: 0.45(0.51)
+2024-03-09 14:04:42,841   INFO  
+2024-03-09 14:05:07,875   INFO  Train:    4/5 ( 80%) [1759/5480 ( 32%)]  Loss: 8.334 (8.75)  LR: 5.932e-04  Time cost: 14:58/31:40 [2:35:30/1:18:18]  Acc_iter 18200       Data time: 0.29(0.26)  Forward time: 0.22(0.25)  Batch time: 0.52(0.51)
+2024-03-09 14:05:09,744   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:05:33,240   INFO  Train:    4/5 ( 80%) [1809/5480 ( 33%)]  Loss: 7.799 (8.75)  LR: 5.885e-04  Time cost: 15:24/31:14 [2:35:56/1:17:52]  Acc_iter 18250       Data time: 0.22(0.26)  Forward time: 0.23(0.25)  Batch time: 0.44(0.51)
+2024-03-09 14:05:58,024   INFO  Train:    4/5 ( 80%) [1859/5480 ( 34%)]  Loss: 9.130 (8.74)  LR: 5.838e-04  Time cost: 15:48/30:47 [2:36:20/1:17:23]  Acc_iter 18300       Data time: 0.18(0.26)  Forward time: 0.23(0.25)  Batch time: 0.41(0.51)
+2024-03-09 14:05:58,025   INFO  
+2024-03-09 14:06:24,359   INFO  Train:    4/5 ( 80%) [1909/5480 ( 35%)]  Loss: 8.204 (8.74)  LR: 5.791e-04  Time cost: 16:15/30:23 [2:36:47/1:17:01]  Acc_iter 18350       Data time: 0.25(0.26)  Forward time: 0.22(0.25)  Batch time: 0.47(0.51)
+2024-03-09 14:06:49,698   INFO  Train:    4/5 ( 80%) [1959/5480 ( 36%)]  Loss: 8.365 (8.74)  LR: 5.743e-04  Time cost: 16:40/29:57 [2:37:12/1:16:35]  Acc_iter 18400       Data time: 0.33(0.26)  Forward time: 0.23(0.25)  Batch time: 0.56(0.51)
+2024-03-09 14:07:15,246   INFO  Train:    4/5 ( 80%) [2009/5480 ( 37%)]  Loss: 9.345 (8.72)  LR: 5.696e-04  Time cost: 17:06/29:32 [2:37:38/1:16:09]  Acc_iter 18450       Data time: 0.25(0.26)  Forward time: 0.18(0.25)  Batch time: 0.42(0.51)
+2024-03-09 14:07:15,247   INFO  
+2024-03-09 14:07:40,051   INFO  Train:    4/5 ( 80%) [2059/5480 ( 38%)]  Loss: 7.765 (8.71)  LR: 5.649e-04  Time cost: 17:30/29:05 [2:38:02/1:15:41]  Acc_iter 18500       Data time: 0.22(0.26)  Forward time: 0.30(0.25)  Batch time: 0.52(0.51)
+2024-03-09 14:08:06,273   INFO  Train:    4/5 ( 80%) [2109/5480 ( 38%)]  Loss: 7.312 (8.71)  LR: 5.601e-04  Time cost: 17:57/28:40 [2:38:29/1:15:18]  Acc_iter 18550       Data time: 0.20(0.26)  Forward time: 0.22(0.25)  Batch time: 0.41(0.51)
+2024-03-09 14:08:30,121   INFO  Train:    4/5 ( 80%) [2159/5480 ( 39%)]  Loss: 9.194 (8.70)  LR: 5.554e-04  Time cost: 18:21/28:12 [2:38:52/1:14:46]  Acc_iter 18600       Data time: 0.24(0.26)  Forward time: 0.21(0.25)  Batch time: 0.45(0.51)
+2024-03-09 14:08:30,122   INFO  
+2024-03-09 14:08:56,057   INFO  Train:    4/5 ( 80%) [2209/5480 ( 40%)]  Loss: 5.196 (8.69)  LR: 5.507e-04  Time cost: 18:46/27:48 [2:39:18/1:14:22]  Acc_iter 18650       Data time: 0.27(0.26)  Forward time: 0.30(0.25)  Batch time: 0.57(0.51)
+2024-03-09 14:09:22,609   INFO  Train:    4/5 ( 80%) [2259/5480 ( 41%)]  Loss: 7.290 (8.68)  LR: 5.459e-04  Time cost: 19:13/27:24 [2:39:45/1:14:01]  Acc_iter 18700       Data time: 0.40(0.26)  Forward time: 0.26(0.25)  Batch time: 0.66(0.51)
+2024-03-09 14:09:48,281   INFO  Train:    4/5 ( 80%) [2309/5480 ( 42%)]  Loss: 9.078 (8.67)  LR: 5.411e-04  Time cost: 19:39/26:58 [2:40:11/1:13:36]  Acc_iter 18750       Data time: 0.33(0.26)  Forward time: 0.27(0.25)  Batch time: 0.61(0.51)
+2024-03-09 14:09:48,290   INFO  
+2024-03-09 14:10:09,300   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:10:13,164   INFO  Train:    4/5 ( 80%) [2359/5480 ( 43%)]  Loss: 6.725 (8.66)  LR: 5.364e-04  Time cost: 20:04/26:32 [2:40:35/1:13:08]  Acc_iter 18800       Data time: 0.24(0.26)  Forward time: 0.29(0.25)  Batch time: 0.53(0.51)
+2024-03-09 14:10:39,146   INFO  Train:    4/5 ( 80%) [2409/5480 ( 44%)]  Loss: 8.897 (8.66)  LR: 5.316e-04  Time cost: 20:30/26:07 [2:41:01/1:12:44]  Acc_iter 18850       Data time: 0.27(0.26)  Forward time: 0.21(0.25)  Batch time: 0.48(0.51)
+2024-03-09 14:11:04,765   INFO  Train:    4/5 ( 80%) [2459/5480 ( 45%)]  Loss: 6.565 (8.65)  LR: 5.268e-04  Time cost: 20:55/25:42 [2:41:27/1:12:19]  Acc_iter 18900       Data time: 0.20(0.26)  Forward time: 0.23(0.25)  Batch time: 0.43(0.51)
+2024-03-09 14:11:04,766   INFO  
+2024-03-09 14:11:30,443   INFO  Train:    4/5 ( 80%) [2509/5480 ( 46%)]  Loss: 10.59 (8.64)  LR: 5.221e-04  Time cost: 21:21/25:16 [2:41:53/1:11:54]  Acc_iter 18950       Data time: 0.37(0.26)  Forward time: 0.28(0.25)  Batch time: 0.65(0.51)
+2024-03-09 14:11:56,591   INFO  Train:    4/5 ( 80%) [2559/5480 ( 47%)]  Loss: 5.638 (8.64)  LR: 5.173e-04  Time cost: 21:47/24:51 [2:42:19/1:11:30]  Acc_iter 19000       Data time: 0.36(0.26)  Forward time: 0.25(0.25)  Batch time: 0.61(0.51)
+2024-03-09 14:12:21,579   INFO  Train:    4/5 ( 80%) [2609/5480 ( 48%)]  Loss: 7.172 (8.63)  LR: 5.125e-04  Time cost: 22:12/24:25 [2:42:44/1:11:03]  Acc_iter 19050       Data time: 0.16(0.26)  Forward time: 0.24(0.25)  Batch time: 0.40(0.51)
+2024-03-09 14:12:21,580   INFO  
+2024-03-09 14:12:47,177   INFO  Train:    4/5 ( 80%) [2659/5480 ( 49%)]  Loss: 6.901 (8.63)  LR: 5.077e-04  Time cost: 22:38/24:00 [2:43:09/1:10:38]  Acc_iter 19100       Data time: 0.28(0.26)  Forward time: 0.28(0.25)  Batch time: 0.56(0.51)
+2024-03-09 14:13:12,654   INFO  Train:    4/5 ( 80%) [2709/5480 ( 49%)]  Loss: 8.450 (8.63)  LR: 5.030e-04  Time cost: 23:03/23:34 [2:43:35/1:10:12]  Acc_iter 19150       Data time: 0.25(0.26)  Forward time: 0.22(0.25)  Batch time: 0.47(0.51)
+2024-03-09 14:13:38,412   INFO  Train:    4/5 ( 80%) [2759/5480 ( 50%)]  Loss: 8.238 (8.62)  LR: 4.982e-04  Time cost: 23:29/23:09 [2:44:01/1:09:47]  Acc_iter 19200       Data time: 0.31(0.26)  Forward time: 0.28(0.25)  Batch time: 0.58(0.51)
+2024-03-09 14:13:38,413   INFO  
+2024-03-09 14:14:04,312   INFO  Train:    4/5 ( 80%) [2809/5480 ( 51%)]  Loss: 8.851 (8.61)  LR: 4.934e-04  Time cost: 23:55/22:44 [2:44:27/1:09:23]  Acc_iter 19250       Data time: 0.34(0.26)  Forward time: 0.28(0.25)  Batch time: 0.62(0.51)
+2024-03-09 14:14:29,832   INFO  Train:    4/5 ( 80%) [2859/5480 ( 52%)]  Loss: 7.144 (8.60)  LR: 4.886e-04  Time cost: 24:20/22:18 [2:44:52/1:08:57]  Acc_iter 19300       Data time: 0.38(0.26)  Forward time: 0.20(0.25)  Batch time: 0.57(0.51)
+2024-03-09 14:14:55,304   INFO  Train:    4/5 ( 80%) [2909/5480 ( 53%)]  Loss: 5.539 (8.59)  LR: 4.839e-04  Time cost: 24:46/21:53 [2:45:18/1:08:31]  Acc_iter 19350       Data time: 0.25(0.26)  Forward time: 0.24(0.25)  Batch time: 0.49(0.51)
+2024-03-09 14:14:55,313   INFO  
+2024-03-09 14:15:09,499   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:15:21,424   INFO  Train:    4/5 ( 80%) [2959/5480 ( 54%)]  Loss: 9.529 (8.58)  LR: 4.791e-04  Time cost: 25:12/21:28 [2:45:44/1:08:07]  Acc_iter 19400       Data time: 0.26(0.26)  Forward time: 0.29(0.25)  Batch time: 0.55(0.51)
+2024-03-09 14:15:47,453   INFO  Train:    4/5 ( 80%) [3009/5480 ( 55%)]  Loss: 7.212 (8.58)  LR: 4.743e-04  Time cost: 25:38/21:02 [2:46:10/1:07:43]  Acc_iter 19450       Data time: 0.29(0.26)  Forward time: 0.27(0.25)  Batch time: 0.56(0.51)
+2024-03-09 14:16:13,413   INFO  Train:    4/5 ( 80%) [3059/5480 ( 56%)]  Loss: 7.848 (8.57)  LR: 4.695e-04  Time cost: 26:04/20:37 [2:46:36/1:07:19]  Acc_iter 19500       Data time: 0.35(0.26)  Forward time: 0.19(0.25)  Batch time: 0.54(0.51)
+2024-03-09 14:16:13,414   INFO  
+2024-03-09 14:16:39,154   INFO  Train:    4/5 ( 80%) [3109/5480 ( 57%)]  Loss: 7.079 (8.57)  LR: 4.648e-04  Time cost: 26:30/20:12 [2:47:01/1:06:54]  Acc_iter 19550       Data time: 0.25(0.26)  Forward time: 0.30(0.25)  Batch time: 0.55(0.51)
+2024-03-09 14:17:05,379   INFO  Train:    4/5 ( 80%) [3159/5480 ( 58%)]  Loss: 9.087 (8.56)  LR: 4.600e-04  Time cost: 26:56/19:47 [2:47:28/1:06:30]  Acc_iter 19600       Data time: 0.25(0.26)  Forward time: 0.21(0.25)  Batch time: 0.46(0.51)
+2024-03-09 14:17:31,130   INFO  Train:    4/5 ( 80%) [3209/5480 ( 59%)]  Loss: 6.909 (8.55)  LR: 4.553e-04  Time cost: 27:22/19:21 [2:47:53/1:06:05]  Acc_iter 19650       Data time: 0.29(0.26)  Forward time: 0.28(0.25)  Batch time: 0.57(0.51)
+2024-03-09 14:17:31,130   INFO  
+2024-03-09 14:17:55,905   INFO  Train:    4/5 ( 80%) [3259/5480 ( 59%)]  Loss: 7.379 (8.55)  LR: 4.505e-04  Time cost: 27:46/18:55 [2:48:18/1:05:37]  Acc_iter 19700       Data time: 0.16(0.26)  Forward time: 0.20(0.25)  Batch time: 0.36(0.51)
+2024-03-09 14:18:20,479   INFO  Train:    4/5 ( 80%) [3309/5480 ( 60%)]  Loss: 6.009 (8.55)  LR: 4.457e-04  Time cost: 28:11/18:29 [2:48:43/1:05:09]  Acc_iter 19750       Data time: 0.26(0.26)  Forward time: 0.22(0.25)  Batch time: 0.47(0.51)
+2024-03-09 14:18:46,899   INFO  Train:    4/5 ( 80%) [3359/5480 ( 61%)]  Loss: 9.658 (8.54)  LR: 4.410e-04  Time cost: 28:37/18:04 [2:49:09/1:04:46]  Acc_iter 19800       Data time: 0.23(0.26)  Forward time: 0.24(0.25)  Batch time: 0.47(0.51)
+2024-03-09 14:18:46,900   INFO  
+2024-03-09 14:19:11,817   INFO  Train:    4/5 ( 80%) [3409/5480 ( 62%)]  Loss: 8.037 (8.54)  LR: 4.363e-04  Time cost: 29:02/17:38 [2:49:34/1:04:19]  Acc_iter 19850       Data time: 0.41(0.26)  Forward time: 0.32(0.25)  Batch time: 0.73(0.51)
+2024-03-09 14:19:37,239   INFO  Train:    4/5 ( 80%) [3459/5480 ( 63%)]  Loss: 9.007 (8.53)  LR: 4.315e-04  Time cost: 29:28/17:12 [2:50:00/1:03:53]  Acc_iter 19900       Data time: 0.39(0.26)  Forward time: 0.24(0.25)  Batch time: 0.63(0.51)
+2024-03-09 14:20:02,795   INFO  Train:    4/5 ( 80%) [3509/5480 ( 64%)]  Loss: 12.88 (8.53)  LR: 4.268e-04  Time cost: 29:53/16:47 [2:50:25/1:03:27]  Acc_iter 19950       Data time: 0.32(0.26)  Forward time: 0.25(0.25)  Batch time: 0.57(0.51)
+2024-03-09 14:20:02,803   INFO  
+2024-03-09 14:20:09,688   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:20:26,994   INFO  Train:    4/5 ( 80%) [3559/5480 ( 65%)]  Loss: 6.419 (8.52)  LR: 4.221e-04  Time cost: 30:17/16:20 [2:50:49/1:02:59]  Acc_iter 20000       Data time: 0.27(0.26)  Forward time: 0.19(0.25)  Batch time: 0.46(0.51)
+2024-03-09 14:20:52,438   INFO  Train:    4/5 ( 80%) [3609/5480 ( 66%)]  Loss: 7.867 (8.52)  LR: 4.174e-04  Time cost: 30:43/15:55 [2:51:15/1:02:33]  Acc_iter 20050       Data time: 0.14(0.26)  Forward time: 0.25(0.25)  Batch time: 0.39(0.51)
+2024-03-09 14:21:17,828   INFO  Train:    4/5 ( 80%) [3659/5480 ( 67%)]  Loss: 8.175 (8.51)  LR: 4.126e-04  Time cost: 31:08/15:29 [2:51:40/1:02:07]  Acc_iter 20100       Data time: 0.24(0.26)  Forward time: 0.31(0.25)  Batch time: 0.55(0.51)
+2024-03-09 14:21:17,829   INFO  
+2024-03-09 14:21:43,134   INFO  Train:    4/5 ( 80%) [3709/5480 ( 68%)]  Loss: 7.596 (8.51)  LR: 4.079e-04  Time cost: 31:34/15:04 [2:52:05/1:01:41]  Acc_iter 20150       Data time: 0.18(0.26)  Forward time: 0.31(0.25)  Batch time: 0.49(0.51)
+2024-03-09 14:22:08,924   INFO  Train:    4/5 ( 80%) [3759/5480 ( 69%)]  Loss: 7.491 (8.50)  LR: 4.033e-04  Time cost: 31:59/14:38 [2:52:31/1:01:16]  Acc_iter 20200       Data time: 0.33(0.26)  Forward time: 0.29(0.25)  Batch time: 0.62(0.51)
+2024-03-09 14:22:34,926   INFO  Train:    4/5 ( 80%) [3809/5480 ( 70%)]  Loss: 7.920 (8.50)  LR: 3.986e-04  Time cost: 32:25/14:13 [2:52:57/1:00:52]  Acc_iter 20250       Data time: 0.20(0.26)  Forward time: 0.25(0.25)  Batch time: 0.45(0.51)
+2024-03-09 14:22:34,927   INFO  
+2024-03-09 14:23:01,703   INFO  Train:    4/5 ( 80%) [3859/5480 ( 70%)]  Loss: 6.599 (8.49)  LR: 3.939e-04  Time cost: 32:52/13:48 [2:53:24/1:00:28]  Acc_iter 20300       Data time: 0.30(0.26)  Forward time: 0.23(0.25)  Batch time: 0.53(0.51)
+2024-03-09 14:23:26,654   INFO  Train:    4/5 ( 80%) [3909/5480 ( 71%)]  Loss: 6.962 (8.49)  LR: 3.892e-04  Time cost: 33:17/13:22 [2:53:49/1:00:02]  Acc_iter 20350       Data time: 0.31(0.26)  Forward time: 0.25(0.25)  Batch time: 0.56(0.51)
+2024-03-09 14:23:53,386   INFO  Train:    4/5 ( 80%) [3959/5480 ( 72%)]  Loss: 7.390 (8.48)  LR: 3.846e-04  Time cost: 33:44/12:57 [2:54:16/59:38]  Acc_iter 20400       Data time: 0.25(0.26)  Forward time: 0.23(0.25)  Batch time: 0.48(0.51)
+2024-03-09 14:23:53,387   INFO  
+2024-03-09 14:24:17,841   INFO  Train:    4/5 ( 80%) [4009/5480 ( 73%)]  Loss: 6.735 (8.47)  LR: 3.799e-04  Time cost: 34:08/12:31 [2:54:40/59:11]  Acc_iter 20450       Data time: 0.21(0.26)  Forward time: 0.24(0.25)  Batch time: 0.45(0.51)
+2024-03-09 14:24:43,524   INFO  Train:    4/5 ( 80%) [4059/5480 ( 74%)]  Loss: 6.604 (8.46)  LR: 3.753e-04  Time cost: 34:34/12:06 [2:55:06/58:46]  Acc_iter 20500       Data time: 0.23(0.26)  Forward time: 0.20(0.25)  Batch time: 0.42(0.51)
+2024-03-09 14:25:09,181   INFO  Train:    4/5 ( 80%) [4109/5480 ( 75%)]  Loss: 7.037 (8.46)  LR: 3.707e-04  Time cost: 35:00/11:40 [2:55:31/58:20]  Acc_iter 20550       Data time: 0.20(0.26)  Forward time: 0.29(0.25)  Batch time: 0.49(0.51)
+2024-03-09 14:25:09,190   INFO  
+2024-03-09 14:25:09,337   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:25:35,646   INFO  Train:    4/5 ( 80%) [4159/5480 ( 76%)]  Loss: 8.522 (8.45)  LR: 3.661e-04  Time cost: 35:26/11:15 [2:55:58/57:56]  Acc_iter 20600       Data time: 0.33(0.26)  Forward time: 0.20(0.25)  Batch time: 0.54(0.51)
+2024-03-09 14:26:00,691   INFO  Train:    4/5 ( 80%) [4209/5480 ( 77%)]  Loss: 10.04 (8.45)  LR: 3.615e-04  Time cost: 35:51/10:49 [2:56:23/57:30]  Acc_iter 20650       Data time: 0.25(0.26)  Forward time: 0.23(0.25)  Batch time: 0.48(0.51)
+2024-03-09 14:26:26,289   INFO  Train:    4/5 ( 80%) [4259/5480 ( 78%)]  Loss: 7.988 (8.44)  LR: 3.569e-04  Time cost: 36:17/10:24 [2:56:49/57:04]  Acc_iter 20700       Data time: 0.29(0.26)  Forward time: 0.26(0.25)  Batch time: 0.54(0.51)
+2024-03-09 14:26:26,290   INFO  
+2024-03-09 14:26:51,993   INFO  Train:    4/5 ( 80%) [4309/5480 ( 79%)]  Loss: 9.011 (8.43)  LR: 3.523e-04  Time cost: 36:42/09:58 [2:57:14/56:39]  Acc_iter 20750       Data time: 0.30(0.26)  Forward time: 0.27(0.25)  Batch time: 0.57(0.51)
+2024-03-09 14:27:17,575   INFO  Train:    4/5 ( 80%) [4359/5480 ( 80%)]  Loss: 8.165 (8.43)  LR: 3.478e-04  Time cost: 37:08/09:32 [2:57:40/56:13]  Acc_iter 20800       Data time: 0.25(0.26)  Forward time: 0.27(0.25)  Batch time: 0.51(0.51)
+2024-03-09 14:27:42,665   INFO  Train:    4/5 ( 80%) [4409/5480 ( 80%)]  Loss: 6.430 (8.42)  LR: 3.432e-04  Time cost: 37:33/09:07 [2:58:05/55:47]  Acc_iter 20850       Data time: 0.17(0.26)  Forward time: 0.29(0.25)  Batch time: 0.46(0.51)
+2024-03-09 14:27:42,666   INFO  
+2024-03-09 14:28:08,584   INFO  Train:    4/5 ( 80%) [4459/5480 ( 81%)]  Loss: 7.732 (8.42)  LR: 3.387e-04  Time cost: 37:59/08:41 [2:58:31/55:22]  Acc_iter 20900       Data time: 0.18(0.26)  Forward time: 0.32(0.25)  Batch time: 0.49(0.51)
+2024-03-09 14:28:34,432   INFO  Train:    4/5 ( 80%) [4509/5480 ( 82%)]  Loss: 9.460 (8.41)  LR: 3.342e-04  Time cost: 38:25/08:16 [2:58:57/54:57]  Acc_iter 20950       Data time: 0.19(0.26)  Forward time: 0.22(0.25)  Batch time: 0.41(0.51)
+2024-03-09 14:29:00,673   INFO  Train:    4/5 ( 80%) [4559/5480 ( 83%)]  Loss: 8.677 (8.40)  LR: 3.297e-04  Time cost: 38:51/07:50 [2:59:23/54:32]  Acc_iter 21000       Data time: 0.17(0.26)  Forward time: 0.27(0.25)  Batch time: 0.45(0.51)
+2024-03-09 14:29:00,674   INFO  
+2024-03-09 14:29:25,677   INFO  Train:    4/5 ( 80%) [4609/5480 ( 84%)]  Loss: 7.637 (8.40)  LR: 3.252e-04  Time cost: 39:16/07:25 [2:59:48/54:06]  Acc_iter 21050       Data time: 0.29(0.26)  Forward time: 0.23(0.25)  Batch time: 0.53(0.51)
+2024-03-09 14:29:51,786   INFO  Train:    4/5 ( 80%) [4659/5480 ( 85%)]  Loss: 7.571 (8.39)  LR: 3.207e-04  Time cost: 39:42/06:59 [3:00:14/53:41]  Acc_iter 21100       Data time: 0.28(0.26)  Forward time: 0.25(0.25)  Batch time: 0.52(0.51)
+2024-03-09 14:30:09,756   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:30:17,276   INFO  Train:    4/5 ( 80%) [4709/5480 ( 86%)]  Loss: 8.946 (8.39)  LR: 3.163e-04  Time cost: 40:08/06:34 [3:00:40/53:16]  Acc_iter 21150       Data time: 0.20(0.26)  Forward time: 0.27(0.25)  Batch time: 0.46(0.51)
+2024-03-09 14:30:17,285   INFO  
+2024-03-09 14:30:42,886   INFO  Train:    4/5 ( 80%) [4759/5480 ( 87%)]  Loss: 7.382 (8.38)  LR: 3.118e-04  Time cost: 40:33/06:08 [3:01:05/52:50]  Acc_iter 21200       Data time: 0.32(0.26)  Forward time: 0.23(0.25)  Batch time: 0.55(0.51)
+2024-03-09 14:31:07,777   INFO  Train:    4/5 ( 80%) [4809/5480 ( 88%)]  Loss: 6.568 (8.38)  LR: 3.074e-04  Time cost: 40:58/05:42 [3:01:30/52:24]  Acc_iter 21250       Data time: 0.28(0.26)  Forward time: 0.33(0.25)  Batch time: 0.62(0.51)
+2024-03-09 14:31:33,491   INFO  Train:    4/5 ( 80%) [4859/5480 ( 89%)]  Loss: 7.273 (8.37)  LR: 3.030e-04  Time cost: 41:24/05:17 [3:01:56/51:58]  Acc_iter 21300       Data time: 0.27(0.26)  Forward time: 0.26(0.25)  Batch time: 0.53(0.51)
+2024-03-09 14:31:33,492   INFO  
+2024-03-09 14:31:58,772   INFO  Train:    4/5 ( 80%) [4909/5480 ( 90%)]  Loss: 8.022 (8.37)  LR: 2.986e-04  Time cost: 41:49/04:51 [3:02:21/51:32]  Acc_iter 21350       Data time: 0.21(0.26)  Forward time: 0.20(0.25)  Batch time: 0.41(0.51)
+2024-03-09 14:32:25,394   INFO  Train:    4/5 ( 80%) [4959/5480 ( 90%)]  Loss: 6.673 (8.36)  LR: 2.943e-04  Time cost: 42:16/04:26 [3:02:48/51:08]  Acc_iter 21400       Data time: 0.19(0.26)  Forward time: 0.24(0.25)  Batch time: 0.43(0.51)
+2024-03-09 14:32:51,363   INFO  Train:    4/5 ( 80%) [5009/5480 ( 91%)]  Loss: 7.506 (8.36)  LR: 2.899e-04  Time cost: 42:42/04:00 [3:03:14/50:43]  Acc_iter 21450       Data time: 0.17(0.26)  Forward time: 0.25(0.25)  Batch time: 0.42(0.51)
+2024-03-09 14:32:51,364   INFO  
+2024-03-09 14:33:17,168   INFO  Train:    4/5 ( 80%) [5059/5480 ( 92%)]  Loss: 6.469 (8.35)  LR: 2.856e-04  Time cost: 43:08/03:35 [3:03:39/50:18]  Acc_iter 21500       Data time: 0.28(0.26)  Forward time: 0.26(0.25)  Batch time: 0.54(0.51)
+2024-03-09 14:33:42,888   INFO  Train:    4/5 ( 80%) [5109/5480 ( 93%)]  Loss: 8.456 (8.34)  LR: 2.813e-04  Time cost: 43:33/03:09 [3:04:05/49:52]  Acc_iter 21550       Data time: 0.26(0.26)  Forward time: 0.29(0.25)  Batch time: 0.55(0.51)
+2024-03-09 14:34:08,727   INFO  Train:    4/5 ( 80%) [5159/5480 ( 94%)]  Loss: 5.925 (8.33)  LR: 2.770e-04  Time cost: 43:59/02:44 [3:04:31/49:27]  Acc_iter 21600       Data time: 0.20(0.26)  Forward time: 0.26(0.25)  Batch time: 0.46(0.51)
+2024-03-09 14:34:08,728   INFO  
+2024-03-09 14:34:34,720   INFO  Train:    4/5 ( 80%) [5209/5480 ( 95%)]  Loss: 8.697 (8.33)  LR: 2.728e-04  Time cost: 44:25/02:18 [3:04:57/49:02]  Acc_iter 21650       Data time: 0.38(0.26)  Forward time: 0.29(0.25)  Batch time: 0.67(0.51)
+2024-03-09 14:35:00,400   INFO  Train:    4/5 ( 80%) [5259/5480 ( 96%)]  Loss: 8.529 (8.32)  LR: 2.685e-04  Time cost: 44:51/01:53 [3:05:23/48:36]  Acc_iter 21700       Data time: 0.23(0.26)  Forward time: 0.30(0.25)  Batch time: 0.53(0.51)
+2024-03-09 14:35:09,315   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:35:26,489   INFO  Train:    4/5 ( 80%) [5309/5480 ( 97%)]  Loss: 6.780 (8.32)  LR: 2.643e-04  Time cost: 45:17/01:27 [3:05:49/48:11]  Acc_iter 21750       Data time: 0.28(0.26)  Forward time: 0.24(0.25)  Batch time: 0.51(0.51)
+2024-03-09 14:35:26,497   INFO  
+2024-03-09 14:35:52,293   INFO  Train:    4/5 ( 80%) [5359/5480 ( 98%)]  Loss: 8.255 (8.31)  LR: 2.601e-04  Time cost: 45:43/01:01 [3:06:15/47:46]  Acc_iter 21800       Data time: 0.34(0.26)  Forward time: 0.21(0.25)  Batch time: 0.55(0.51)
+2024-03-09 14:36:17,738   INFO  Train:    4/5 ( 80%) [5409/5480 ( 99%)]  Loss: 8.849 (8.31)  LR: 2.559e-04  Time cost: 46:08/00:36 [3:06:40/47:20]  Acc_iter 21850       Data time: 0.23(0.26)  Forward time: 0.25(0.25)  Batch time: 0.48(0.51)
+2024-03-09 14:36:44,156   INFO  Train:    4/5 ( 80%) [5459/5480 (100%)]  Loss: 8.249 (8.31)  LR: 2.517e-04  Time cost: 46:35/00:10 [3:07:06/46:56]  Acc_iter 21900       Data time: 0.34(0.26)  Forward time: 0.25(0.25)  Batch time: 0.58(0.51)
+2024-03-09 14:36:44,163   INFO  
+2024-03-09 14:36:53,833   INFO  Train:    4/5 ( 80%) [5479/5480 (100%)]  Loss: 8.474 (8.30)  LR: 2.501e-04  Time cost: 46:44/00:00 [3:07:16/46:45]  Acc_iter 21920       Data time: 0.26(0.26)  Forward time: 0.20(0.25)  Batch time: 0.46(0.51)
+2024-03-09 14:36:55,738   INFO  Train:    5/5 (100%) [   0/5480 (  0%)]  Loss: 5.909 (5.91)  LR: 2.500e-04  Time cost: 00:01/2:36:56 [3:07:18/2:36:56]  Acc_iter 21921       Data time: 1.05(1.05)  Forward time: 0.41(0.41)  Batch time: 1.46(1.46)
+2024-03-09 14:37:11,193   INFO  Train:    5/5 (100%) [  29/5480 (  1%)]  Loss: 7.119 (7.66)  LR: 2.476e-04  Time cost: 00:17/52:00 [3:07:33/52:00]  Acc_iter 21950       Data time: 0.29(0.30)  Forward time: 0.26(0.26)  Batch time: 0.54(0.56)
+2024-03-09 14:37:36,389   INFO  Train:    5/5 (100%) [  79/5480 (  1%)]  Loss: 7.616 (7.62)  LR: 2.435e-04  Time cost: 00:42/47:40 [3:07:59/47:40]  Acc_iter 22000       Data time: 0.27(0.28)  Forward time: 0.22(0.25)  Batch time: 0.49(0.53)
+2024-03-09 14:38:03,325   INFO  Train:    5/5 (100%) [ 129/5480 (  2%)]  Loss: 7.729 (7.64)  LR: 2.394e-04  Time cost: 01:09/47:32 [3:08:26/47:32]  Acc_iter 22050       Data time: 0.38(0.28)  Forward time: 0.27(0.25)  Batch time: 0.65(0.53)
+2024-03-09 14:38:03,326   INFO  
+2024-03-09 14:38:29,652   INFO  Train:    5/5 (100%) [ 179/5480 (  3%)]  Loss: 7.867 (7.67)  LR: 2.353e-04  Time cost: 01:35/46:56 [3:08:52/46:56]  Acc_iter 22100       Data time: 0.30(0.27)  Forward time: 0.32(0.26)  Batch time: 0.62(0.53)
+2024-03-09 14:38:55,175   INFO  Train:    5/5 (100%) [ 229/5480 (  4%)]  Loss: 9.025 (7.70)  LR: 2.313e-04  Time cost: 02:01/46:06 [3:09:17/46:06]  Acc_iter 22150       Data time: 0.24(0.27)  Forward time: 0.29(0.25)  Batch time: 0.53(0.53)
+2024-03-09 14:39:21,656   INFO  Train:    5/5 (100%) [ 279/5480 (  5%)]  Loss: 8.901 (7.69)  LR: 2.273e-04  Time cost: 02:27/45:42 [3:09:44/45:42]  Acc_iter 22200       Data time: 0.34(0.27)  Forward time: 0.24(0.26)  Batch time: 0.58(0.53)
+2024-03-09 14:39:21,657   INFO  
+2024-03-09 14:39:46,913   INFO  Train:    5/5 (100%) [ 329/5480 (  6%)]  Loss: 7.738 (7.68)  LR: 2.233e-04  Time cost: 02:52/44:58 [3:10:09/44:58]  Acc_iter 22250       Data time: 0.19(0.27)  Forward time: 0.29(0.25)  Batch time: 0.49(0.52)
+2024-03-09 14:40:12,572   INFO  Train:    5/5 (100%) [ 379/5480 (  7%)]  Loss: 7.900 (7.68)  LR: 2.193e-04  Time cost: 03:18/44:25 [3:10:35/44:25]  Acc_iter 22300       Data time: 0.25(0.27)  Forward time: 0.24(0.25)  Batch time: 0.49(0.52)
+2024-03-09 14:40:38,499   INFO  Train:    5/5 (100%) [ 429/5480 (  8%)]  Loss: 6.356 (7.64)  LR: 2.154e-04  Time cost: 03:44/43:56 [3:11:01/43:56]  Acc_iter 22350       Data time: 0.22(0.27)  Forward time: 0.29(0.25)  Batch time: 0.50(0.52)
+2024-03-09 14:40:38,507   INFO  
+2024-03-09 14:41:03,124   INFO  Train:    5/5 (100%) [ 479/5480 (  9%)]  Loss: 7.080 (7.62)  LR: 2.115e-04  Time cost: 04:09/43:15 [3:11:25/43:15]  Acc_iter 22400       Data time: 0.27(0.27)  Forward time: 0.26(0.25)  Batch time: 0.53(0.52)
+2024-03-09 14:41:27,900   INFO  Train:    5/5 (100%) [ 529/5480 ( 10%)]  Loss: 6.323 (7.60)  LR: 2.076e-04  Time cost: 04:33/42:38 [3:11:50/42:38]  Acc_iter 22450       Data time: 0.23(0.26)  Forward time: 0.29(0.25)  Batch time: 0.52(0.52)
+2024-03-09 14:41:53,244   INFO  Train:    5/5 (100%) [ 579/5480 ( 11%)]  Loss: 6.487 (7.59)  LR: 2.037e-04  Time cost: 04:59/42:08 [3:12:16/42:08]  Acc_iter 22500       Data time: 0.28(0.26)  Forward time: 0.22(0.25)  Batch time: 0.50(0.52)
+2024-03-09 14:41:53,245   INFO  
+2024-03-09 14:41:54,436   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:42:17,564   INFO  Train:    5/5 (100%) [ 629/5480 ( 11%)]  Loss: 6.843 (7.59)  LR: 1.999e-04  Time cost: 05:23/41:31 [3:12:40/41:31]  Acc_iter 22550       Data time: 0.16(0.26)  Forward time: 0.31(0.25)  Batch time: 0.48(0.51)
+2024-03-09 14:42:43,680   INFO  Train:    5/5 (100%) [ 679/5480 ( 12%)]  Loss: 5.904 (7.59)  LR: 1.961e-04  Time cost: 05:49/41:08 [3:13:06/41:08]  Acc_iter 22600       Data time: 0.20(0.26)  Forward time: 0.23(0.25)  Batch time: 0.43(0.51)
+2024-03-09 14:43:09,273   INFO  Train:    5/5 (100%) [ 729/5480 ( 13%)]  Loss: 8.660 (7.60)  LR: 1.923e-04  Time cost: 06:15/40:42 [3:13:32/40:42]  Acc_iter 22650       Data time: 0.25(0.26)  Forward time: 0.23(0.25)  Batch time: 0.48(0.51)
+2024-03-09 14:43:09,274   INFO  
+2024-03-09 14:43:34,175   INFO  Train:    5/5 (100%) [ 779/5480 ( 14%)]  Loss: 8.666 (7.62)  LR: 1.886e-04  Time cost: 06:40/40:11 [3:13:56/40:11]  Acc_iter 22700       Data time: 0.27(0.26)  Forward time: 0.21(0.25)  Batch time: 0.48(0.51)
+2024-03-09 14:44:00,209   INFO  Train:    5/5 (100%) [ 829/5480 ( 15%)]  Loss: 8.570 (7.63)  LR: 1.848e-04  Time cost: 07:06/39:48 [3:14:22/39:48]  Acc_iter 22750       Data time: 0.21(0.26)  Forward time: 0.23(0.25)  Batch time: 0.44(0.51)
+2024-03-09 14:44:27,043   INFO  Train:    5/5 (100%) [ 879/5480 ( 16%)]  Loss: 8.451 (7.63)  LR: 1.811e-04  Time cost: 07:33/39:28 [3:14:49/39:28]  Acc_iter 22800       Data time: 0.25(0.26)  Forward time: 0.24(0.25)  Batch time: 0.49(0.51)
+2024-03-09 14:44:27,044   INFO  
+2024-03-09 14:44:52,489   INFO  Train:    5/5 (100%) [ 929/5480 ( 17%)]  Loss: 7.197 (7.62)  LR: 1.775e-04  Time cost: 07:58/39:01 [3:15:15/39:01]  Acc_iter 22850       Data time: 0.28(0.26)  Forward time: 0.21(0.25)  Batch time: 0.49(0.51)
+2024-03-09 14:45:18,381   INFO  Train:    5/5 (100%) [ 979/5480 ( 18%)]  Loss: 8.716 (7.61)  LR: 1.738e-04  Time cost: 08:24/38:36 [3:15:41/38:36]  Acc_iter 22900       Data time: 0.23(0.26)  Forward time: 0.29(0.25)  Batch time: 0.52(0.51)
+2024-03-09 14:45:45,101   INFO  Train:    5/5 (100%) [1029/5480 ( 19%)]  Loss: 6.727 (7.61)  LR: 1.702e-04  Time cost: 08:51/38:14 [3:16:07/38:14]  Acc_iter 22950       Data time: 0.17(0.26)  Forward time: 0.30(0.25)  Batch time: 0.47(0.52)
+2024-03-09 14:45:45,110   INFO  
+2024-03-09 14:46:11,456   INFO  Train:    5/5 (100%) [1079/5480 ( 20%)]  Loss: 8.331 (7.62)  LR: 1.667e-04  Time cost: 09:17/37:51 [3:16:34/37:51]  Acc_iter 23000       Data time: 0.26(0.26)  Forward time: 0.30(0.25)  Batch time: 0.56(0.52)
+2024-03-09 14:46:37,353   INFO  Train:    5/5 (100%) [1129/5480 ( 21%)]  Loss: 5.990 (7.62)  LR: 1.631e-04  Time cost: 09:43/37:26 [3:17:00/37:26]  Acc_iter 23050       Data time: 0.32(0.26)  Forward time: 0.21(0.25)  Batch time: 0.53(0.52)
+2024-03-09 14:46:54,599   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:47:03,232   INFO  Train:    5/5 (100%) [1179/5480 ( 22%)]  Loss: 5.909 (7.61)  LR: 1.596e-04  Time cost: 10:09/37:00 [3:17:26/37:00]  Acc_iter 23100       Data time: 0.21(0.26)  Forward time: 0.23(0.25)  Batch time: 0.44(0.52)
+2024-03-09 14:47:03,233   INFO  
+2024-03-09 14:47:29,818   INFO  Train:    5/5 (100%) [1229/5480 ( 22%)]  Loss: 8.882 (7.60)  LR: 1.561e-04  Time cost: 10:35/36:37 [3:17:52/36:37]  Acc_iter 23150       Data time: 0.26(0.26)  Forward time: 0.23(0.25)  Batch time: 0.49(0.52)
+2024-03-09 14:47:55,621   INFO  Train:    5/5 (100%) [1279/5480 ( 23%)]  Loss: 5.923 (7.60)  LR: 1.527e-04  Time cost: 11:01/36:11 [3:18:18/36:11]  Acc_iter 23200       Data time: 0.29(0.26)  Forward time: 0.26(0.25)  Batch time: 0.55(0.52)
+2024-03-09 14:48:21,282   INFO  Train:    5/5 (100%) [1329/5480 ( 24%)]  Loss: 5.908 (7.60)  LR: 1.492e-04  Time cost: 11:27/35:44 [3:18:44/35:44]  Acc_iter 23250       Data time: 0.26(0.26)  Forward time: 0.25(0.25)  Batch time: 0.50(0.52)
+2024-03-09 14:48:21,288   INFO  
+2024-03-09 14:48:47,705   INFO  Train:    5/5 (100%) [1379/5480 ( 25%)]  Loss: 8.402 (7.59)  LR: 1.458e-04  Time cost: 11:53/35:20 [3:19:10/35:20]  Acc_iter 23300       Data time: 0.29(0.26)  Forward time: 0.26(0.25)  Batch time: 0.54(0.52)
+2024-03-09 14:49:14,167   INFO  Train:    5/5 (100%) [1429/5480 ( 26%)]  Loss: 8.283 (7.59)  LR: 1.425e-04  Time cost: 12:20/34:56 [3:19:36/34:56]  Acc_iter 23350       Data time: 0.25(0.26)  Forward time: 0.23(0.25)  Batch time: 0.47(0.52)
+2024-03-09 14:49:40,053   INFO  Train:    5/5 (100%) [1479/5480 ( 27%)]  Loss: 6.297 (7.58)  LR: 1.392e-04  Time cost: 12:46/34:30 [3:20:02/34:30]  Acc_iter 23400       Data time: 0.22(0.26)  Forward time: 0.18(0.25)  Batch time: 0.40(0.52)
+2024-03-09 14:49:40,054   INFO  
+2024-03-09 14:50:05,693   INFO  Train:    5/5 (100%) [1529/5480 ( 28%)]  Loss: 6.471 (7.58)  LR: 1.359e-04  Time cost: 13:11/34:04 [3:20:28/34:04]  Acc_iter 23450       Data time: 0.23(0.26)  Forward time: 0.25(0.25)  Batch time: 0.48(0.52)
+2024-03-09 14:50:30,529   INFO  Train:    5/5 (100%) [1579/5480 ( 29%)]  Loss: 5.594 (7.57)  LR: 1.326e-04  Time cost: 13:36/33:35 [3:20:53/33:35]  Acc_iter 23500       Data time: 0.23(0.26)  Forward time: 0.23(0.25)  Batch time: 0.46(0.52)
+2024-03-09 14:50:55,869   INFO  Train:    5/5 (100%) [1629/5480 ( 30%)]  Loss: 7.156 (7.57)  LR: 1.294e-04  Time cost: 14:01/33:08 [3:21:18/33:08]  Acc_iter 23550       Data time: 0.28(0.26)  Forward time: 0.24(0.25)  Batch time: 0.52(0.52)
+2024-03-09 14:50:55,878   INFO  
+2024-03-09 14:51:21,334   INFO  Train:    5/5 (100%) [1679/5480 ( 31%)]  Loss: 9.473 (7.57)  LR: 1.262e-04  Time cost: 14:27/32:42 [3:21:44/32:42]  Acc_iter 23600       Data time: 0.29(0.26)  Forward time: 0.27(0.25)  Batch time: 0.56(0.52)
+2024-03-09 14:51:47,269   INFO  Train:    5/5 (100%) [1729/5480 ( 32%)]  Loss: 8.796 (7.56)  LR: 1.231e-04  Time cost: 14:53/32:16 [3:22:10/32:16]  Acc_iter 23650       Data time: 0.31(0.26)  Forward time: 0.30(0.25)  Batch time: 0.61(0.52)
+2024-03-09 14:51:54,403   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:52:13,949   INFO  Train:    5/5 (100%) [1779/5480 ( 32%)]  Loss: 6.025 (7.56)  LR: 1.199e-04  Time cost: 15:19/31:52 [3:22:36/31:52]  Acc_iter 23700       Data time: 0.28(0.26)  Forward time: 0.17(0.25)  Batch time: 0.45(0.52)
+2024-03-09 14:52:13,950   INFO  
+2024-03-09 14:52:39,500   INFO  Train:    5/5 (100%) [1829/5480 ( 33%)]  Loss: 6.695 (7.55)  LR: 1.168e-04  Time cost: 15:45/31:26 [3:23:02/31:26]  Acc_iter 23750       Data time: 0.21(0.26)  Forward time: 0.28(0.25)  Batch time: 0.48(0.52)
+2024-03-09 14:53:04,833   INFO  Train:    5/5 (100%) [1879/5480 ( 34%)]  Loss: 8.457 (7.56)  LR: 1.138e-04  Time cost: 16:10/30:59 [3:23:27/30:59]  Acc_iter 23800       Data time: 0.36(0.26)  Forward time: 0.22(0.25)  Batch time: 0.58(0.52)
+2024-03-09 14:53:30,760   INFO  Train:    5/5 (100%) [1929/5480 ( 35%)]  Loss: 6.997 (7.55)  LR: 1.108e-04  Time cost: 16:36/30:33 [3:23:53/30:33]  Acc_iter 23850       Data time: 0.32(0.26)  Forward time: 0.20(0.25)  Batch time: 0.53(0.52)
+2024-03-09 14:53:30,761   INFO  
+2024-03-09 14:53:56,007   INFO  Train:    5/5 (100%) [1979/5480 ( 36%)]  Loss: 7.998 (7.55)  LR: 1.078e-04  Time cost: 17:01/30:07 [3:24:18/30:07]  Acc_iter 23900       Data time: 0.27(0.26)  Forward time: 0.22(0.25)  Batch time: 0.48(0.52)
+2024-03-09 14:54:21,952   INFO  Train:    5/5 (100%) [2029/5480 ( 37%)]  Loss: 6.159 (7.54)  LR: 1.048e-04  Time cost: 17:27/29:41 [3:24:44/29:41]  Acc_iter 23950       Data time: 0.27(0.26)  Forward time: 0.28(0.25)  Batch time: 0.55(0.52)
+2024-03-09 14:54:47,520   INFO  Train:    5/5 (100%) [2079/5480 ( 38%)]  Loss: 7.590 (7.53)  LR: 1.019e-04  Time cost: 17:53/29:15 [3:25:10/29:15]  Acc_iter 24000       Data time: 0.29(0.26)  Forward time: 0.28(0.25)  Batch time: 0.57(0.52)
+2024-03-09 14:54:47,527   INFO  
+2024-03-09 14:55:12,551   INFO  Train:    5/5 (100%) [2129/5480 ( 39%)]  Loss: 7.622 (7.54)  LR: 9.907e-05  Time cost: 18:18/28:48 [3:25:35/28:48]  Acc_iter 24050       Data time: 0.18(0.26)  Forward time: 0.31(0.25)  Batch time: 0.49(0.52)
+2024-03-09 14:55:39,066   INFO  Train:    5/5 (100%) [2179/5480 ( 40%)]  Loss: 8.558 (7.53)  LR: 9.623e-05  Time cost: 18:45/28:23 [3:26:01/28:23]  Acc_iter 24100       Data time: 0.34(0.26)  Forward time: 0.23(0.25)  Batch time: 0.58(0.52)
+2024-03-09 14:56:04,528   INFO  Train:    5/5 (100%) [2229/5480 ( 41%)]  Loss: 7.155 (7.53)  LR: 9.343e-05  Time cost: 19:10/27:57 [3:26:27/27:57]  Acc_iter 24150       Data time: 0.24(0.26)  Forward time: 0.25(0.25)  Batch time: 0.49(0.52)
+2024-03-09 14:56:04,536   INFO  
+2024-03-09 14:56:30,229   INFO  Train:    5/5 (100%) [2279/5480 ( 42%)]  Loss: 8.846 (7.52)  LR: 9.067e-05  Time cost: 19:36/27:31 [3:26:53/27:31]  Acc_iter 24200       Data time: 0.36(0.26)  Forward time: 0.25(0.25)  Batch time: 0.60(0.52)
+2024-03-09 14:56:54,246   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 14:56:56,299   INFO  Train:    5/5 (100%) [2329/5480 ( 42%)]  Loss: 6.571 (7.52)  LR: 8.795e-05  Time cost: 20:02/27:05 [3:27:19/27:05]  Acc_iter 24250       Data time: 0.18(0.26)  Forward time: 0.26(0.25)  Batch time: 0.44(0.52)
+2024-03-09 14:57:23,025   INFO  Train:    5/5 (100%) [2379/5480 ( 43%)]  Loss: 8.855 (7.51)  LR: 8.526e-05  Time cost: 20:29/26:41 [3:27:45/26:41]  Acc_iter 24300       Data time: 0.21(0.26)  Forward time: 0.28(0.25)  Batch time: 0.49(0.52)
+2024-03-09 14:57:23,027   INFO  
+2024-03-09 14:57:49,099   INFO  Train:    5/5 (100%) [2429/5480 ( 44%)]  Loss: 6.817 (7.51)  LR: 8.261e-05  Time cost: 20:55/26:15 [3:28:11/26:15]  Acc_iter 24350       Data time: 0.29(0.26)  Forward time: 0.23(0.25)  Batch time: 0.52(0.52)
+2024-03-09 14:58:14,354   INFO  Train:    5/5 (100%) [2479/5480 ( 45%)]  Loss: 8.240 (7.50)  LR: 8.000e-05  Time cost: 21:20/25:49 [3:28:37/25:49]  Acc_iter 24400       Data time: 0.21(0.26)  Forward time: 0.23(0.25)  Batch time: 0.44(0.52)
+2024-03-09 14:58:39,085   INFO  Train:    5/5 (100%) [2529/5480 ( 46%)]  Loss: 7.706 (7.50)  LR: 7.743e-05  Time cost: 21:45/25:22 [3:29:01/25:22]  Acc_iter 24450       Data time: 0.29(0.26)  Forward time: 0.26(0.25)  Batch time: 0.55(0.52)
+2024-03-09 14:58:39,086   INFO  
+2024-03-09 14:59:05,776   INFO  Train:    5/5 (100%) [2579/5480 ( 47%)]  Loss: 6.626 (7.49)  LR: 7.489e-05  Time cost: 22:11/24:57 [3:29:28/24:57]  Acc_iter 24500       Data time: 0.23(0.26)  Forward time: 0.31(0.25)  Batch time: 0.54(0.52)
+2024-03-09 14:59:31,237   INFO  Train:    5/5 (100%) [2629/5480 ( 48%)]  Loss: 6.344 (7.49)  LR: 7.240e-05  Time cost: 22:37/24:31 [3:29:54/24:31]  Acc_iter 24550       Data time: 0.23(0.26)  Forward time: 0.21(0.25)  Batch time: 0.44(0.52)
+2024-03-09 14:59:56,913   INFO  Train:    5/5 (100%) [2679/5480 ( 49%)]  Loss: 6.903 (7.48)  LR: 6.994e-05  Time cost: 23:02/24:05 [3:30:19/24:05]  Acc_iter 24600       Data time: 0.14(0.26)  Forward time: 0.24(0.25)  Batch time: 0.39(0.52)
+2024-03-09 14:59:56,914   INFO  
+2024-03-09 15:00:22,871   INFO  Train:    5/5 (100%) [2729/5480 ( 50%)]  Loss: 8.855 (7.48)  LR: 6.752e-05  Time cost: 23:28/23:39 [3:30:45/23:39]  Acc_iter 24650       Data time: 0.27(0.26)  Forward time: 0.32(0.25)  Batch time: 0.59(0.52)
+2024-03-09 15:00:48,975   INFO  Train:    5/5 (100%) [2779/5480 ( 51%)]  Loss: 8.689 (7.48)  LR: 6.515e-05  Time cost: 23:54/23:14 [3:31:11/23:14]  Acc_iter 24700       Data time: 0.30(0.26)  Forward time: 0.19(0.25)  Batch time: 0.49(0.52)
+2024-03-09 15:01:15,258   INFO  Train:    5/5 (100%) [2829/5480 ( 52%)]  Loss: 7.111 (7.48)  LR: 6.281e-05  Time cost: 24:21/22:48 [3:31:38/22:48]  Acc_iter 24750       Data time: 0.24(0.26)  Forward time: 0.24(0.25)  Batch time: 0.48(0.52)
+2024-03-09 15:01:15,267   INFO  
+2024-03-09 15:01:39,745   INFO  Train:    5/5 (100%) [2879/5480 ( 53%)]  Loss: 8.550 (7.49)  LR: 6.051e-05  Time cost: 24:45/22:21 [3:32:02/22:21]  Acc_iter 24800       Data time: 0.30(0.26)  Forward time: 0.19(0.25)  Batch time: 0.50(0.52)
+2024-03-09 15:01:54,377   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 15:02:05,144   INFO  Train:    5/5 (100%) [2929/5480 ( 53%)]  Loss: 5.625 (7.48)  LR: 5.825e-05  Time cost: 25:11/21:55 [3:32:27/21:55]  Acc_iter 24850       Data time: 0.28(0.26)  Forward time: 0.20(0.25)  Batch time: 0.49(0.52)
+2024-03-09 15:02:30,516   INFO  Train:    5/5 (100%) [2979/5480 ( 54%)]  Loss: 9.642 (7.48)  LR: 5.603e-05  Time cost: 25:36/21:29 [3:32:53/21:29]  Acc_iter 24900       Data time: 0.28(0.26)  Forward time: 0.25(0.25)  Batch time: 0.53(0.52)
+2024-03-09 15:02:30,517   INFO  
+2024-03-09 15:02:55,825   INFO  Train:    5/5 (100%) [3029/5480 ( 55%)]  Loss: 8.417 (7.48)  LR: 5.386e-05  Time cost: 26:01/21:03 [3:33:18/21:03]  Acc_iter 24950       Data time: 0.22(0.26)  Forward time: 0.26(0.25)  Batch time: 0.48(0.52)
+2024-03-09 15:03:21,849   INFO  Train:    5/5 (100%) [3079/5480 ( 56%)]  Loss: 10.32 (7.47)  LR: 5.172e-05  Time cost: 26:27/20:37 [3:33:44/20:37]  Acc_iter 25000       Data time: 0.27(0.26)  Forward time: 0.25(0.25)  Batch time: 0.52(0.52)
+2024-03-09 15:03:47,919   INFO  Train:    5/5 (100%) [3129/5480 ( 57%)]  Loss: 8.038 (7.47)  LR: 4.963e-05  Time cost: 26:53/20:12 [3:34:10/20:12]  Acc_iter 25050       Data time: 0.31(0.26)  Forward time: 0.25(0.25)  Batch time: 0.56(0.52)
+2024-03-09 15:03:47,920   INFO  
+2024-03-09 15:04:14,075   INFO  Train:    5/5 (100%) [3179/5480 ( 58%)]  Loss: 7.685 (7.46)  LR: 4.757e-05  Time cost: 27:20/19:46 [3:34:36/19:46]  Acc_iter 25100       Data time: 0.16(0.26)  Forward time: 0.25(0.25)  Batch time: 0.40(0.52)
+2024-03-09 15:04:39,609   INFO  Train:    5/5 (100%) [3229/5480 ( 59%)]  Loss: 6.585 (7.46)  LR: 4.556e-05  Time cost: 27:45/19:20 [3:35:02/19:20]  Acc_iter 25150       Data time: 0.27(0.26)  Forward time: 0.26(0.25)  Batch time: 0.53(0.52)
+2024-03-09 15:05:04,623   INFO  Train:    5/5 (100%) [3279/5480 ( 60%)]  Loss: 6.409 (7.45)  LR: 4.359e-05  Time cost: 28:10/18:54 [3:35:27/18:54]  Acc_iter 25200       Data time: 0.37(0.26)  Forward time: 0.27(0.25)  Batch time: 0.64(0.52)
+2024-03-09 15:05:04,623   INFO  
+2024-03-09 15:05:30,382   INFO  Train:    5/5 (100%) [3329/5480 ( 61%)]  Loss: 6.214 (7.45)  LR: 4.166e-05  Time cost: 28:36/18:28 [3:35:53/18:28]  Acc_iter 25250       Data time: 0.26(0.26)  Forward time: 0.24(0.25)  Batch time: 0.50(0.52)
+2024-03-09 15:05:56,139   INFO  Train:    5/5 (100%) [3379/5480 ( 62%)]  Loss: 6.449 (7.45)  LR: 3.977e-05  Time cost: 29:02/18:02 [3:36:18/18:02]  Acc_iter 25300       Data time: 0.23(0.26)  Forward time: 0.27(0.25)  Batch time: 0.50(0.52)
+2024-03-09 15:06:22,445   INFO  Train:    5/5 (100%) [3429/5480 ( 63%)]  Loss: 5.674 (7.45)  LR: 3.792e-05  Time cost: 29:28/17:37 [3:36:45/17:37]  Acc_iter 25350       Data time: 0.31(0.26)  Forward time: 0.29(0.25)  Batch time: 0.60(0.52)
+2024-03-09 15:06:22,454   INFO  
+2024-03-09 15:06:47,734   INFO  Train:    5/5 (100%) [3479/5480 ( 63%)]  Loss: 7.801 (7.45)  LR: 3.612e-05  Time cost: 29:53/17:11 [3:37:10/17:11]  Acc_iter 25400       Data time: 0.15(0.26)  Forward time: 0.32(0.25)  Batch time: 0.47(0.52)
+2024-03-09 15:06:54,573   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 15:07:12,970   INFO  Train:    5/5 (100%) [3529/5480 ( 64%)]  Loss: 9.318 (7.45)  LR: 3.436e-05  Time cost: 30:18/16:45 [3:37:35/16:45]  Acc_iter 25450       Data time: 0.24(0.26)  Forward time: 0.28(0.25)  Batch time: 0.53(0.52)
+2024-03-09 15:07:38,204   INFO  Train:    5/5 (100%) [3579/5480 ( 65%)]  Loss: 6.975 (7.44)  LR: 3.264e-05  Time cost: 30:44/16:19 [3:38:00/16:19]  Acc_iter 25500       Data time: 0.26(0.26)  Forward time: 0.23(0.25)  Batch time: 0.49(0.52)
+2024-03-09 15:07:38,205   INFO  
+2024-03-09 15:08:04,112   INFO  Train:    5/5 (100%) [3629/5480 ( 66%)]  Loss: 7.683 (7.44)  LR: 3.096e-05  Time cost: 31:10/15:53 [3:38:26/15:53]  Acc_iter 25550       Data time: 0.27(0.26)  Forward time: 0.29(0.25)  Batch time: 0.56(0.52)
+2024-03-09 15:08:29,757   INFO  Train:    5/5 (100%) [3679/5480 ( 67%)]  Loss: 7.958 (7.43)  LR: 2.933e-05  Time cost: 31:35/15:27 [3:38:52/15:27]  Acc_iter 25600       Data time: 0.28(0.26)  Forward time: 0.27(0.25)  Batch time: 0.55(0.52)
+2024-03-09 15:08:56,077   INFO  Train:    5/5 (100%) [3729/5480 ( 68%)]  Loss: 6.778 (7.43)  LR: 2.774e-05  Time cost: 32:02/15:02 [3:39:18/15:02]  Acc_iter 25650       Data time: 0.29(0.26)  Forward time: 0.21(0.25)  Batch time: 0.50(0.52)
+2024-03-09 15:08:56,078   INFO  
+2024-03-09 15:09:21,883   INFO  Train:    5/5 (100%) [3779/5480 ( 69%)]  Loss: 6.391 (7.43)  LR: 2.619e-05  Time cost: 32:27/14:36 [3:39:44/14:36]  Acc_iter 25700       Data time: 0.28(0.26)  Forward time: 0.23(0.25)  Batch time: 0.51(0.52)
+2024-03-09 15:09:45,975   INFO  Train:    5/5 (100%) [3829/5480 ( 70%)]  Loss: 6.626 (7.42)  LR: 2.469e-05  Time cost: 32:51/14:10 [3:40:08/14:10]  Acc_iter 25750       Data time: 0.24(0.26)  Forward time: 0.24(0.25)  Batch time: 0.48(0.51)
+2024-03-09 15:10:11,731   INFO  Train:    5/5 (100%) [3879/5480 ( 71%)]  Loss: 7.783 (7.42)  LR: 2.323e-05  Time cost: 33:17/13:44 [3:40:34/13:44]  Acc_iter 25800       Data time: 0.26(0.26)  Forward time: 0.29(0.25)  Batch time: 0.55(0.51)
+2024-03-09 15:10:11,732   INFO  
+2024-03-09 15:10:37,745   INFO  Train:    5/5 (100%) [3929/5480 ( 72%)]  Loss: 8.322 (7.42)  LR: 2.181e-05  Time cost: 33:43/13:18 [3:41:00/13:18]  Acc_iter 25850       Data time: 0.27(0.26)  Forward time: 0.19(0.25)  Batch time: 0.46(0.51)
+2024-03-09 15:11:02,863   INFO  Train:    5/5 (100%) [3979/5480 ( 73%)]  Loss: 6.119 (7.41)  LR: 2.044e-05  Time cost: 34:08/12:52 [3:41:25/12:52]  Acc_iter 25900       Data time: 0.32(0.26)  Forward time: 0.24(0.25)  Batch time: 0.55(0.51)
+2024-03-09 15:11:28,499   INFO  Train:    5/5 (100%) [4029/5480 ( 74%)]  Loss: 6.398 (7.41)  LR: 1.911e-05  Time cost: 34:34/12:26 [3:41:51/12:26]  Acc_iter 25950       Data time: 0.25(0.26)  Forward time: 0.30(0.25)  Batch time: 0.55(0.51)
+2024-03-09 15:11:28,508   INFO  
+2024-03-09 15:11:54,124   INFO  Train:    5/5 (100%) [4079/5480 ( 74%)]  Loss: 5.774 (7.42)  LR: 1.782e-05  Time cost: 35:00/12:01 [3:42:16/12:01]  Acc_iter 26000       Data time: 0.18(0.26)  Forward time: 0.25(0.25)  Batch time: 0.44(0.51)
+2024-03-09 15:11:54,277   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 15:12:19,809   INFO  Train:    5/5 (100%) [4129/5480 ( 75%)]  Loss: 5.858 (7.41)  LR: 1.658e-05  Time cost: 35:25/11:35 [3:42:42/11:35]  Acc_iter 26050       Data time: 0.23(0.26)  Forward time: 0.23(0.25)  Batch time: 0.46(0.51)
+2024-03-09 15:12:43,959   INFO  Train:    5/5 (100%) [4179/5480 ( 76%)]  Loss: 6.834 (7.41)  LR: 1.538e-05  Time cost: 35:49/11:09 [3:43:06/11:09]  Acc_iter 26100       Data time: 0.31(0.26)  Forward time: 0.23(0.25)  Batch time: 0.54(0.51)
+2024-03-09 15:12:43,960   INFO  
+2024-03-09 15:13:08,618   INFO  Train:    5/5 (100%) [4229/5480 ( 77%)]  Loss: 7.190 (7.41)  LR: 1.423e-05  Time cost: 36:14/10:43 [3:43:31/10:43]  Acc_iter 26150       Data time: 0.19(0.26)  Forward time: 0.29(0.25)  Batch time: 0.48(0.51)
+2024-03-09 15:13:34,515   INFO  Train:    5/5 (100%) [4279/5480 ( 78%)]  Loss: 6.990 (7.41)  LR: 1.312e-05  Time cost: 36:40/10:17 [3:43:57/10:17]  Acc_iter 26200       Data time: 0.28(0.26)  Forward time: 0.25(0.25)  Batch time: 0.53(0.51)
+2024-03-09 15:13:59,873   INFO  Train:    5/5 (100%) [4329/5480 ( 79%)]  Loss: 5.846 (7.41)  LR: 1.206e-05  Time cost: 37:05/09:51 [3:44:22/09:51]  Acc_iter 26250       Data time: 0.13(0.26)  Forward time: 0.32(0.25)  Batch time: 0.45(0.51)
+2024-03-09 15:13:59,874   INFO  
+2024-03-09 15:14:24,227   INFO  Train:    5/5 (100%) [4379/5480 ( 80%)]  Loss: 7.753 (7.40)  LR: 1.104e-05  Time cost: 37:30/09:25 [3:44:47/09:25]  Acc_iter 26300       Data time: 0.15(0.26)  Forward time: 0.29(0.25)  Batch time: 0.44(0.51)
+2024-03-09 15:14:50,600   INFO  Train:    5/5 (100%) [4429/5480 ( 81%)]  Loss: 8.417 (7.40)  LR: 1.006e-05  Time cost: 37:56/09:00 [3:45:13/09:00]  Acc_iter 26350       Data time: 0.22(0.26)  Forward time: 0.29(0.25)  Batch time: 0.52(0.51)
+2024-03-09 15:15:15,726   INFO  Train:    5/5 (100%) [4479/5480 ( 82%)]  Loss: 9.456 (7.40)  LR: 9.130e-06  Time cost: 38:21/08:34 [3:45:38/08:34]  Acc_iter 26400       Data time: 0.20(0.26)  Forward time: 0.25(0.25)  Batch time: 0.45(0.51)
+2024-03-09 15:15:15,727   INFO  
+2024-03-09 15:15:40,733   INFO  Train:    5/5 (100%) [4529/5480 ( 83%)]  Loss: 7.693 (7.39)  LR: 8.244e-06  Time cost: 38:46/08:08 [3:46:03/08:08]  Acc_iter 26450       Data time: 0.15(0.26)  Forward time: 0.25(0.25)  Batch time: 0.40(0.51)
+2024-03-09 15:16:06,987   INFO  Train:    5/5 (100%) [4579/5480 ( 84%)]  Loss: 6.700 (7.39)  LR: 7.403e-06  Time cost: 39:12/07:42 [3:46:29/07:42]  Acc_iter 26500       Data time: 0.34(0.26)  Forward time: 0.23(0.25)  Batch time: 0.57(0.51)
+2024-03-09 15:16:32,690   INFO  Train:    5/5 (100%) [4629/5480 ( 84%)]  Loss: 9.910 (7.39)  LR: 6.607e-06  Time cost: 39:38/07:17 [3:46:55/07:17]  Acc_iter 26550       Data time: 0.31(0.26)  Forward time: 0.16(0.25)  Batch time: 0.48(0.51)
+2024-03-09 15:16:32,698   INFO  
+2024-03-09 15:16:54,406   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 15:17:00,067   INFO  Train:    5/5 (100%) [4679/5480 ( 85%)]  Loss: 6.935 (7.39)  LR: 5.856e-06  Time cost: 40:06/06:51 [3:47:22/06:51]  Acc_iter 26600       Data time: 0.36(0.26)  Forward time: 0.26(0.25)  Batch time: 0.61(0.51)
+2024-03-09 15:17:25,352   INFO  Train:    5/5 (100%) [4729/5480 ( 86%)]  Loss: 10.79 (7.39)  LR: 5.150e-06  Time cost: 40:31/06:26 [3:47:48/06:26]  Acc_iter 26650       Data time: 0.19(0.26)  Forward time: 0.27(0.25)  Batch time: 0.47(0.51)
+2024-03-09 15:17:51,262   INFO  Train:    5/5 (100%) [4779/5480 ( 87%)]  Loss: 9.105 (7.39)  LR: 4.489e-06  Time cost: 40:57/06:00 [3:48:14/06:00]  Acc_iter 26700       Data time: 0.21(0.26)  Forward time: 0.29(0.25)  Batch time: 0.50(0.51)
+2024-03-09 15:17:51,263   INFO  
+2024-03-09 15:18:17,358   INFO  Train:    5/5 (100%) [4829/5480 ( 88%)]  Loss: 7.057 (7.38)  LR: 3.874e-06  Time cost: 41:23/05:34 [3:48:40/05:34]  Acc_iter 26750       Data time: 0.24(0.26)  Forward time: 0.32(0.25)  Batch time: 0.56(0.51)
+2024-03-09 15:18:43,433   INFO  Train:    5/5 (100%) [4879/5480 ( 89%)]  Loss: 5.701 (7.38)  LR: 3.304e-06  Time cost: 41:49/05:09 [3:49:06/05:09]  Acc_iter 26800       Data time: 0.28(0.26)  Forward time: 0.24(0.25)  Batch time: 0.52(0.51)
+2024-03-09 15:19:09,089   INFO  Train:    5/5 (100%) [4929/5480 ( 90%)]  Loss: 7.654 (7.38)  LR: 2.779e-06  Time cost: 42:15/04:43 [3:49:31/04:43]  Acc_iter 26850       Data time: 0.16(0.26)  Forward time: 0.23(0.25)  Batch time: 0.39(0.51)
+2024-03-09 15:19:09,091   INFO  
+2024-03-09 15:19:35,233   INFO  Train:    5/5 (100%) [4979/5480 ( 91%)]  Loss: 6.842 (7.38)  LR: 2.300e-06  Time cost: 42:41/04:17 [3:49:58/04:17]  Acc_iter 26900       Data time: 0.32(0.26)  Forward time: 0.26(0.25)  Batch time: 0.59(0.51)
+2024-03-09 15:20:01,192   INFO  Train:    5/5 (100%) [5029/5480 ( 92%)]  Loss: 6.407 (7.38)  LR: 1.866e-06  Time cost: 43:07/03:51 [3:50:23/03:51]  Acc_iter 26950       Data time: 0.27(0.26)  Forward time: 0.30(0.25)  Batch time: 0.57(0.51)
+2024-03-09 15:20:26,974   INFO  Train:    5/5 (100%) [5079/5480 ( 93%)]  Loss: 6.308 (7.38)  LR: 1.477e-06  Time cost: 43:32/03:26 [3:50:49/03:26]  Acc_iter 27000       Data time: 0.26(0.26)  Forward time: 0.27(0.25)  Batch time: 0.53(0.51)
+2024-03-09 15:20:26,975   INFO  
+2024-03-09 15:20:53,064   INFO  Train:    5/5 (100%) [5129/5480 ( 94%)]  Loss: 7.542 (7.37)  LR: 1.134e-06  Time cost: 43:59/03:00 [3:51:15/03:00]  Acc_iter 27050       Data time: 0.17(0.26)  Forward time: 0.31(0.25)  Batch time: 0.48(0.51)
+2024-03-09 15:21:18,810   INFO  Train:    5/5 (100%) [5179/5480 ( 95%)]  Loss: 6.012 (7.37)  LR: 8.369e-07  Time cost: 44:24/02:34 [3:51:41/02:34]  Acc_iter 27100       Data time: 0.31(0.26)  Forward time: 0.28(0.25)  Batch time: 0.59(0.51)
+2024-03-09 15:21:44,498   INFO  Train:    5/5 (100%) [5229/5480 ( 95%)]  Loss: 5.902 (7.37)  LR: 5.850e-07  Time cost: 44:50/02:09 [3:52:07/02:09]  Acc_iter 27150       Data time: 0.30(0.26)  Forward time: 0.18(0.25)  Batch time: 0.48(0.51)
+2024-03-09 15:21:44,508   INFO  
+2024-03-09 15:21:54,749   INFO  Save latest model to /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/latest_model
+2024-03-09 15:22:10,934   INFO  Train:    5/5 (100%) [5279/5480 ( 96%)]  Loss: 6.746 (7.37)  LR: 3.788e-07  Time cost: 45:16/01:43 [3:52:33/01:43]  Acc_iter 27200       Data time: 0.19(0.26)  Forward time: 0.24(0.25)  Batch time: 0.43(0.51)
+2024-03-09 15:22:36,439   INFO  Train:    5/5 (100%) [5329/5480 ( 97%)]  Loss: 5.365 (7.36)  LR: 2.181e-07  Time cost: 45:42/01:17 [3:52:59/01:17]  Acc_iter 27250       Data time: 0.21(0.26)  Forward time: 0.21(0.25)  Batch time: 0.43(0.51)
+2024-03-09 15:23:02,100   INFO  Train:    5/5 (100%) [5379/5480 ( 98%)]  Loss: 7.990 (7.36)  LR: 1.031e-07  Time cost: 46:08/00:51 [3:53:24/00:51]  Acc_iter 27300       Data time: 0.24(0.26)  Forward time: 0.24(0.25)  Batch time: 0.48(0.51)
+2024-03-09 15:23:02,101   INFO  
+2024-03-09 15:23:27,913   INFO  Train:    5/5 (100%) [5429/5480 ( 99%)]  Loss: 8.980 (7.36)  LR: 3.374e-08  Time cost: 46:33/00:26 [3:53:50/00:26]  Acc_iter 27350       Data time: 0.25(0.26)  Forward time: 0.23(0.25)  Batch time: 0.48(0.51)
+2024-03-09 15:23:53,489   INFO  Train:    5/5 (100%) [5479/5480 (100%)]  Loss: 6.681 (7.36)  LR: 1.001e-08  Time cost: 46:59/00:00 [3:54:16/00:00]  Acc_iter 27400       Data time: 0.36(0.26)  Forward time: 0.24(0.25)  Batch time: 0.59(0.51)
+2024-03-09 15:23:53,655   INFO  **********************End training home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext(default)**********************
+
+
+
+2024-03-09 15:23:53,655   INFO  **********************Start evaluation home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext(default)**********************
+2024-03-09 15:23:53,656   INFO  Loading NuScenes dataset
+2024-03-09 15:23:55,014   INFO  Total samples for NuScenes dataset: 31753
+2024-03-09 15:23:55,018   INFO  ==> Loading parameters from checkpoint /home/luis/OpenPCDet/output/home/luis/OpenPCDet/tools/cfgs/nuscenes_models/cbgs_voxel0075_voxelnext/default/ckpt/checkpoint_epoch_5.pth to GPU
+2024-03-09 15:23:55,071   INFO  ==> Checkpoint trained from version: pcdet+0.6.0+255db8f
+2024-03-09 15:23:55,078   INFO  ==> Done (loaded 542/542)
+2024-03-09 15:23:55,081   INFO  *************** EPOCH 5 EVALUATION *****************
