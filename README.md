@@ -311,7 +311,7 @@ python -m pcdet.datasets.nuscenes.nuscenes_dataset --func create_nuscenes_infos 
 
 Note: Since we not work with Agroverse dataset we can comment out line 15 and line 27 in OpenPCDet/pcdet/datasets/init. py to avoid the Error: No module named ‘av2’ 
 
-## STEP 7: Training, Evaluation, Testing and Visualization
+## STEP 7: Training, Evaluation and Visualization
 
 We worked with single GPU Training and Testing, the commands for execution for the same is given below.
 
