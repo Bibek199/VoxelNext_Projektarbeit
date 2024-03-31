@@ -426,12 +426,12 @@ python demo.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnex
 | [VoxelNeXt](/home/bibek/Git/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml)     |  val | 78.89 | 57.03 | 67.13 | [Pre-trained](/output/kitti_models_40_epochs/ckpt/checkpoint_epoch_40.pth) |
 
 <p align="center">
-  <img src="docs/sample.png" width="80%" height="250">
+  <img src="sample.png" width="80%" height="500">
 </p>
 
 ## Acknowledgements
 * This work is built upon the [OpenPCDet](https://github.com/open-mmlab/OpenPCDet) and [Spconv](https://github.com/traveller59/spconv).
-* We thank the authors for providing their official VoxelNeXt model architecture and configuration files. [VoxelNeXt](https://github.com/dvlab-research/VoxelNeXt.git).
+* We thank the authors for providing the official VoxelNeXt model architecture and configuration files. [VoxelNeXt](https://github.com/dvlab-research/VoxelNeXt.git).
   
 
 
