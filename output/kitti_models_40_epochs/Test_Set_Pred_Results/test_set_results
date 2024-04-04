@@ -1,0 +1,17 @@
+\begin{tabular}{c | c | c}
+{\bf Benchmark} & {\bf Easy} & {\bf Moderate} & {\bf Hard}\\ \hline
+Car (Detection) & 94.45 \% & 91.05 \% & 89.14 \%\\
+Car (Orientation) & 94.42 \% & 90.91 \% & 88.90 \%\\
+Car (3D Detection) & 82.22 \% & 73.28 \% & 68.65 \%\\
+Car (Bird's Eye View) & 89.49 \% & 86.00 \% & 81.49 \%\\
+Pedestrian (Detection) & 69.75 \% & 59.61 \% & 57.16 \%\\
+Pedestrian (Orientation) & 67.72 \% & 57.22 \% & 54.54 \%\\
+Pedestrian (3D Detection) & 49.53 \% & 42.19 \% & 39.31 \%\\
+Pedestrian (Bird's Eye View) & 55.28 \% & 47.85 \% & 45.21 \%\\
+Cyclist (Detection) & 87.32 \% & 71.20 \% & 64.56 \%\\
+Cyclist (Orientation) & 87.16 \% & 71.01 \% & 64.36 \%\\
+Cyclist (3D Detection) & 78.46 \% & 59.25 \% & 52.12 \%\\
+Cyclist (Bird's Eye View) & 81.08 \% & 61.70 \% & 54.67 \%
+\end{tabular}
+
+
