@@ -424,6 +424,8 @@ python demo.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnex
 | KITTI Detection      |  Set |  Car |  Ped |   Cyc  | Link|
 |---------------|:----:|:----:|:----:|:-----------:|:----------:|
 | [VoxelNeXt](/home/bibek/Git/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml)     |  val | 78.89 | 57.03 | 67.13 | [Pre-trained](/output/kitti_models_40_epochs/ckpt/checkpoint_epoch_40.pth) |
+| [VoxelNeXt](/home/bibek/Git/OpenPCDet/tools/cfgs/kitti_models/voxelnext.yaml)     |  test | 73.28 | 42.19 | 59.25 | [Submission](https://www.cvlibs.net/datasets/kitti/user_submit_check_login.php?benchmark=object&user=75aa4c489274da0403a77a42819c8c7f0953acb5&result=99907bb5b5d9c0284c220bb374e5dce0062a83f2) |
+
 
 <p align="center">
   <img src="sample.png" width="80%" height="500">
