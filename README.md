@@ -421,7 +421,7 @@ python demo.py --cfg_file /home/bibek/OpenPCDet/tools/cfgs/kitti_models/voxelnex
 
 ### Experimental Results
 
-The below results are for the Moderate categorz of classes at 40 Recall Positions.
+The below results are for the Moderate category of classes at 40 Recall Positions.
 
 | KITTI Object Detection 3D     |  Set |  Car |  Ped |   Cyc  | Link|
 |---------------|:----:|:----:|:----:|:-----------:|:----------:|
